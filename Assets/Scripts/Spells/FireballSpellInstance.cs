@@ -1,5 +1,6 @@
 ﻿
 
+using Night;
 using UnityEngine;
 
 namespace DefaultNamespace.Spells
@@ -8,6 +9,7 @@ namespace DefaultNamespace.Spells
     {
         private const float DamagePerLevel = 5;
         private const float MoveSpeedPerLevel = 5;
+        private const float radius = 3;
         
         private float damage;
         private float moveSpeed;
@@ -33,6 +35,14 @@ namespace DefaultNamespace.Spells
         private void DealDamage()
         {
             Debug.Log($"Deal damage {damage}");
+
+            foreach (Unit unit in Context.AllUnits)
+            {
+                if (Vector3.Distance(unit.transform.position, transform.position) < radius)
+                {
+                    unit.Deactivate();
+                }
+            }
         }
     }
 }

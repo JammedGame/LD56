@@ -14,6 +14,7 @@ namespace Night
 		// battle objects
 		public readonly List<Unit> AllUnits = new List<Unit>();
 		public readonly HashSet<SpellBattleInstance> AllSpells = new HashSet<SpellBattleInstance>();
+		public readonly MobSpawner MobSpawner;
 
 		private readonly Dictionary<string, UserEquippedSpell> spellMap = new Dictionary<string, UserEquippedSpell>();
 		
@@ -21,6 +22,7 @@ namespace Night
 		{
 			NightLevelData = nightLevelData;
 			UserBattleData = userBattleData;
+			MobSpawner = new MobSpawner(this, nightLevelData);
 
 			foreach (UserEquippedSpell spell in UserBattleData.EquippedSpells)
 			{
@@ -43,6 +45,8 @@ namespace Night
 		
 		public void TickBattle()
 		{
+			MobSpawner.Tick();
+			
 			foreach (Unit unit in AllUnits)
 			{
 				unit.Tick();
@@ -59,6 +63,7 @@ namespace Night
 		private void CleanUpDeadObjects()
 		{
 			AllSpells.RemoveWhere(x => !x.IsActive);
+			AllUnits.RemoveAll(x => !x.IsActive);
 		}
 
 		public void CastSpell(string spellId, Vector3 castTargetPos)

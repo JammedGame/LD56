@@ -7,13 +7,15 @@ namespace Night
 	[CreateAssetMenu]
 	public class NightLevelData : ScriptableObject
 	{
-		// level design shit
 		public List<WaveSpawn> Spawns;
 	}
 
 	[Serializable]
 	public class WaveSpawn
 	{
-		// level design shit
+		public float Time;
+		public Unit UnitPrefab;
+		public Vector3 SpawnPosition;
+		public int UnitLevel;
 	}
 }
