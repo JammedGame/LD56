@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6bedd72c2274895bfae3ad4b84a90f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeathAnimationDuration: 4
   Health: 0
   Speed: 0
   Animator: {fileID: 5262059687535828884}
