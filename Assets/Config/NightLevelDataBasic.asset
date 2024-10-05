@@ -19,9 +19,61 @@ MonoBehaviour:
     UnitLevel: 0
   - Time: 0.5
     UnitPrefab: {fileID: 854400207166296427, guid: 099d11bdcdb8b574fa12ce8bf93b462f, type: 3}
-    SpawnPosition: {x: 14, y: 0, z: 4}
+    SpawnPosition: {x: 10, y: 0, z: 4}
     UnitLevel: 0
   - Time: 0.5
     UnitPrefab: {fileID: 854400207166296427, guid: 099d11bdcdb8b574fa12ce8bf93b462f, type: 3}
-    SpawnPosition: {x: 14, y: 0, z: -4}
+    SpawnPosition: {x: 10, y: 0, z: -4}
+    UnitLevel: 0
+  - Time: 0.51885045
+    UnitPrefab: {fileID: 854400207166296427, guid: 099d11bdcdb8b574fa12ce8bf93b462f, type: 3}
+    SpawnPosition: {x: 8.724271, y: 0, z: 2.8007867}
+    UnitLevel: 0
+  - Time: 1.7898765
+    UnitPrefab: {fileID: 854400207166296427, guid: 099d11bdcdb8b574fa12ce8bf93b462f, type: 3}
+    SpawnPosition: {x: 9.491368, y: 0, z: -5.281252}
+    UnitLevel: 0
+  - Time: 0.15323246
+    UnitPrefab: {fileID: 854400207166296427, guid: 099d11bdcdb8b574fa12ce8bf93b462f, type: 3}
+    SpawnPosition: {x: 9.586373, y: 0, z: 3.992702}
+    UnitLevel: 0
+  - Time: 2.6769955
+    UnitPrefab: {fileID: 854400207166296427, guid: 099d11bdcdb8b574fa12ce8bf93b462f, type: 3}
+    SpawnPosition: {x: 8.910143, y: 0, z: 1.5649021}
+    UnitLevel: 0
+  - Time: 0.45799756
+    UnitPrefab: {fileID: 854400207166296427, guid: 099d11bdcdb8b574fa12ce8bf93b462f, type: 3}
+    SpawnPosition: {x: 9.805584, y: 0, z: 3.914112}
+    UnitLevel: 0
+  - Time: 2.4132018
+    UnitPrefab: {fileID: 854400207166296427, guid: 099d11bdcdb8b574fa12ce8bf93b462f, type: 3}
+    SpawnPosition: {x: 10.6901655, y: 0, z: 0.52259254}
+    UnitLevel: 0
+  - Time: 0.48589146
+    UnitPrefab: {fileID: 854400207166296427, guid: 099d11bdcdb8b574fa12ce8bf93b462f, type: 3}
+    SpawnPosition: {x: 9.881627, y: 0, z: 5.3431635}
+    UnitLevel: 0
+  - Time: 1.8656075
+    UnitPrefab: {fileID: 854400207166296427, guid: 099d11bdcdb8b574fa12ce8bf93b462f, type: 3}
+    SpawnPosition: {x: 10.0774975, y: 0, z: -2.956314}
+    UnitLevel: 0
+  - Time: 2.2771149
+    UnitPrefab: {fileID: 854400207166296427, guid: 099d11bdcdb8b574fa12ce8bf93b462f, type: 3}
+    SpawnPosition: {x: 10.974915, y: 0, z: 0.036582947}
+    UnitLevel: 0
+  - Time: 0.3582884
+    UnitPrefab: {fileID: 854400207166296427, guid: 099d11bdcdb8b574fa12ce8bf93b462f, type: 3}
+    SpawnPosition: {x: 9.373693, y: 0, z: 0.46416855}
+    UnitLevel: 0
+  - Time: 2.424882
+    UnitPrefab: {fileID: 854400207166296427, guid: 099d11bdcdb8b574fa12ce8bf93b462f, type: 3}
+    SpawnPosition: {x: 10.715615, y: 0, z: 0.09535122}
+    UnitLevel: 0
+  - Time: 2.7723222
+    UnitPrefab: {fileID: 854400207166296427, guid: 099d11bdcdb8b574fa12ce8bf93b462f, type: 3}
+    SpawnPosition: {x: 8.950411, y: 0, z: 0.77346516}
+    UnitLevel: 0
+  - Time: 1.0156054
+    UnitPrefab: {fileID: 854400207166296427, guid: 099d11bdcdb8b574fa12ce8bf93b462f, type: 3}
+    SpawnPosition: {x: 9.65325, y: 0, z: -2.01682}
     UnitLevel: 0

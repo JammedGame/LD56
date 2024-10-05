@@ -63,6 +63,7 @@ namespace Night
 		private void CleanUpDeadObjects()
 		{
 			AllSpells.RemoveWhere(x => !x.IsActive);
+			AllUnits.RemoveAll(x => !x.IsActive);
 		}
 
 		public void CastSpell(string spellId, Vector3 castTargetPos)

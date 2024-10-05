@@ -327,6 +327,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7898071508474085353}
   - component: {fileID: 2305062203682007341}
+  - component: {fileID: 8273707887181032308}
   m_Layer: 0
   m_Name: FrostSchool
   m_TagString: Untagged
@@ -364,3 +365,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98e782abffd1da146bb6ac4328f36e10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Level: 0
+--- !u!65 &8273707887181032308
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7798087125790471207}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 2.44, z: 1}
+  m_Center: {x: 0, y: 0.75, z: 0}

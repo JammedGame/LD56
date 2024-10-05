@@ -16,6 +16,32 @@ namespace Night
         private Transform _target;
         [SerializeField] private LayerMask _targetLayers;
 
+	public class Unit : MonoBehaviour
+	{
+		public float DeathAnimationDuration = 2f;
+		public float Health;
+		public float Speed;
+
+		public Animator Animator;
+		public UnitTypeSettings BaselineSettings;
+		public NightBattleContext BattleContext;
+		
+		
+		public bool IsActive { get; private set; }
+
+		public static Unit Spawn(NightBattleContext battleContext,
+		                         Unit unitPrefab,
+		                         Vector3 position,
+		                         int level)
+		{
+			Unit newInstance = Instantiate(unitPrefab, position, Quaternion.identity);
+			newInstance.BattleContext = battleContext;
+			newInstance.Health = unitPrefab.BaselineSettings.Health; // apply levels?
+			newInstance.Speed = unitPrefab.BaselineSettings.Speed; // apply levels?
+			newInstance.IsActive = true;
+			return newInstance;
+		}
+
         public static Unit Spawn(NightBattleContext battleContext,
                                  Unit unitPrefab,
                                  Vector3 position,
@@ -51,10 +77,36 @@ namespace Night
             return targets[0].transform;
         }
     }
+
+
+			if (Input.GetKeyDown(KeyCode.Space))
+			{
+				Animator.SetTrigger("Attack");
+			}
+		}
+
+		public void Deactivate()
+		{
+			if (!IsActive)
+			{
+				return;
+			}
+
+			IsActive = false;
+			OnDeactivate();
+		}
+
+		public virtual void OnDeactivate()
+		{
+			Animator.SetTrigger("Death");
+			Destroy(gameObject, DeathAnimationDuration);
+		}
+	}
 }
 
 public enum Team
 {
     Good,
     Bad
+
 }
