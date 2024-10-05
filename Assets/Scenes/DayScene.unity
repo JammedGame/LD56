@@ -174,6 +174,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkolaMagije (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5814390880564133053, guid: bf7985c272e8e4649979b121f84b3433, type: 3}
+      propertyPath: currencyManager
+      value: 
+      objectReference: {fileID: 1783174260}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -187,6 +191,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5632256233276823543, guid: 0bde9dbafc38d934eb29b91cb631ba28, type: 3}
+      propertyPath: currencyManager
+      value: 
+      objectReference: {fileID: 1783174260}
     - target: {fileID: 4296007721020738047, guid: 0bde9dbafc38d934eb29b91cb631ba28, type: 3}
       propertyPath: m_Name
       value: EarthSchool
@@ -288,6 +296,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkolaMagije
       objectReference: {fileID: 0}
+    - target: {fileID: 5814390880564133053, guid: bf7985c272e8e4649979b121f84b3433, type: 3}
+      propertyPath: currencyManager
+      value: 
+      objectReference: {fileID: 1783174260}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -364,6 +376,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6692338650911039267, guid: f5c0fcb40f292a648afeae61e6e882af, type: 3}
+      propertyPath: currencyManager
+      value: 
+      objectReference: {fileID: 1783174260}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -377,6 +393,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 435663306366125242, guid: e7373bb4541cb4a40b9756963ce36d1d, type: 3}
+      propertyPath: currencyManager
+      value: 
+      objectReference: {fileID: 1783174260}
     - target: {fileID: 3376370017989801782, guid: e7373bb4541cb4a40b9756963ce36d1d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.2
@@ -539,6 +559,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 238828548532461649, guid: 8faaaae69cfb3a94fac67819dc763042, type: 3}
+      propertyPath: currencyManager
+      value: 
+      objectReference: {fileID: 1783174260}
     - target: {fileID: 3149803216745364753, guid: 8faaaae69cfb3a94fac67819dc763042, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.69
@@ -588,6 +612,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8faaaae69cfb3a94fac67819dc763042, type: 3}
+--- !u!114 &1783174260 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6006500021620503954, guid: 640340e553876af4faf673b31c80885d, type: 3}
+  m_PrefabInstance: {fileID: 2045476453}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aada3a00c711834cbf4d31c91f442f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1898944893
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -596,6 +631,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2305062203682007341, guid: 386fe7d53a75a0a4aab73659d39899ed, type: 3}
+      propertyPath: currencyManager
+      value: 
+      objectReference: {fileID: 1783174260}
     - target: {fileID: 7798087125790471207, guid: 386fe7d53a75a0a4aab73659d39899ed, type: 3}
       propertyPath: m_Name
       value: FrostSchool
@@ -653,6 +692,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 238828548532461649, guid: 8faaaae69cfb3a94fac67819dc763042, type: 3}
+      propertyPath: currencyManager
+      value: 
+      objectReference: {fileID: 1783174260}
     - target: {fileID: 3149803216745364753, guid: 8faaaae69cfb3a94fac67819dc763042, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.79
@@ -710,6 +753,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5776376071676920461, guid: b4c23e84133dc5d4d9be14b88f4f67b1, type: 3}
+      propertyPath: currencyManager
+      value: 
+      objectReference: {fileID: 1783174260}
     - target: {fileID: 6871033003779014492, guid: b4c23e84133dc5d4d9be14b88f4f67b1, type: 3}
       propertyPath: m_Name
       value: LightningSchool
@@ -845,6 +892,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1121790342461727336, guid: 640340e553876af4faf673b31c80885d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2229651298691660356, guid: 640340e553876af4faf673b31c80885d, type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4237456844543902583, guid: 640340e553876af4faf673b31c80885d, type: 3}

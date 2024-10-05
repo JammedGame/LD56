@@ -6,25 +6,28 @@ namespace Night.Town
 	{
 		public int Level;
 		protected int[] costs;
+		public CurrencyManager currencyManager;
 
 		public void Upgrade()
 		{
-			if (Level < costs.Length - 1) {
-				Level++;
-				Debug.Log($"{gameObject.name} upgraded!");
-			} else {
-				Debug.Log("Building is already at max level.");
-			}
+			Level++;
+			Debug.Log($"{gameObject.name} upgraded to level="+Level+"!");
 		}
 
 		private void OnMouseDown()
         {
-			int cost = GetCurrentCost();
-            if(UserState.Gold.TrySpend(cost)) {
-                Upgrade();
-            } else{
-                Debug.Log("No money");
-            }
+			if (Level < costs.Length) {
+				int cost = GetCurrentCost();
+            	if(UserState.Gold.TrySpend(cost)) {
+                	Upgrade();
+					currencyManager.UpdateCurrencyUI(UserState.Gold.Currency);
+            	} else{
+                	Debug.Log("No money");
+            	}
+			} else {
+				Debug.Log("Building is already at max level.");
+			}
+			
         }
 
 		private int GetCurrentCost()
