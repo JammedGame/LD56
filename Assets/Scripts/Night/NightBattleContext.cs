@@ -9,7 +9,7 @@ namespace Night
 		public readonly UserBattleData UserBattleData;
 		
 		// battle objects
-		public readonly List<Unit> AllUnits;
+		public readonly List<Unit> AllUnits = new();
 		
 		public NightBattleContext(NightLevelData nightLevelData, UserBattleData userBattleData)
 		{
