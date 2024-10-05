@@ -5,42 +5,18 @@ namespace Night
 {
     public class Unit : MonoBehaviour
     {
+        public float DeathAnimationDuration = 2f;
         public float Health;
         public float Speed;
 
         public Animator Animator;
         public UnitTypeSettings BaselineSettings;
         public NightBattleContext BattleContext;
-
         [Space(10)]
         private Transform _target;
         [SerializeField] private LayerMask _targetLayers;
 
-	public class Unit : MonoBehaviour
-	{
-		public float DeathAnimationDuration = 2f;
-		public float Health;
-		public float Speed;
-
-		public Animator Animator;
-		public UnitTypeSettings BaselineSettings;
-		public NightBattleContext BattleContext;
-		
-		
-		public bool IsActive { get; private set; }
-
-		public static Unit Spawn(NightBattleContext battleContext,
-		                         Unit unitPrefab,
-		                         Vector3 position,
-		                         int level)
-		{
-			Unit newInstance = Instantiate(unitPrefab, position, Quaternion.identity);
-			newInstance.BattleContext = battleContext;
-			newInstance.Health = unitPrefab.BaselineSettings.Health; // apply levels?
-			newInstance.Speed = unitPrefab.BaselineSettings.Speed; // apply levels?
-			newInstance.IsActive = true;
-			return newInstance;
-		}
+        public bool IsActive { get; private set; }
 
         public static Unit Spawn(NightBattleContext battleContext,
                                  Unit unitPrefab,
@@ -51,6 +27,7 @@ namespace Night
             newInstance.BattleContext = battleContext;
             newInstance.Health = unitPrefab.BaselineSettings.Health; // apply levels?
             newInstance.Speed = unitPrefab.BaselineSettings.MoveSpeed; // apply levels?
+            newInstance.IsActive = true;
             return newInstance;
         }
 
@@ -76,32 +53,23 @@ namespace Night
             if (targets.Length == 0) return null;
             return targets[0].transform;
         }
+        public void Deactivate()
+        {
+            if (!IsActive)
+            {
+                return;
+            }
+
+            IsActive = false;
+            OnDeactivate();
+        }
+
+        public virtual void OnDeactivate()
+        {
+            Animator.SetTrigger("Death");
+            Destroy(gameObject, DeathAnimationDuration);
+        }
     }
-
-
-			if (Input.GetKeyDown(KeyCode.Space))
-			{
-				Animator.SetTrigger("Attack");
-			}
-		}
-
-		public void Deactivate()
-		{
-			if (!IsActive)
-			{
-				return;
-			}
-
-			IsActive = false;
-			OnDeactivate();
-		}
-
-		public virtual void OnDeactivate()
-		{
-			Animator.SetTrigger("Death");
-			Destroy(gameObject, DeathAnimationDuration);
-		}
-	}
 }
 
 public enum Team
