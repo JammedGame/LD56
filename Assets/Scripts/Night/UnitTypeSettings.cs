@@ -8,7 +8,9 @@ namespace Night
 	public class UnitTypeSettings
 	{
 		// baseline stats.
-		public float Speed;
+		public float MoveSpeed;
 		public float Health;
+		public float AgroRange;
+		public float AttackRange;
 	}
 }
