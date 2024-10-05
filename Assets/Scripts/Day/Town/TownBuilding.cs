@@ -5,20 +5,31 @@ namespace Night.Town
 	public class TownBuilding : MonoBehaviour
 	{
 		public int Level;
+		protected int[] costs;
 
 		public void Upgrade()
 		{
-			Level++;
+			if (Level < costs.Length - 1) {
+				Level++;
+				Debug.Log($"{gameObject.name} upgraded!");
+			} else {
+				Debug.Log("Building is already at max level.");
+			}
 		}
 
 		private void OnMouseDown()
         {
-            if(UserState.Gold.TrySpend(1)) {
+			int cost = GetCurrentCost();
+            if(UserState.Gold.TrySpend(cost)) {
                 Upgrade();
-				Debug.Log($"{gameObject.name} upgraded!");
             } else{
                 Debug.Log("No money");
             }
         }
+
+		private int GetCurrentCost()
+		{
+			return costs[Level];
+		}
 	}
 }
