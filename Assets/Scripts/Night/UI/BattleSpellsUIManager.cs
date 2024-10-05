@@ -3,19 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BattleUIManager : MonoBehaviour
+public class BattleSpellsUIManager : MonoBehaviour
 {
     [SerializeField] private SpellButton spellButtonPrefab;
     [SerializeField] private Transform spellButtonsParent;
 
     private readonly List<SpellButton> spellButtons = new List<SpellButton>();
-    public Action<string> OnCastSpell;
+    public Action<string> OnSelectSpell;
 
     public void AddSpellButton(string spellId, string buttonText, KeyCode keyboardShortcut)
     {
         SpellButton newSpellButton = Instantiate(spellButtonPrefab, spellButtonsParent);
         newSpellButton.ButtonText = buttonText;
-        newSpellButton.OnClick = () => OnCastSpell?.Invoke(spellId);
+        newSpellButton.OnClick = () => OnSelectSpell?.Invoke(spellId);
         newSpellButton.SpellId = spellId;
         newSpellButton.KeyboardShortcut = keyboardShortcut;
         spellButtons.Add(newSpellButton);

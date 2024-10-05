@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Night
 {
+	[CreateAssetMenu]
 	public class NightLevelData : ScriptableObject
 	{
 		// level design shit

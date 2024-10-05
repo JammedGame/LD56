@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99e3d24755d94fd195ca4d9f8f97b272, type: 3}
-  m_Name: FireballSpellBlueprint
+  m_Script: {fileID: 11500000, guid: 0c29eaa060cf4467a282ed9e96292aba, type: 3}
+  m_Name: NightLevelDataBasic
   m_EditorClassIdentifier: 
-  id: 
+  Spawns: []

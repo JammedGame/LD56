@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a4e3e8e8e92d6746b5b22704653f764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  battleUIManager: {fileID: 0}
+  battleSpellsUIManagerPrefab: {fileID: 4079653939846371318, guid: ee8193a65ab5de6408d5f8c621b8db41, type: 3}

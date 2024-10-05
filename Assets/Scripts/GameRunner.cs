@@ -10,12 +10,21 @@ public class GameRunner : MonoBehaviour
 	public GameSettings GameSettings;
 	public UserBattleData UserBattleData;
 
-	NightBattleContext currentBattle;
+	private NightBattleContext currentBattle;
+	private PlayerBattleInputManager currentBattleInputManager;
 	
 	void Start()
 	{
 		UserBattleData = new();
+		UserBattleData.EquippedSpells.Add(new UserEquippedSpell(GameSettings.Spells[0], 1));
+		UserBattleData.EquippedSpells.Add(new UserEquippedSpell(GameSettings.Spells[0], 2));
+		UserBattleData.EquippedSpells.Add(new UserEquippedSpell(GameSettings.Spells[0], 3));
+		UserBattleData.EquippedSpells.Add(new UserEquippedSpell(GameSettings.Spells[0], 4));
+		
 		currentBattle = new NightBattleContext(GameSettings.Levels[0], UserBattleData);
+		
+		currentBattleInputManager = Instantiate(GameSettings.BattleInputManagerPrefab);
+		currentBattleInputManager.Setup(currentBattle, UserBattleData);
 	}
 	
 	void Update()
