@@ -23,9 +23,9 @@ namespace Night
 			}
 		}
 
-		public Unit Spawn(UnitTypeSettings settings, Vector3 position, int level)
+		public Unit Spawn(Unit unitPrefab, Vector3 position, int level)
 		{
-			Unit instance = Unit.Spawn(this, settings, position, level);
+			Unit instance = Unit.Spawn(this, unitPrefab, position, level);
 			AllUnits.Add(instance);
 			return instance;
 		}

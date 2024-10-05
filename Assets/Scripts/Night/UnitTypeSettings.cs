@@ -1,13 +1,14 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Night
 {
-	public class UnitTypeSettings : ScriptableObject
+	
+	[Serializable]
+	public class UnitTypeSettings
 	{
 		// baseline stats.
-		public float Health;
 		public float Speed;
-		
-		public Unit Prefab;
+		public float Health;
 	}
 }

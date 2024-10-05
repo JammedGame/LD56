@@ -7,19 +7,18 @@ namespace Night
 		public float Health;
 		public float Speed;
 
-		public UnitTypeSettings MySettings;
+		public UnitTypeSettings BaselineSettings;
 		public NightBattleContext BattleContext;
 
 		public static Unit Spawn(NightBattleContext battleContext,
-		                         UnitTypeSettings unitTypeSettings,
+		                         Unit unitPrefab,
 		                         Vector3 position,
 		                         int level)
 		{
-			Unit newInstance = Instantiate(unitTypeSettings.Prefab, position, Quaternion.identity);
-			newInstance.MySettings = unitTypeSettings;
+			Unit newInstance = Instantiate(unitPrefab, position, Quaternion.identity);
 			newInstance.BattleContext = battleContext;
-			newInstance.Health = unitTypeSettings.Health; // apply levels?
-			newInstance.Speed = unitTypeSettings.Speed; // apply levels?
+			newInstance.Health = unitPrefab.BaselineSettings.Health; // apply levels?
+			newInstance.Speed = unitPrefab.BaselineSettings.Speed; // apply levels?
 			return newInstance;
 		}
 
