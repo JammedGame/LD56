@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 0
   Speed: 0
+  Animator: {fileID: 5262059687535828884}
   BaselineSettings:
     Speed: 2
     Health: 20
@@ -60,15 +61,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3734727966864950707, guid: 229b300fd7f30c84cb88826af8b19a03, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.25
+      value: 0.33
       objectReference: {fileID: 0}
     - target: {fileID: 3734727966864950707, guid: 229b300fd7f30c84cb88826af8b19a03, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.25
+      value: 0.33
       objectReference: {fileID: 0}
     - target: {fileID: 3734727966864950707, guid: 229b300fd7f30c84cb88826af8b19a03, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.25
+      value: 0.33
       objectReference: {fileID: 0}
     - target: {fileID: 3734727966864950707, guid: 229b300fd7f30c84cb88826af8b19a03, type: 3}
       propertyPath: m_LocalPosition.x
@@ -119,6 +120,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 229b300fd7f30c84cb88826af8b19a03, type: 3}
+--- !u!95 &5262059687535828884 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 393444804498062482, guid: 229b300fd7f30c84cb88826af8b19a03, type: 3}
+  m_PrefabInstance: {fileID: 5508848546720097030}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9198382184260331189 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3734727966864950707, guid: 229b300fd7f30c84cb88826af8b19a03, type: 3}

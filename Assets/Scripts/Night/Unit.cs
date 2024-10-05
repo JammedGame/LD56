@@ -7,6 +7,7 @@ namespace Night
 		public float Health;
 		public float Speed;
 
+		public Animator Animator;
 		public UnitTypeSettings BaselineSettings;
 		public NightBattleContext BattleContext;
 
@@ -24,6 +25,12 @@ namespace Night
 
 		public virtual void Tick()
 		{
+			transform.localPosition += Vector3.left * Time.deltaTime * Speed;
+
+			if (Input.GetKeyDown(KeyCode.Space))
+			{
+				Animator.SetTrigger("Attack");
+			}
 		}
 	}
 }

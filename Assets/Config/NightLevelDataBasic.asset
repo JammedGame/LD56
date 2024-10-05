@@ -19,9 +19,9 @@ MonoBehaviour:
     UnitLevel: 0
   - Time: 0.5
     UnitPrefab: {fileID: 854400207166296427, guid: 099d11bdcdb8b574fa12ce8bf93b462f, type: 3}
-    SpawnPosition: {x: 11, y: 0, z: 2}
+    SpawnPosition: {x: 14, y: 0, z: 4}
     UnitLevel: 0
   - Time: 0.5
     UnitPrefab: {fileID: 854400207166296427, guid: 099d11bdcdb8b574fa12ce8bf93b462f, type: 3}
-    SpawnPosition: {x: 11, y: 0, z: -2}
+    SpawnPosition: {x: 14, y: 0, z: -4}
     UnitLevel: 0
