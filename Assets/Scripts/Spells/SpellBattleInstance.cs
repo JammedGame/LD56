@@ -11,13 +11,31 @@ namespace DefaultNamespace.Spells
         protected NightBattleContext Context;
         protected Vector3 CastTarget { get; private set; }
         protected int SpellLevel { get; private set; }
+        public bool IsActive { get; private set; }
         
         public void Setup(NightBattleContext ctx, Vector3 target, int currentSpellLevel)
         {
+            IsActive = true;
             Context = ctx;
             CastTarget = target;
             SpellLevel = currentSpellLevel;
             Init();
+        }
+
+        public void Deactivate()
+        {
+            if (!IsActive)
+            {
+                return;
+            }
+
+            IsActive = false;
+            OnDeactivate();
+        }
+
+        protected virtual void OnDeactivate()
+        {
+            Destroy(gameObject);
         }
 
         protected abstract void Init();

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using DefaultNamespace;
 using DefaultNamespace.Spells;
 using UnityEngine;
@@ -15,7 +16,6 @@ namespace Night
 		public readonly HashSet<SpellBattleInstance> AllSpells = new HashSet<SpellBattleInstance>();
 
 		private readonly Dictionary<string, UserEquippedSpell> spellMap = new Dictionary<string, UserEquippedSpell>();
-		private readonly Queue<SpellBattleInstance> spellsToDestroy = new Queue<SpellBattleInstance>();
 		
 		public NightBattleContext(NightLevelData nightLevelData, UserBattleData userBattleData)
 		{
@@ -53,11 +53,12 @@ namespace Night
 				spellInstance.Tick();
 			}
 
-			while (spellsToDestroy.TryDequeue(out SpellBattleInstance spell))
-			{
-				AllSpells.Remove(spell);
-				Object.Destroy(spell.gameObject);
-			}
+			CleanUpDeadObjects();
+		}
+
+		private void CleanUpDeadObjects()
+		{
+			AllSpells.RemoveWhere(x => !x.IsActive);
 		}
 
 		public void CastSpell(string spellId, Vector3 castTargetPos)
@@ -70,11 +71,6 @@ namespace Night
 			AllSpells.Add(newSpell);
 			
 			Debug.Log($"Cast spell '{spellId}' level {equippedSpell.Level}, startPos {newSpell.transform.position}, castTarget {castTargetPos}");
-		}
-
-		public void DestroySpell(SpellBattleInstance existingSpell)
-		{
-			spellsToDestroy.Enqueue(existingSpell);
 		}
 	}
 }

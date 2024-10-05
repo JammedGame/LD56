@@ -23,7 +23,7 @@ namespace DefaultNamespace.Spells
             if (Vector3.Distance(transform.position, CastTarget) < 0.1f)
             {
                 DealDamage();
-                Context.DestroySpell(this);
+                Deactivate();
                 return;
             }
             
