@@ -1,6 +1,6 @@
 namespace Night.Town 
 {
-    public class Zgrada3 : TownBuilding
+    public class FrostSchool : TownBuilding
     {
     }
 }
