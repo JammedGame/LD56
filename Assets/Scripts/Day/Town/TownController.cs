@@ -5,5 +5,6 @@ using UnityEngine;
 
 public class TownController : MonoBehaviour
 {
+	public TownBuilding SelectedTownBuilding;
 	public List<TownBuilding> Buildings;
 }
