@@ -12,5 +12,10 @@
 		{
 			return UnitCommand.Idle();
 		}
+
+		public override void OnDeactivate()
+		{
+			Destroy(gameObject);
+		}
 	}
 }

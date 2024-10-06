@@ -12,6 +12,7 @@ namespace Night
         // Stats
         public float Health;
         public float Speed;
+        public float AttackDamage;
         public float AttackRange => BaselineSettings.AttackRange;
         public float AgroRange => BaselineSettings.AgroRange;
 
@@ -35,6 +36,7 @@ namespace Night
             BattleContext = battleContext;
             Health = BaselineSettings.Health; // apply levels?
             Speed = BaselineSettings.MoveSpeed; // apply levels?
+            AttackDamage = BaselineSettings.AttackDamage; // apply levels?
             MySpawnTime = BattleContext.GameTime;
             IsActive = true;
             OnSpawn();
@@ -88,7 +90,6 @@ namespace Night
             if (IsInAttackRange(currentAction.TargetUnit))
             {
                 Animator.SetTrigger("Attack");
-                // todo: damage
             }
             else
             {
@@ -134,7 +135,21 @@ namespace Night
 
         public void ZAttack()
         {
-            Debug.Log("ZATTACK!");
+            Unit currentTarget = CurrentAction.TargetUnit;
+            if (currentTarget.IsAlive())
+            {
+                currentTarget.DealDamage(AttackDamage, this);
+            }
+        }
+
+        public void DealDamage(float attackDamage, Unit unit)
+        {
+            Health -= attackDamage;
+            
+            if (Health <= 0)
+            {
+                Deactivate();
+            }
         }
     }
 }

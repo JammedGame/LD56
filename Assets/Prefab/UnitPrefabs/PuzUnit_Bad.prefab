@@ -50,12 +50,14 @@ MonoBehaviour:
   SpawnAnimationDuration: 0.25
   Health: 0
   Speed: 0
+  AttackDamage: 0
   Animator: {fileID: 5262059687535828884}
   BaselineSettings:
     MoveSpeed: 5
     Health: 20
     AgroRange: 3
     AttackRange: 5
+    AttackDamage: 10
 --- !u!210 &7469264191805940980
 SortingGroup:
   m_ObjectHideFlags: 0

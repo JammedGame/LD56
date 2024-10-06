@@ -34,8 +34,21 @@ namespace Night
 			{
 				return UnitCommand.Attack(aggroUnit);
 			}
+
+			if (BattleContext.Wall.IsAlive())
+			{
+				return UnitCommand.Attack(BattleContext.Wall);
+			}
 			
-			return UnitCommand.Attack(BattleContext.Wall);
+			return UnitCommand.Idle();
+		}
+	}
+
+	public static class UnitUtil
+	{
+		public static bool IsAlive(this Unit unit)
+		{
+			return unit != null && unit.IsActive;
 		}
 	}
 }

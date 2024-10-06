@@ -12,5 +12,6 @@ namespace Night
 		public float Health;
 		public float AgroRange;
 		public float AttackRange;
+		public float AttackDamage;
 	}
 }
