@@ -45,6 +45,8 @@ public class GameRunner : MonoBehaviour
 			{
 				Debug.LogException(e);
 			}
+			
+			yield return null;
 		}
 
 		if (battleContext.Winner == Team.Good)
