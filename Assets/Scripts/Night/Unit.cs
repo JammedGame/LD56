@@ -131,6 +131,11 @@ namespace Night
             Animator.SetBool("Death", true);
             Destroy(gameObject, DeathAnimationDuration);
         }
+
+        public void ZAttack()
+        {
+            Debug.Log("ZATTACK!");
+        }
     }
 }
 

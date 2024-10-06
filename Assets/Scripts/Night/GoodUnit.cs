@@ -2,7 +2,7 @@
 
 namespace Night
 {
-	public class UserHero : Unit
+	public class GoodUnit : Unit
 	{
 		public override Team MyTeam => Team.Good;
 
