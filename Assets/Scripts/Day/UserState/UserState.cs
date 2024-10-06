@@ -1,6 +1,7 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using DefaultNamespace;
-using DefaultNamespace.Spells;
+using Night.Town;
 
 namespace Night
 {
@@ -8,9 +9,8 @@ namespace Night
     {
         public readonly Wallet Gold = new(100);
 
-        public readonly TownHallState TownHallState = new();
         public readonly WallState WallState = new(1f);
-        public readonly SpellBookState SpellBookState = new();
+        public readonly BuildingsState BuildingsState = new();
         public readonly ArmyState ArmyState = new(5);
 
         public int DayCount { get; private set; }
@@ -19,29 +19,33 @@ namespace Night
         {
             UserBattleData battleData = new();
 
-            // SPELLS
-            // TODO: read building state instead 
-            foreach (SpellBookItem spell in GameSettings.Instance.Spells)
+            // TODO: read state from town
+            BuildingsState.Initialize(new List<BuildingState>
             {
-                UserEquippedSpell userEquippedSpell = new UserEquippedSpell(spell, 1);
-                battleData.EquippedSpells.Add(userEquippedSpell);
-            }
+                new(0, typeof(CityHall), 0),
+                new(1, typeof(Castle), 0),
+                new(2, typeof(EarthSchool), 0),
+                new(3, typeof(FireSchool), 0),
+                new(4, typeof(FrostSchool), 0),
+                new(5, typeof(StormSchool), 0)
+            });
+
+            // TODO: read state from town
+            ArmyState.AddUnit(new UnitState(0, new UserUnitInfo(GameSettings.Instance.Hedgehog, 0)));
+
+            // TODO: read state from town
+            WallState.level = 0;
+            WallState.currentHealthNormalized = 1f;
+
+            // SPELLS
+            battleData.EquippedSpells.AddRange(BuildingsState.GetSpells());
 
             // ARMY
             battleData.UserUnits.AddRange(ArmyState.GetLivingUnits().Select(x => x.info));
 
-            // TEMP HACK
-            if (battleData.UserUnits.Count == 0)
-            {
-                battleData.UserUnits.Add(new UserUnitInfo(GameSettings.Instance.TestSpawn, 0));
-            }
-
-            // WAL
-            // todo: read building state
-            WallState.level = 0;
-            WallState.currentHealthNormalized = 1f;
-
+            // WALL
             battleData.WallState = WallState;
+
             return battleData;
         }
 

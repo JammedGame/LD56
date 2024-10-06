@@ -16,11 +16,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bdecdfdc34383d84dbc5c42b9585cf3c, type: 2}
   - {fileID: 11400000, guid: b17d0a43272e8924ba6c3600d8b74a5f, type: 2}
   - {fileID: 11400000, guid: c5eb964eba19c6847b5234f40f3ad8aa, type: 2}
-  Spells:
-  - {fileID: 11400000, guid: fa2419add9d956541b8b8f5cbfb67f7e, type: 2}
-  - {fileID: 11400000, guid: b5be711ef3163c34191a401e7f4e673d, type: 2}
-  - {fileID: 11400000, guid: 0928580cc43f46c4ab7956d2dd0bba23, type: 2}
-  - {fileID: 11400000, guid: 05561fee9923c0a49989b3a30ba96720, type: 2}
+  BuildingSpells:
+  - building: {fileID: 8940086595614871585, guid: 3b01c3b2776b349a18cbc4a1820abc1a, type: 3}
+    spell: {fileID: 11400000, guid: 05561fee9923c0a49989b3a30ba96720, type: 2}
+    minLevel: 0
+  - building: {fileID: 7170053821243800767, guid: dac162988dfb34166b907ec442ca35b1, type: 3}
+    spell: {fileID: 11400000, guid: b5be711ef3163c34191a401e7f4e673d, type: 2}
+    minLevel: 0
+  - building: {fileID: 3108446091635350989, guid: a112fe73f17994424b695f58e51b0dda, type: 3}
+    spell: {fileID: 11400000, guid: 0928580cc43f46c4ab7956d2dd0bba23, type: 2}
+    minLevel: 0
+  - building: {fileID: 7100828902132372487, guid: d193ac021435b4eb681381b5fc139fe3, type: 3}
+    spell: {fileID: 11400000, guid: fa2419add9d956541b8b8f5cbfb67f7e, type: 2}
+    minLevel: 0
+  Hedgehog: {fileID: 854400207166296427, guid: 7a6947a3931d65741b443a75084e0fd8, type: 3}
   BattleInputManagerPrefab: {fileID: 759107654582639550, guid: ae9c99be2aafcd14380750a7255073b4, type: 3}
   GoodUnitSpawnLocations:
   - {x: -14, y: 0, z: 2.5}
@@ -28,7 +37,6 @@ MonoBehaviour:
   - {x: -17.5, y: 0, z: 5}
   - {x: -17.5, y: 0, z: 0}
   - {x: -17.5, y: 0, z: -5}
-  TestSpawn: {fileID: 854400207166296427, guid: 7a6947a3931d65741b443a75084e0fd8, type: 3}
   MinX: -18
   MaxX: 20
   MinZ: -15
