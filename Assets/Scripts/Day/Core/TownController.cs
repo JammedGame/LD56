@@ -46,7 +46,7 @@ public class TownController : MonoBehaviour
         SelectedTownBuilding = buildingToSelect;
         foreach (var building in buildings)
         {
-            buildingToSelect.ToggleSelected(building == buildingToSelect);
+            building.ToggleSelected(building == buildingToSelect);
         }
 
         RefreshBuildingUI();

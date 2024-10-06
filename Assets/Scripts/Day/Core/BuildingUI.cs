@@ -9,6 +9,9 @@ public class BuildingUI : MonoBehaviour
     [SerializeField] private TMP_Text buildingLevel;
     [SerializeField] private TMP_Text buildingCost;
     [SerializeField] private Button upgradeButton;
+    [SerializeField] private Sprite buildingSprite;
+    [SerializeField] private Sprite buildingSelectedSprite;
+
 
     public event Action UpgradeClick;
     private void Awake()
@@ -26,6 +29,7 @@ public class BuildingUI : MonoBehaviour
         gameObject.SetActive(true);
         buildingTitle.text = title;
         buildingLevel.text = $"Level {level + 1}";
+
         if (cost is >= 0 and < int.MaxValue)
         {
             buildingCost.text = cost.ToString();

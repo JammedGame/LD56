@@ -1,13 +1,13 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace Night.Town
 {
-    public abstract class TownBuilding : MonoBehaviour
+    public abstract class TownBuilding : MonoBehaviour, IPointerDownHandler
     {
         public event Action<TownBuilding> SelectBuilding;
-
-        private bool isSelected;
 
         public int Level { get; private set; }
 
@@ -15,16 +15,42 @@ namespace Night.Town
 
         private int MaxLevel => Costs.Length;
 
+        [SerializeField] public Sprite BuildingSprite;
+        [SerializeField] public Sprite BuildingSelectedSprite;
+
         public int CurrentCost => Level < Costs.Length ? Costs[Level] : int.MaxValue;
 
-        private void OnMouseDown()
+        private Image image;
+
+        private void Awake()
         {
-            SelectThisBuilding();
+            image = GetComponent<Image>();
+
+            if (image == null)
+            {
+                Debug.LogError("No Image component found on this GameObject. Please add one.");
+            }
+        }
+
+        public void SetSprite(Sprite sprite)
+        {
+            image.sprite = sprite;
+        }
+
+        public Sprite GetSprite()
+        {
+            return image.sprite;
         }
 
         public void ToggleSelected(bool selected)
         {
-            isSelected = selected;
+            if (selected)
+            {
+                SetSprite(BuildingSelectedSprite);
+            } else
+            {
+                SetSprite(BuildingSprite);
+            }
         }
 
         public void TryUpgrade()
@@ -55,6 +81,11 @@ namespace Night.Town
         private void SelectThisBuilding()
         {
             SelectBuilding?.Invoke(this);
+        }
+
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            SelectThisBuilding();
         }
     }
 }
