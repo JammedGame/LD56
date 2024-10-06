@@ -1,19 +1,23 @@
 using System.Collections.Generic;
 using Night.Town;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TownController : MonoBehaviour
 {
     [SerializeField] private BuildingUI buildingUI;
+    [SerializeField] private Button nextWaveButton;
 
     private IEnumerable<TownBuilding> buildings;
 
-    public TownBuilding SelectedTownBuilding { get; private set; }
+    private TownBuilding selectedTownBuilding;
 
     private void Awake()
     {
         buildings = GetComponentsInChildren<TownBuilding>();
         buildingUI.Clear();
+        nextWaveButton.SetListener(OnNextWaveClick);
     }
 
     private void OnEnable()
@@ -36,14 +40,14 @@ public class TownController : MonoBehaviour
 
     private void OnBuildingUpgradeClick()
     {
-        if (SelectedTownBuilding == null) return;
+        if (selectedTownBuilding == null) return;
 
-        SelectedTownBuilding.TryUpgrade();
+        selectedTownBuilding.TryUpgrade();
     }
 
     private void OnSelectBuilding(TownBuilding buildingToSelect)
     {
-        SelectedTownBuilding = buildingToSelect;
+        selectedTownBuilding = buildingToSelect;
         foreach (var building in buildings)
         {
             building.ToggleSelected(building == buildingToSelect);
@@ -54,12 +58,17 @@ public class TownController : MonoBehaviour
 
     private void RefreshBuildingUI()
     {
-        if (SelectedTownBuilding == null)
+        if (selectedTownBuilding == null)
         {
             buildingUI.Clear();
             return;
         }
 
-        buildingUI.SetData(SelectedTownBuilding.name, SelectedTownBuilding.Level, SelectedTownBuilding.CurrentCost);
+        buildingUI.SetData(selectedTownBuilding.name, selectedTownBuilding.Level, selectedTownBuilding.CurrentCost);
+    }
+
+    private static void OnNextWaveClick()
+    {
+        SceneManager.LoadScene("StegaTest");
     }
 }

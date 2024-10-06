@@ -7,6 +7,9 @@ namespace Night.Town
 {
     public abstract class TownBuilding : MonoBehaviour, IPointerDownHandler
     {
+        [SerializeField] private Sprite BuildingSprite;
+        [SerializeField] private Sprite BuildingSelectedSprite;
+
         public event Action<TownBuilding> SelectBuilding;
 
         public int Level { get; private set; }
@@ -14,9 +17,6 @@ namespace Night.Town
         protected abstract int[] Costs { get; }
 
         private int MaxLevel => Costs.Length;
-
-        [SerializeField] public Sprite BuildingSprite;
-        [SerializeField] public Sprite BuildingSelectedSprite;
 
         public int CurrentCost => Level < Costs.Length ? Costs[Level] : int.MaxValue;
 
@@ -32,25 +32,9 @@ namespace Night.Town
             }
         }
 
-        public void SetSprite(Sprite sprite)
-        {
-            image.sprite = sprite;
-        }
-
-        public Sprite GetSprite()
-        {
-            return image.sprite;
-        }
-
         public void ToggleSelected(bool selected)
         {
-            if (selected)
-            {
-                SetSprite(BuildingSelectedSprite);
-            } else
-            {
-                SetSprite(BuildingSprite);
-            }
+            image.sprite = selected ? BuildingSelectedSprite : BuildingSprite;
         }
 
         public void TryUpgrade()
