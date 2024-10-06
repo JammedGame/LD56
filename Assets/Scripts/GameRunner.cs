@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
 using Night;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameRunner : MonoBehaviour
 {
@@ -27,10 +29,44 @@ public class GameRunner : MonoBehaviour
 		
 		currentBattleInputManager = Instantiate(GameSettings.BattleInputManagerPrefab);
 		currentBattleInputManager.Setup(currentBattle, UserBattleData);
+
+		StartCoroutine(BattleFlow(currentBattle));
 	}
-	
-	void Update()
+
+	IEnumerator BattleFlow(NightBattleContext battleContext)
 	{
-		currentBattle.TickBattle();
+		while (battleContext.Winner == null)
+		{
+			try
+			{
+				battleContext.TickBattle();
+			}
+			catch (Exception e)
+			{
+				Debug.LogException(e);
+			}
+		}
+
+		if (battleContext.Winner == Team.Good)
+		{
+			yield return YouLose();
+		}
+		else
+		{
+			yield return YouWin();
+		}
+	}
+
+	private IEnumerator YouWin()
+	{
+		Debug.Log("YOU WIN!!!!");
+		yield return new WaitForSeconds(1f);
+		SceneManager.LoadScene("DayScene");
+	}
+
+	private IEnumerator YouLose()
+	{
+		Debug.Log("YOU LOSE!!!!");
+		yield return new WaitForSeconds(1f);
 	}
 }

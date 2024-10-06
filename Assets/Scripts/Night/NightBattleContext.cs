@@ -17,6 +17,7 @@ namespace Night
 		public readonly HashSet<SpellBattleInstance> AllSpells = new HashSet<SpellBattleInstance>();
 		public readonly MobSpawner MobSpawner;
 		public float GameTime { get; private set; }
+		public Team? Winner { get; private set; }
 
 		private readonly Dictionary<string, UserEquippedSpell> spellMap = new Dictionary<string, UserEquippedSpell>();
 		
@@ -64,6 +65,7 @@ namespace Night
 			}
 
 			CleanUpDeadObjects();
+			CheckWinner();
 
 			GameTime += Time.deltaTime;
 		}
@@ -73,7 +75,7 @@ namespace Night
 			AllSpells.RemoveWhere(x => !x.IsActive);
 			AllUnits.RemoveAll(x => !x.IsActive);
 		}
-
+		
 		public void CastSpell(UserEquippedSpell spell, Vector3 castTargetPos)
 		{
 			SpellBattleInstance newSpell = Object.Instantiate(spell.Blueprint.SpellBattlePrefab);
@@ -83,6 +85,23 @@ namespace Night
 			AllSpells.Add(newSpell);
 			
 			// Debug.Log($"Cast spell '{spellId}' level {equippedSpell.Level}, startPos {newSpell.transform.position}, castTarget {castTargetPos}");
+		}
+		
+		public void CheckWinner()
+		{
+			if (Winner.HasValue)
+			{
+				return;
+			}
+			
+			if (!Wall.IsAlive())
+			{
+				Winner = Team.Bad;
+			}
+			else if (MobSpawner.AllMobsDead())
+			{
+				Winner = Team.Good;
+			}
 		}
 	}
 }
