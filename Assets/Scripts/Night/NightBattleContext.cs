@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using DefaultNamespace;
 using DefaultNamespace.Spells;
 using UnityEngine;
@@ -11,7 +10,7 @@ namespace Night
 		public readonly NightLevelData NightLevelData;
 		public readonly UserBattleData UserBattleData;
 		public readonly Wall Wall;
-		
+
 		// battle objects
 		public readonly List<Unit> AllUnits = new List<Unit>();
 		public readonly HashSet<SpellBattleInstance> AllSpells = new HashSet<SpellBattleInstance>();
@@ -20,7 +19,7 @@ namespace Night
 		public Team? Winner { get; private set; }
 
 		private readonly Dictionary<string, UserEquippedSpell> spellMap = new Dictionary<string, UserEquippedSpell>();
-		
+
 		public NightBattleContext(NightLevelData nightLevelData, UserBattleData userBattleData, Wall wall)
 		{
 			NightLevelData = nightLevelData;
@@ -33,7 +32,7 @@ namespace Night
 			{
 				spellMap[spell.Blueprint.Id] = spell;
 			}
-			
+
 			// spawn user's units
 			for (int i = 0; i < UserBattleData.UserUnits.Count; i++)
 			{
@@ -49,11 +48,11 @@ namespace Night
 			AllUnits.Add(newInstance);
 			return newInstance;
 		}
-		
+
 		public void TickBattle()
 		{
 			MobSpawner.Tick();
-			
+
 			foreach (Unit unit in AllUnits)
 			{
 				unit.Tick();
@@ -80,10 +79,10 @@ namespace Night
 		{
 			SpellBattleInstance newSpell = Object.Instantiate(spell.Blueprint.SpellBattlePrefab);
 			InputUtils.ScreenToWorld(new Vector2(0, Screen.height / 4f), out Vector3 spellStartPos);
-			newSpell.transform.position = spellStartPos + Vector3.up * 5f;
+			SpellBattleInstance newSpell = Object.Instantiate(equippedSpell.Blueprint.SpellBattlePrefab, spellStartPos + Vector3.up * 5f, Quaternion.identity);
 			newSpell.Setup(this, castTargetPos, spell.Level);
 			AllSpells.Add(newSpell);
-			
+
 			// Debug.Log($"Cast spell '{spellId}' level {equippedSpell.Level}, startPos {newSpell.transform.position}, castTarget {castTargetPos}");
 		}
 		

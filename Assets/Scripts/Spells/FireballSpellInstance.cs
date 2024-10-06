@@ -16,10 +16,14 @@ namespace DefaultNamespace.Spells
 
         public override Vector2 BaseCastArea => new Vector2(2, 2);
 
+        [SerializeField]
+        private GameObject afterShot;
+        
         protected override void Init()
         {
             damage = DamagePerLevel * SpellLevel;
             moveSpeed = MoveSpeedPerLevel * SpellLevel;
+            
         }
 
         public override void Tick()
@@ -43,6 +47,11 @@ namespace DefaultNamespace.Spells
                     unit.Deactivate();
                 }
             }
+        }
+
+        protected override void OnDeactivate()
+        {
+            Instantiate(afterShot, transform.position, Quaternion.identity);
         }
     }
 }
