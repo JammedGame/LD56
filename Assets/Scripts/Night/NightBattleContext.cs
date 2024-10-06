@@ -77,9 +77,8 @@ namespace Night
 		
 		public void CastSpell(UserEquippedSpell spell, Vector3 castTargetPos)
 		{
-			SpellBattleInstance newSpell = Object.Instantiate(spell.Blueprint.SpellBattlePrefab);
 			InputUtils.ScreenToWorld(new Vector2(0, Screen.height / 4f), out Vector3 spellStartPos);
-			SpellBattleInstance newSpell = Object.Instantiate(equippedSpell.Blueprint.SpellBattlePrefab, spellStartPos + Vector3.up * 5f, Quaternion.identity);
+			SpellBattleInstance newSpell = Object.Instantiate(spell.Blueprint.SpellBattlePrefab, spellStartPos + Vector3.up * 5f, Quaternion.identity);
 			newSpell.Setup(this, castTargetPos, spell.Level);
 			AllSpells.Add(newSpell);
 
