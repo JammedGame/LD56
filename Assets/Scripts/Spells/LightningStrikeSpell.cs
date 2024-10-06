@@ -1,6 +1,7 @@
 ﻿
 
 using System.Linq;
+using FirstGearGames.SmoothCameraShaker;
 using Night;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace DefaultNamespace.Spells
     public class LightningStrikeSpell : SpellBattleInstance
     {
         [SerializeField] private GameObject visualEffectPrefab;
+        [SerializeField] private ShakeData shakeData;
         
         protected override void Init()
         {
@@ -17,6 +19,7 @@ namespace DefaultNamespace.Spells
             if (closestUnit != null)
             {
                 closestUnit.DealDamage(Damage, null);
+                CameraShakerHandler.Shake(shakeData);
             }
             
             Deactivate();
