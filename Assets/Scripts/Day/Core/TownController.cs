@@ -1,10 +1,16 @@
+using System;
 using System.Collections.Generic;
 using Night.Town;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TownController : MonoBehaviour
 {
     [SerializeField] private BuildingUI buildingUI;
+    [SerializeField] private Button nextWaveButton;
+
+    public event Action NextWaveClick;
 
     private IEnumerable<TownBuilding> buildings;
 
@@ -14,6 +20,7 @@ public class TownController : MonoBehaviour
     {
         buildings = GetComponentsInChildren<TownBuilding>();
         buildingUI.Clear();
+        nextWaveButton.SetListener(OnNextWaveClick);
     }
 
     private void OnEnable()
@@ -61,5 +68,11 @@ public class TownController : MonoBehaviour
         }
 
         buildingUI.SetData(selectedTownBuilding.name, selectedTownBuilding.Level, selectedTownBuilding.CurrentCost);
+    }
+
+    private void OnNextWaveClick()
+    {
+        NextWaveClick?.Invoke();
+        SceneManager.LoadScene("StegaTest");
     }
 }
