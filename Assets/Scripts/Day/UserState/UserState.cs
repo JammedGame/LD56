@@ -12,12 +12,13 @@ namespace Night
         public readonly WallState WallState = new(1f);
         public readonly SpellBookState SpellBookState = new();
         public readonly ArmyState ArmyState = new(5);
+
         public int DayCount { get; private set; }
 
         public UserBattleData GetUserBattleData()
         {
             UserBattleData battleData = new();
-            
+
             // SPELLS
             // TODO: read building state instead 
             foreach (SpellBookItem spell in GameSettings.Instance.Spells)
@@ -25,7 +26,7 @@ namespace Night
                 UserEquippedSpell userEquippedSpell = new UserEquippedSpell(spell, 1);
                 battleData.EquippedSpells.Add(userEquippedSpell);
             }
-		
+
             // ARMY
             battleData.UserUnits.AddRange(ArmyState.GetLivingUnits().Select(x => x.info));
 
@@ -39,7 +40,7 @@ namespace Night
             // todo: read building state
             WallState.level = 0;
             WallState.currentHealthNormalized = 1f;
-            
+
             battleData.WallState = WallState;
             return battleData;
         }
@@ -47,7 +48,7 @@ namespace Night
         public void ApplyBattleWinResults(NightBattleContext battleContext)
         {
             DayCount++;
-            
+
             // wall
             // stuff
         }

@@ -10,8 +10,8 @@ public class BuildingUI : MonoBehaviour
     [SerializeField] private TMP_Text buildingCost;
     [SerializeField] private Button upgradeButton;
 
-
     public event Action UpgradeClick;
+
     private void Awake()
     {
         upgradeButton.SetListener(OnUpgradeClick);
@@ -38,7 +38,6 @@ public class BuildingUI : MonoBehaviour
             upgradeButton.gameObject.SetActive(false);
         }
     }
-
 
     public void Clear()
     {

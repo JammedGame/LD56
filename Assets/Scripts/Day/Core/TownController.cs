@@ -8,7 +8,7 @@ public class TownController : MonoBehaviour
 
     private IEnumerable<TownBuilding> buildings;
 
-    public TownBuilding SelectedTownBuilding { get; private set; }
+    private TownBuilding selectedTownBuilding;
 
     private void Awake()
     {
@@ -36,14 +36,14 @@ public class TownController : MonoBehaviour
 
     private void OnBuildingUpgradeClick()
     {
-        if (SelectedTownBuilding == null) return;
+        if (selectedTownBuilding == null) return;
 
-        SelectedTownBuilding.TryUpgrade();
+        selectedTownBuilding.TryUpgrade();
     }
 
     private void OnSelectBuilding(TownBuilding buildingToSelect)
     {
-        SelectedTownBuilding = buildingToSelect;
+        selectedTownBuilding = buildingToSelect;
         foreach (var building in buildings)
         {
             building.ToggleSelected(building == buildingToSelect);
@@ -54,12 +54,12 @@ public class TownController : MonoBehaviour
 
     private void RefreshBuildingUI()
     {
-        if (SelectedTownBuilding == null)
+        if (selectedTownBuilding == null)
         {
             buildingUI.Clear();
             return;
         }
 
-        buildingUI.SetData(SelectedTownBuilding.name, SelectedTownBuilding.Level, SelectedTownBuilding.CurrentCost);
+        buildingUI.SetData(selectedTownBuilding.name, selectedTownBuilding.Level, selectedTownBuilding.CurrentCost);
     }
 }
