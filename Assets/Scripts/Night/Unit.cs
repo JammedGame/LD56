@@ -101,7 +101,7 @@ namespace Night
 
         public bool IsInAttackRange(Unit targetUnit, float padding = 0f)
         {
-            if (targetUnit is null or { IsActive: false })
+            if (!targetUnit.IsAlive())
             {
                 return false;
             }
