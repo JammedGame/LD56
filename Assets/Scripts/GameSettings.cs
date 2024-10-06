@@ -30,5 +30,11 @@ namespace DefaultNamespace
 		public PlayerBattleInputManager BattleInputManagerPrefab;
 
 		public List<Vector3> GoodUnitSpawnLocations;
+
+		[Header("Bounds")]
+		public float MinX = -15f;
+		public float MaxX = 15f;
+		public float MinZ = -15f;
+		public float MaxZ = 15;
 	}
 }

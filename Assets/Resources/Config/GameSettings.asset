@@ -22,3 +22,7 @@ MonoBehaviour:
   - {x: -7.5, y: 0, z: -3.5}
   - {x: -7.5, y: 0, z: 3.5}
   - {x: -10, y: 0, z: 0}
+  MinX: -18
+  MaxX: 20
+  MinZ: -15
+  MaxZ: 15
