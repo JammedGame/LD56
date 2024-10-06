@@ -51,11 +51,11 @@ public class GameRunner : MonoBehaviour
 
 		if (battleContext.Winner == Team.Good)
 		{
-			yield return YouLose();
+			yield return YouWin();
 		}
 		else
 		{
-			yield return YouWin();
+			yield return YouLose();
 		}
 	}
 
