@@ -15,6 +15,9 @@ public class GameRunner : MonoBehaviour
 
 	private NightBattleContext currentBattle;
 	private PlayerBattleInputManager currentBattleInputManager;
+
+	public YouWinUI YouWinUI;
+	public YouLoseUI YouLoseUI;
 	
 	void Start()
 	{
@@ -53,11 +56,13 @@ public class GameRunner : MonoBehaviour
 
 		if (battleContext.Winner == Team.Good)
 		{
-			yield return YouWin();
+			yield return YouWinUI.Animate(battleContext);
+			
+			SceneManager.LoadScene("DayScene");
 		}
 		else
 		{
-			yield return YouLose();
+			yield return YouLoseUI.Animate(battleContext);
 		}
 	}
 
@@ -65,18 +70,5 @@ public class GameRunner : MonoBehaviour
 	{
 		// todo: UI intro
 		yield break;
-	}
-
-	private IEnumerator YouWin()
-	{
-		Debug.Log("YOU WIN!!!!");
-		yield return new WaitForSeconds(1f);
-		SceneManager.LoadScene("DayScene");
-	}
-
-	private IEnumerator YouLose()
-	{
-		Debug.Log("YOU LOSE!!!!");
-		yield return new WaitForSeconds(1f);
 	}
 }
