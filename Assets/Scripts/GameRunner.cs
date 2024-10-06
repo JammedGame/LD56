@@ -27,24 +27,7 @@ public class GameRunner : MonoBehaviour
 	void Start()
 	{
 		// read from user state.
-		UserBattleData = new();
-
-		// TEMP DATA START (delete this)
-		foreach (SpellBookItem spell in GameSettings.Spells)
-		{
-			UserEquippedSpell userEquippedSpell = new UserEquippedSpell(spell, 1);
-			UserState.Instance.SpellBookState.AddSpell(userEquippedSpell);
-			UserBattleData.EquippedSpells.Add(userEquippedSpell);
-		}
-		
-		UserState.Instance.ArmyState.AddUnit(new UnitState(0, new UserUnitInfo(TestGoodUnit, 0)));
-		UserState.Instance.WallState.level = 0;
-		UserState.Instance.WallState.currentHealthNormalized = 1f;
-		// TEMP DATA END
-
-		UserBattleData.UserUnits.AddRange(UserState.Instance.ArmyState.GetLivingUnits().Select(x => x.info));
-
-		UserBattleData.WallState = UserState.Instance.WallState;
+		UserBattleData = UserState.Instance.GetUserBattleData();
 
 		int currentLevel = UserState.Instance.DayCount;
 		currentBattle = new NightBattleContext(GameSettings.Levels[currentLevel], UserBattleData, Wall);
@@ -78,8 +61,7 @@ public class GameRunner : MonoBehaviour
 		if (battleContext.Winner == Team.Good)
 		{
 			yield return YouWinUI.Animate(battleContext);
-
-			UserState.Instance.DayCount++;
+			UserState.Instance.ApplyBattleWinResults(battleContext);
 
 			if (UserState.Instance.DayCount < GameSettings.Levels.Count)
 			{

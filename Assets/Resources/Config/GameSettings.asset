@@ -30,6 +30,7 @@ MonoBehaviour:
   - {x: -17.5, y: 0, z: 5}
   - {x: -17.5, y: 0, z: 0}
   - {x: -17.5, y: 0, z: -5}
+  TestSpawn: {fileID: 854400207166296427, guid: 7a6947a3931d65741b443a75084e0fd8, type: 3}
   MinX: -18
   MaxX: 20
   MinZ: -15
