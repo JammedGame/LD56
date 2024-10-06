@@ -109,7 +109,7 @@ Material:
     - PBR_USE_DISTORT_MAP: 0
     - PBR_USE_SECOND_DISTORT_UV: 0
     - PBR_USE_SECOND_UV: 0
-    - _Alpha: 0.75
+    - _Alpha: 0
     - _AlphaColorMultiplier: 0
     - _BumpScale: 1
     - _Cutoff: 0.5
