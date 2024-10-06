@@ -18,10 +18,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fa2419add9d956541b8b8f5cbfb67f7e, type: 2}
   BattleInputManagerPrefab: {fileID: 759107654582639550, guid: ae9c99be2aafcd14380750a7255073b4, type: 3}
   GoodUnitSpawnLocations:
-  - {x: -7.5, y: 0, z: 0}
-  - {x: -7.5, y: 0, z: -3.5}
-  - {x: -7.5, y: 0, z: 3.5}
-  - {x: -10, y: 0, z: 0}
+  - {x: -14, y: 0, z: 2.5}
+  - {x: -14, y: 0, z: -2.5}
+  - {x: -17.5, y: 0, z: 5}
+  - {x: -17.5, y: 0, z: 0}
+  - {x: -17.5, y: 0, z: -5}
   MinX: -18
   MaxX: 20
   MinZ: -15
