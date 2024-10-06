@@ -27,6 +27,7 @@ public class SpellButton : MonoBehaviour
             spell = value;
             spellIconImage.sprite = value.Blueprint.Icon;
             levelText.text = $"lvl {value.Level}";
+            spellNameText.text = value.Blueprint.DisplayName;
         }
     }
     

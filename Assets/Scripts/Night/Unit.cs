@@ -1,4 +1,5 @@
-﻿using Night;
+﻿using System.Collections.Generic;
+using Night;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -8,10 +9,26 @@ namespace Night
     {
         public float DeathAnimationDuration = 2f;
         public float SpawnAnimationDuration = 0f;
+
+        private float baseSpeed;
         
         // Stats
         public float Health;
-        public float Speed;
+
+        public float Speed
+        {
+            get
+            {
+                float finalSpeed = baseSpeed;
+                foreach (UnitModifier modifier in ActiveModifiers)
+                {
+                    finalSpeed *= modifier.MoveSpeedMod;
+                }
+
+                return finalSpeed;
+            }
+        }
+        
         public float AttackDamage;
         public float AttackRange => BaselineSettings.AttackRange;
         public float AgroRange => BaselineSettings.AgroRange;
@@ -28,6 +45,9 @@ namespace Night
 
         public float HealthPercent => Mathf.Clamp01(Health / StartHealth);
 
+        public readonly List<UnitModifier> ActiveModifiers = new List<UnitModifier>();
+        private readonly Dictionary<SpriteRenderer, Color> originalColors = new Dictionary<SpriteRenderer, Color>();
+
         public Vector3 Position
         {
             get => transform.position;
@@ -39,7 +59,7 @@ namespace Night
         {
             BattleContext = battleContext;
             Health = BaselineSettings.Health * currentHealthNormalized; // apply levels?
-            Speed = BaselineSettings.MoveSpeed; // apply levels?
+            baseSpeed = BaselineSettings.MoveSpeed; // apply levels?
             AttackDamage = BaselineSettings.AttackDamage; // apply levels?
             
             // record spawn stuff
@@ -48,6 +68,12 @@ namespace Night
             StartHealth = Health;
             
             IsActive = true;
+            
+            foreach (SpriteRenderer spriteRenderer in GetComponentsInChildren<SpriteRenderer>())
+            {
+                originalColors[spriteRenderer] = spriteRenderer.color;
+            }
+            
             OnSpawn();
         }
 
@@ -64,6 +90,19 @@ namespace Night
             if (BattleContext.GameTime < MySpawnTime + SpawnAnimationDuration)
             {
                 return;
+            }
+
+            int i = 0;
+            while (i < ActiveModifiers.Count)
+            {
+                if (ActiveModifiers[i].ShouldRemove())
+                {
+                    Debug.Log("Remove stats mod");
+                    ActiveModifiers.RemoveAt(i);
+                    continue;
+                }
+
+                i++;
             }
             
             CurrentAction = Think();
@@ -152,6 +191,36 @@ namespace Night
             if (Health <= 0)
             {
                 Deactivate();
+            }
+        }
+        
+        public void SetColorTint(Color tint)
+        {
+            foreach (SpriteRenderer spriteRenderer in GetComponentsInChildren<SpriteRenderer>())
+            {
+                Color baseColor = Color.white;
+                if (originalColors.TryGetValue(spriteRenderer, out Color color))
+                {
+                    baseColor = color;
+                }
+                
+                spriteRenderer.color = baseColor * tint;
+            }
+        }
+
+        public void RemoveColorTint()
+        {
+            if (this == null)
+            {
+                return;
+            }
+            
+            foreach (SpriteRenderer spriteRenderer in GetComponentsInChildren<SpriteRenderer>())
+            {
+                if (originalColors.TryGetValue(spriteRenderer, out Color originalColor))
+                {
+                    spriteRenderer.color = originalColor;
+                }
             }
         }
     }
