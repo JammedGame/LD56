@@ -55,7 +55,7 @@ MonoBehaviour:
   BaselineSettings:
     MoveSpeed: 5
     Health: 20
-    AgroRange: 3
+    AgroRange: 10
     AttackRange: 5
     AttackDamage: 10
 --- !u!210 &7469264191805940980

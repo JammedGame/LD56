@@ -155,6 +155,7 @@ MonoBehaviour:
   UserBattleData:
     WallLevel: 0
   Wall: {fileID: 880187958}
+  TestGoodUnit: {fileID: 854400207166296427, guid: 7a6947a3931d65741b443a75084e0fd8, type: 3}
   YouWinUI: {fileID: 900980807}
   YouLoseUI: {fileID: 1188975873}
 --- !u!4 &89367484

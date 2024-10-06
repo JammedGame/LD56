@@ -16,5 +16,11 @@ namespace Night
 	{
 		public GoodUnit MyUnit;
 		public int level;
+
+		public UserUnitInfo(GoodUnit myUnit, int level)
+		{
+			MyUnit = myUnit;
+			this.level = level;
+		}
 	}
 }

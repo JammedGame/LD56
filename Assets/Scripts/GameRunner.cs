@@ -12,6 +12,7 @@ public class GameRunner : MonoBehaviour
 	public GameSettings GameSettings;
 	public UserBattleData UserBattleData;
 	public Wall Wall;
+	public GoodUnit TestGoodUnit;
 
 	private NightBattleContext currentBattle;
 	private PlayerBattleInputManager currentBattleInputManager;
@@ -27,6 +28,8 @@ public class GameRunner : MonoBehaviour
 		UserBattleData.EquippedSpells.Add(new UserEquippedSpell(GameSettings.Spells[0], 2));
 		UserBattleData.EquippedSpells.Add(new UserEquippedSpell(GameSettings.Spells[0], 3));
 		UserBattleData.EquippedSpells.Add(new UserEquippedSpell(GameSettings.Spells[0], 4));
+		
+		UserBattleData.UserUnits.Add(new UserUnitInfo(TestGoodUnit, 0));
 		
 		currentBattle = new NightBattleContext(GameSettings.Levels[0], UserBattleData, Wall);
 		
