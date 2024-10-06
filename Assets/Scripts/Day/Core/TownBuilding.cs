@@ -12,6 +12,8 @@ namespace Night.Town
 
         protected abstract int[] Costs { get; }
 
+        private int MaxLevel => Costs.Length;
+
         private int CurrentCost => Costs[level];
 
         private void OnMouseDown()
@@ -26,23 +28,21 @@ namespace Night.Town
 
         public void TryUpgrade()
         {
-            if (level < Costs.Length)
-            {
-                int cost = CurrentCost;
-                if (UserState.Gold.TrySpend(cost))
-                {
-                    Upgrade();
-                    CurrencyManager.Instance.UpdateCurrencyUI(UserState.Gold.Currency);
-                }
-                else
-                {
-                    Debug.Log("No money");
-                }
-            }
-            else
+            if (level >= MaxLevel)
             {
                 Debug.Log("Building is already at max level.");
+                return;
             }
+
+            int cost = CurrentCost;
+            if (!UserState.Gold.TrySpend(cost))
+            {
+                Debug.Log("No money");
+                return;
+            }
+
+            Upgrade();
+            CurrencyManager.Instance.UpdateCurrencyUI(UserState.Gold.Currency);
         }
 
         private void Upgrade()
