@@ -1,7 +1,17 @@
 ﻿namespace Night
 {
-	public static class UserState
+	public class UserState
 	{
-		public static readonly Wallet Gold = new Wallet(100);
+		public readonly Wallet Gold = new Wallet(100);
+
+		
+		// singleton shit
+		private static UserState instance;
+		public static UserState Instance => instance ??= new();
+
+		public static void Reset()
+		{
+			instance = new();
+		}
 	}
 }

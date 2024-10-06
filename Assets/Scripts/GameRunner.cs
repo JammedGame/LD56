@@ -16,6 +16,7 @@ public class GameRunner : MonoBehaviour
 	
 	void Start()
 	{
+		// read from user state.
 		UserBattleData = new();
 		UserBattleData.EquippedSpells.Add(new UserEquippedSpell(GameSettings.Spells[0], 1));
 		UserBattleData.EquippedSpells.Add(new UserEquippedSpell(GameSettings.Spells[0], 2));

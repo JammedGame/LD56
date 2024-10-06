@@ -36,14 +36,14 @@ namespace Night.Town
             }
 
             int cost = CurrentCost;
-            if (!UserState.Gold.TrySpend(cost))
+            if (!UserState.Instance.Gold.TrySpend(cost))
             {
                 Debug.Log("No money");
                 return;
             }
 
             Upgrade();
-            CurrencyManager.Instance.UpdateCurrencyUI(UserState.Gold.Currency);
+            CurrencyManager.Instance.UpdateCurrencyUI(UserState.Instance.Gold.Currency);
         }
 
         private void Upgrade()
