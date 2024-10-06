@@ -22,8 +22,11 @@ namespace Night
         public NightBattleContext BattleContext;
 
         public float MySpawnTime { get; private set; }
+        public float StartHealth { get; private set; }
         public Vector3 MySpawnLocation { get; private set; }
         public UnitCommand CurrentAction { get; private set; }
+
+        public float HealthPercent => Mathf.Clamp01(Health / StartHealth);
 
         public Vector3 Position
         {
@@ -38,8 +41,12 @@ namespace Night
             Health = BaselineSettings.Health * currentHealthNormalized; // apply levels?
             Speed = BaselineSettings.MoveSpeed; // apply levels?
             AttackDamage = BaselineSettings.AttackDamage; // apply levels?
+            
+            // record spawn stuff
             MySpawnTime = BattleContext.GameTime;
             MySpawnLocation = Position;
+            StartHealth = Health;
+            
             IsActive = true;
             OnSpawn();
         }
