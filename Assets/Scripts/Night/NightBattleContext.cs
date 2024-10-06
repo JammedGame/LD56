@@ -83,8 +83,8 @@ namespace Night
 			
 			spell.StartCooldown();
 			SpellBattleInstance newSpell = Object.Instantiate(spell.Blueprint.SpellBattlePrefab, Wall.SquizzardPosition.position, Quaternion.identity);
-			newSpell.Setup(this, castTargetPos, spell.Level);
 			AllSpells.Add(newSpell);
+			newSpell.Setup(this, castTargetPos, spell);
 
 			// Debug.Log($"Cast spell '{spellId}' level {equippedSpell.Level}, startPos {newSpell.transform.position}, castTarget {castTargetPos}");
 		}

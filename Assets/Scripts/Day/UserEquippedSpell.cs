@@ -10,7 +10,8 @@ namespace Night
 
         private float cooldownLeft;
 
-        public Vector2 CastArea => Blueprint.SpellBattlePrefab.CalculateCastArea(Level);
+        public Vector2 CastArea => Blueprint.SpellBattlePrefab.CalculateCastArea(Level, Blueprint.AreaOfEffect);
+        public float Damage => Blueprint.SpellBattlePrefab.CalculateDamage(Level, Blueprint.Damage);
 
         public float CooldownLeft
         {

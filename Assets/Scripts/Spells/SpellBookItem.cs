@@ -15,6 +15,8 @@ namespace DefaultNamespace.Spells
         [SerializeField] private bool isRapidFire;
         [SerializeField] private float rapidFireCooldown;
         [SerializeField] private float castCooldown;
+        [SerializeField] private Vector2 areaOfEffect;
+        [SerializeField] private float damage;
         
         /// <summary>
         /// The prefab that is instantiated when the spell is cast in-game
@@ -28,5 +30,7 @@ namespace DefaultNamespace.Spells
         public bool IsRapidFire => isRapidFire;
         public float RapidFireCooldown => rapidFireCooldown;
         public float CastCooldown => castCooldown;
+        public Vector2 AreaOfEffect => areaOfEffect;
+        public float Damage => damage;
     }
 }

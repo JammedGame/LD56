@@ -10,26 +10,35 @@ namespace DefaultNamespace.Spells
     /// </summary>
     public abstract class SpellBattleInstance : MonoBehaviour
     {
+        private UserEquippedSpell spellInfo;
+        
+        protected int SpellLevel => spellInfo.Level;
         protected NightBattleContext Context;
         protected Vector3 CastTarget { get; private set; }
-        protected int SpellLevel { get; private set; }
         protected Vector2 AreaOfEffect { get; private set; }
+        protected float Damage { get; private set; }
         public bool IsActive { get; private set; }
-        
-        /// <summary>
-        /// (0, 0) means point target
-        /// </summary>
-        public abstract Vector2 BaseCastArea { get; }
 
-        public virtual Vector2 CalculateCastArea(int level) => Vector3.zero;
-        
-        public void Setup(NightBattleContext ctx, Vector3 target, int currentSpellLevel)
+        public virtual Vector2 CalculateCastArea(int level, Vector2 baseCastArea)
         {
+            Vector2 castArea = baseCastArea * (1 + (level - 1) * 0.2f);
+            return castArea;
+        }
+        
+        public virtual float CalculateDamage(int level, float baseDamage)
+        {
+            return baseDamage * (1 + (level - 1));
+        }
+        
+        public void Setup(NightBattleContext ctx, Vector3 target, UserEquippedSpell spell)
+        {
+            spellInfo = spell;
+            
             IsActive = true;
             Context = ctx;
             CastTarget = target;
-            SpellLevel = currentSpellLevel;
-            AreaOfEffect = CalculateCastArea(currentSpellLevel);
+            AreaOfEffect = CalculateCastArea(spell.Level, spell.CastArea);
+            Damage = CalculateDamage(spell.Level, spell.Damage);
             Init();
         }
 

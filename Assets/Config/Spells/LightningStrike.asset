@@ -18,4 +18,6 @@ MonoBehaviour:
   isRapidFire: 0
   rapidFireCooldown: 0.1
   castCooldown: 0.5
+  areaOfEffect: {x: 3, y: 3}
+  damage: 20
   spellRuntimePrefab: {fileID: 7161572875367469763, guid: 596b8e47af18e784f8786cdb4d6a096e, type: 3}
