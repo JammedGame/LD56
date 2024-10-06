@@ -11,7 +11,7 @@ public class BattleSpellsUIManager : MonoBehaviour
     [SerializeField] private Transform spellButtonsParent;
 
     private readonly List<SpellButton> spellButtons = new List<SpellButton>();
-    public Action<UserEquippedSpell> OnSelectSpell;
+    public Action<SpellButton> OnSelectSpell;
 
     public void AddSpellButton(UserEquippedSpell equippedSpell, KeyCode keyboardShortcut)
     {
@@ -29,7 +29,7 @@ public class BattleSpellsUIManager : MonoBehaviour
             button.Interactable = button != selectedButton;
         }
         
-        OnSelectSpell?.Invoke(selectedButton.Spell);
+        OnSelectSpell?.Invoke(selectedButton);
     }
 
     public void ClearSpellButtons()

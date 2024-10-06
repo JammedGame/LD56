@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DefaultNamespace;
+using DefaultNamespace.Spells;
 using Night;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -27,10 +28,6 @@ public class GameRunner : MonoBehaviour
 		UserBattleData = new();
 
 		// TEMP DATA START (delete this)
-		UserState.Instance.SpellBookState.AddSpell(new UserEquippedSpell(GameSettings.Spells[0], 1));
-		UserState.Instance.SpellBookState.AddSpell(new UserEquippedSpell(GameSettings.Spells[0], 2));
-		UserState.Instance.SpellBookState.AddSpell(new UserEquippedSpell(GameSettings.Spells[0], 3));
-		UserState.Instance.SpellBookState.AddSpell(new UserEquippedSpell(GameSettings.Spells[0], 4));
 		UserState.Instance.ArmyState.AddUnit(new UnitState(0, new UserUnitInfo(TestGoodUnit, 0)));
 		UserState.Instance.WallState.level = 0;
 		UserState.Instance.WallState.currentHealthNormalized = 1f;

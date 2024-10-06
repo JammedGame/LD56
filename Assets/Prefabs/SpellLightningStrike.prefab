@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7597669980992139414}
   - component: {fileID: 7161572875367469763}
   m_Layer: 0
-  m_Name: SpellFireballInstance
+  m_Name: SpellLightningStrike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

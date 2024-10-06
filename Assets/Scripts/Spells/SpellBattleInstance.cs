@@ -1,4 +1,6 @@
-﻿using Night;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Night;
 using UnityEngine;
 
 namespace DefaultNamespace.Spells
@@ -11,6 +13,7 @@ namespace DefaultNamespace.Spells
         protected NightBattleContext Context;
         protected Vector3 CastTarget { get; private set; }
         protected int SpellLevel { get; private set; }
+        protected Vector2 AreaOfEffect { get; private set; }
         public bool IsActive { get; private set; }
         
         /// <summary>
@@ -18,11 +21,7 @@ namespace DefaultNamespace.Spells
         /// </summary>
         public abstract Vector2 BaseCastArea { get; }
 
-        public Vector2 CalculateCastArea(int level)
-        {
-            Vector2 castArea = BaseCastArea * (1 + (level - 1) * 0.2f);
-            return castArea;
-        }
+        public virtual Vector2 CalculateCastArea(int level) => Vector3.zero;
         
         public void Setup(NightBattleContext ctx, Vector3 target, int currentSpellLevel)
         {
@@ -30,6 +29,7 @@ namespace DefaultNamespace.Spells
             Context = ctx;
             CastTarget = target;
             SpellLevel = currentSpellLevel;
+            AreaOfEffect = CalculateCastArea(currentSpellLevel);
             Init();
         }
 
@@ -50,6 +50,18 @@ namespace DefaultNamespace.Spells
         }
 
         protected abstract void Init();
-        public abstract void Tick();
+
+        public virtual void Tick()
+        {
+        }
+
+        protected List<Unit> GetClosestUnitsInCastArea(Vector2 areaCenter)
+        {
+            return Context.AllUnits
+                .Where(unit =>
+                    MathUtils.IsPointInsideEllipse(areaCenter, AreaOfEffect, unit.transform.position.ToVector2XZ()))
+                .OrderBy(unit => Vector3.Distance(unit.transform.position.ToVector2XZ(), areaCenter))
+                .ToList();
+        }
     }
 }

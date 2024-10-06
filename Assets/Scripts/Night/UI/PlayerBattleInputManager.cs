@@ -9,28 +9,29 @@ using UnityEngine.Serialization;
 public class PlayerBattleInputManager : MonoBehaviour
 {
     [SerializeField] private BattleSpellsUIManager battleSpellsUIManagerPrefab;
-    [SerializeField] private SpellCastTargetIndicator castTargetIndicatorPrefab;
+    [SerializeField] private AreaOfEffectEllipse castTargetIndicatorPrefab;
     
     private BattleSpellsUIManager battleSpellsUIManager;
 
     private NightBattleContext battleContext;
-    private UserEquippedSpell _selectedSpell;
-    private SpellCastTargetIndicator castTargetIndicator;
-    private float lastCastTime;
+    private SpellButton _selectedSpellButton;
+    private AreaOfEffectEllipse castTargetIndicator;
 
-    private UserEquippedSpell SelectedSpell
+    private SpellButton SelectedSpellButton
     {
-        get => _selectedSpell;
+        get => _selectedSpellButton;
         set
         {
-            _selectedSpell = value;
-            castTargetIndicator.IsActive = _selectedSpell != null;
-            if (_selectedSpell != null)
+            _selectedSpellButton = value;
+            castTargetIndicator.IsActive = _selectedSpellButton != null;
+            if (_selectedSpellButton != null)
             {
-                castTargetIndicator.SetSize(_selectedSpell.CastArea);
+                castTargetIndicator.SetSize(_selectedSpellButton.Spell.CastArea);
             }
         }
     }
+
+    private UserEquippedSpell SelectedSpell => SelectedSpellButton?.Spell;
 
     private void Awake()
     {
@@ -53,9 +54,9 @@ public class PlayerBattleInputManager : MonoBehaviour
         }
     }
 
-    private void OnSelectSpell(UserEquippedSpell userEquippedSpell)
+    private void OnSelectSpell(SpellButton spellButton)
     {
-        SelectedSpell = userEquippedSpell;
+        SelectedSpellButton = spellButton;
         castTargetIndicator.IsActive = true;
     }
 
@@ -66,30 +67,23 @@ public class PlayerBattleInputManager : MonoBehaviour
             return;
         }
 
-        bool raycastValid = InputUtils.ScreenToWorld(Input.mousePosition, out Vector3 castTargetPos);
-        if (raycastValid)
+        if (!SelectedSpell.IsOnCooldown)
         {
-            castTargetIndicator.Position = castTargetPos;
-            bool shouldCast;
-            if (SelectedSpell.Blueprint.IsRapidFire)
+            bool raycastValid = InputUtils.ScreenToWorld(Input.mousePosition, out Vector3 castTargetPos);
+            if (raycastValid)
             {
-                shouldCast = Input.GetMouseButton(0) && Time.time - lastCastTime > SelectedSpell.Blueprint.RapidFireCooldown;
-            }
-            else
-            {
-                shouldCast = Input.GetMouseButtonDown(0);
-            }
-            
-            if (shouldCast)
-            {
-                battleContext.CastSpell(SelectedSpell, castTargetPos);
-                lastCastTime = Time.time;
+                castTargetIndicator.Position = castTargetPos;
+                bool shouldCast = SelectedSpell.Blueprint.IsRapidFire ? Input.GetMouseButton(0) : Input.GetMouseButtonDown(0);
+                if (shouldCast)
+                {
+                    battleContext.CastSpell(SelectedSpell, castTargetPos);
+                }
             }
         }
         
         if (Input.GetMouseButtonDown(1))
         {
-            SelectedSpell = null;
+            SelectedSpellButton = null;
             battleSpellsUIManager.ResetButtonsInteractable();
         }
     }

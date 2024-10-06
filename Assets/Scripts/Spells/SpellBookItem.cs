@@ -14,7 +14,7 @@ namespace DefaultNamespace.Spells
         [SerializeField] private Sprite icon;
         [SerializeField] private bool isRapidFire;
         [SerializeField] private float rapidFireCooldown;
-        
+        [SerializeField] private float castCooldown;
         
         /// <summary>
         /// The prefab that is instantiated when the spell is cast in-game
@@ -27,5 +27,6 @@ namespace DefaultNamespace.Spells
         public SpellBattleInstance SpellBattlePrefab => spellRuntimePrefab;
         public bool IsRapidFire => isRapidFire;
         public float RapidFireCooldown => rapidFireCooldown;
+        public float CastCooldown => castCooldown;
     }
 }

@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99e3d24755d94fd195ca4d9f8f97b272, type: 3}
-  m_Name: FireballSpell
+  m_Name: ShockWave
   m_EditorClassIdentifier: 
-  id: spell_fireball
-  displayName: Fireball
+  id: spell_shockwave
+  displayName: Shockwave
   icon: {fileID: 21300000, guid: 41ff389dd8ab9a349b6d75a62667f811, type: 3}
-  isRapidFire: 1
+  isRapidFire: 0
   rapidFireCooldown: 0.1
+  castCooldown: 5
   spellRuntimePrefab: {fileID: 7161572875367469763, guid: 596b8e47af18e784f8786cdb4d6a096e, type: 3}

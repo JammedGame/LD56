@@ -17,8 +17,7 @@ namespace Night
 		public readonly MobSpawner MobSpawner;
 		public float GameTime { get; private set; }
 		public Team? Winner { get; private set; }
-
-		private readonly Dictionary<string, UserEquippedSpell> spellMap = new Dictionary<string, UserEquippedSpell>();
+		
 
 		public NightBattleContext(NightLevelData nightLevelData, UserBattleData userBattleData, Wall wall)
 		{
@@ -27,11 +26,7 @@ namespace Night
 			MobSpawner = new MobSpawner(this, nightLevelData);
 			Wall = wall;
 			Wall.Setup(this, userBattleData.WallState.level, userBattleData.WallState.currentHealthNormalized);
-
-			foreach (UserEquippedSpell spell in UserBattleData.EquippedSpells)
-			{
-				spellMap[spell.Blueprint.Id] = spell;
-			}
+			
 
 			// spawn user's units
 			for (int i = 0; i < UserBattleData.UserUnits.Count; i++)
@@ -63,6 +58,12 @@ namespace Night
 				spellInstance.Tick();
 			}
 
+			// Tick spell cooldowns
+			foreach (UserEquippedSpell equippedSpell in UserBattleData.EquippedSpells)
+			{
+				equippedSpell.CooldownLeft -= Time.deltaTime;
+			}
+
 			CleanUpDeadObjects();
 			CheckWinner();
 
@@ -82,6 +83,7 @@ namespace Night
 				return;
 			}
 			
+			spell.StartCooldown();
 			SpellBattleInstance newSpell = Object.Instantiate(spell.Blueprint.SpellBattlePrefab, Wall.SquizzardPosition.position, Quaternion.identity);
 			newSpell.Setup(this, castTargetPos, spell.Level);
 			AllSpells.Add(newSpell);

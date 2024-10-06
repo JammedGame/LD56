@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpellCastTargetIndicator : MonoBehaviour
+public class AreaOfEffectEllipse : MonoBehaviour
 {
     private readonly Vector3 baseSize = new Vector3(2, 2, 1);
     private const float YOffset = 0.05f;
@@ -14,6 +14,11 @@ public class SpellCastTargetIndicator : MonoBehaviour
     {
         get => transform.position;
         set => transform.position = value + Vector3.up * YOffset;
+    }
+
+    public Color Color
+    {
+        set => area.GetComponent<SpriteRenderer>().color = value;
     }
 
     public bool IsActive

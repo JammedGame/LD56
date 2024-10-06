@@ -25,7 +25,6 @@ public class SpellButton : MonoBehaviour
         set
         {
             spell = value;
-            spellNameText.text = value.Blueprint.DisplayName;
             spellIconImage.sprite = value.Blueprint.Icon;
             levelText.text = $"lvl {value.Level}";
         }
@@ -54,6 +53,20 @@ public class SpellButton : MonoBehaviour
     private void Awake()
     {
         button = GetComponent<Button>();
+        spellIconImage.fillMethod = Image.FillMethod.Radial360;
+        spellIconImage.type = Image.Type.Filled;
+    }
+
+    private void Update()
+    {
+        if (spell.CooldownLeft > 0f)
+        {
+            keyboardShortcutText.text = $"{spell.CooldownLeft:F1}s";
+        }
+        else
+        {
+            keyboardShortcutText.text = keyboardShortcut.ToString();
+        }
     }
 
     public void DoClick()
