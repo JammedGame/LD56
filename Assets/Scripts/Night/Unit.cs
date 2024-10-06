@@ -7,7 +7,7 @@ namespace Night
     public abstract class Unit : MonoBehaviour
     {
         public float DeathAnimationDuration = 2f;
-        public float SpawnAnimationDuration = 1f;
+        public float SpawnAnimationDuration = 0f;
         
         // Stats
         public float Health;
@@ -22,6 +22,7 @@ namespace Night
         public NightBattleContext BattleContext;
 
         public float MySpawnTime { get; private set; }
+        public Vector3 MySpawnLocation { get; private set; }
         public UnitCommand CurrentAction { get; private set; }
 
         public Vector3 Position
@@ -38,6 +39,7 @@ namespace Night
             Speed = BaselineSettings.MoveSpeed; // apply levels?
             AttackDamage = BaselineSettings.AttackDamage; // apply levels?
             MySpawnTime = BattleContext.GameTime;
+            MySpawnLocation = Position;
             IsActive = true;
             OnSpawn();
         }
