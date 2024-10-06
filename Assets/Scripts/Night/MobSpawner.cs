@@ -18,6 +18,19 @@ namespace Night
 			waves = new List<WaveSpawn>(levelData.Spawns);
 		}
 
+		public bool AllMobsDead()
+		{
+			if (waves.Count > 0)
+				return false;
+
+			if (BattleContext.AllUnits.Exists(x => x.MyTeam == Team.Bad))
+			{
+				return false;
+			}
+
+			return true;
+		}
+
 		public void Tick()
 		{
 			currentTime += Time.deltaTime;
