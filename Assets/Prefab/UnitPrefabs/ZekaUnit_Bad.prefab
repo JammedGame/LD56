@@ -31,7 +31,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 527625130324999087}
+  - {fileID: 6853016568993917812}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &854400207166296427
@@ -50,7 +50,7 @@ MonoBehaviour:
   SpawnAnimationDuration: 0.25
   Health: 0
   AttackDamage: 0
-  Animator: {fileID: 2430127682482852070}
+  Animator: {fileID: 4050989754428737462}
   BaselineSettings:
     MoveSpeed: 5
     Health: 20
@@ -127,13 +127,13 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e32a03369c3e13244b2b5430bea792ab, type: 3}
---- !u!4 &527625130324999087 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 443117052874477972, guid: e32a03369c3e13244b2b5430bea792ab, type: 3}
+--- !u!95 &4050989754428737462 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4128892016986664333, guid: e32a03369c3e13244b2b5430bea792ab, type: 3}
   m_PrefabInstance: {fileID: 104925149384895035}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &2430127682482852070 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 2363625224629172957, guid: e32a03369c3e13244b2b5430bea792ab, type: 3}
+--- !u!4 &6853016568993917812 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6804387755014537551, guid: e32a03369c3e13244b2b5430bea792ab, type: 3}
   m_PrefabInstance: {fileID: 104925149384895035}
   m_PrefabAsset: {fileID: 0}
