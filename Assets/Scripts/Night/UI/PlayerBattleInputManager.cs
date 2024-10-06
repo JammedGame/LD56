@@ -25,13 +25,12 @@ public class PlayerBattleInputManager : MonoBehaviour
         for (var i = 0; i < userBattleData.EquippedSpells.Count; i++)
         {
             UserEquippedSpell spell = userBattleData.EquippedSpells[i];
-            battleSpellsUIManager.AddSpellButton(spell.Blueprint.Id, keyCodes[i].ToString(), keyCodes[i]);
+            battleSpellsUIManager.AddSpellButton(spell.Blueprint, keyCodes[i]);
         }
     }
 
     private void OnSelectSpell(string spellId)
     {
-        Debug.Log($"Select spell '{spellId}'");
         selectedSpellId = spellId;
     }
 
@@ -47,14 +46,13 @@ public class PlayerBattleInputManager : MonoBehaviour
             if (InputUtils.ScreenToWorld(Input.mousePosition, out Vector3 castTargetPos))
             {
                 battleContext.CastSpell(selectedSpellId, castTargetPos);
-                selectedSpellId = null;
             }
         }
 
         if (Input.GetMouseButtonDown(1))
         {
-            Debug.Log($"Deselect spell '{selectedSpellId}'");
             selectedSpellId = null;
+            battleSpellsUIManager.ResetButtonsInteractable();
         }
     }
 

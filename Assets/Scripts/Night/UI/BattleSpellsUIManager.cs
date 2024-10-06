@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace.Spells;
 using UnityEngine;
 
 public class BattleSpellsUIManager : MonoBehaviour
@@ -11,14 +12,23 @@ public class BattleSpellsUIManager : MonoBehaviour
     private readonly List<SpellButton> spellButtons = new List<SpellButton>();
     public Action<string> OnSelectSpell;
 
-    public void AddSpellButton(string spellId, string buttonText, KeyCode keyboardShortcut)
+    public void AddSpellButton(SpellBookItem spellBookItem, KeyCode keyboardShortcut)
     {
         SpellButton newSpellButton = Instantiate(spellButtonPrefab, spellButtonsParent);
-        newSpellButton.ButtonText = buttonText;
-        newSpellButton.OnClick = () => OnSelectSpell?.Invoke(spellId);
-        newSpellButton.SpellId = spellId;
+        newSpellButton.OnClick = SelectSpell;
+        newSpellButton.Spell = spellBookItem;
         newSpellButton.KeyboardShortcut = keyboardShortcut;
         spellButtons.Add(newSpellButton);
+    }
+
+    private void SelectSpell(SpellButton selectedButton)
+    {
+        foreach (SpellButton button in spellButtons)
+        {
+            button.Interactable = button != selectedButton;
+        }
+        
+        OnSelectSpell?.Invoke(selectedButton.Spell.Id);
     }
 
     public void ClearSpellButtons()
@@ -39,6 +49,14 @@ public class BattleSpellsUIManager : MonoBehaviour
                 spellButton.DoClick();
                 break;
             }
+        }
+    }
+
+    public void ResetButtonsInteractable()
+    {
+        foreach (SpellButton button in spellButtons)
+        {
+            button.Interactable = true;
         }
     }
 }

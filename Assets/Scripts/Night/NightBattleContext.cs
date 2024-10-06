@@ -82,7 +82,7 @@ namespace Night
 			newSpell.Setup(this, castTargetPos, equippedSpell.Level);
 			AllSpells.Add(newSpell);
 			
-			Debug.Log($"Cast spell '{spellId}' level {equippedSpell.Level}, startPos {newSpell.transform.position}, castTarget {castTargetPos}");
+			// Debug.Log($"Cast spell '{spellId}' level {equippedSpell.Level}, startPos {newSpell.transform.position}, castTarget {castTargetPos}");
 		}
 	}
 }
