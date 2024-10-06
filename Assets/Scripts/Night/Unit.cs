@@ -78,7 +78,7 @@ namespace Night
 
         private void DoMove(UnitCommand currentAction)
         {
-            Animator.SetTrigger("Move");
+            Animator.SetBool("Attack", false);
 
             if (currentAction.TargetUnit is Wall)
             {
@@ -92,11 +92,12 @@ namespace Night
 
         private void DoNothing(UnitCommand currentAction)
         {
+            Animator.SetBool("Attack", false);
         }
 
         private void DoAttack(UnitCommand currentAction)
         {
-            Animator.SetTrigger("Attack");
+            Animator.SetBool("Attack", true);
         }
 
         public bool IsInAttackRange(Unit targetUnit, float padding = 0f)
