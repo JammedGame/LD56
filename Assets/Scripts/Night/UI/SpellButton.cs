@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace.Spells;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -8,18 +9,42 @@ using UnityEngine.UI;
 public class SpellButton : MonoBehaviour
 {
     private Button button;
+    private KeyCode keyboardShortcut;
+    private SpellBookItem spell;
 
-    public string SpellId;
-    public KeyCode KeyboardShortcut;
+    [SerializeField] private TMPro.TextMeshProUGUI keyboardShortcutText;
+    [SerializeField] private TMPro.TextMeshProUGUI spellNameText;
+    [SerializeField] private Image spellIconImage;
 
-    public string ButtonText
+    public SpellBookItem Spell
     {
-        set => button.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = value;
+        get => spell;
+        set
+        {
+            spell = value;
+            spellNameText.text = value.DisplayName;
+            spellIconImage.sprite = value.Icon;
+        }
+    }
+    
+    public KeyCode KeyboardShortcut
+    {
+        get => keyboardShortcut;
+        set
+        {
+            keyboardShortcut = value;
+            keyboardShortcutText.text = value.ToString();
+        }
     }
 
-    public Action OnClick
+    public Action<SpellButton> OnClick
     {
-        set => button.onClick.AddListener(() => value?.Invoke());
+        set => button.onClick.AddListener(() => value?.Invoke(this));
+    }
+
+    public bool Interactable
+    {
+        set => button.interactable = value;
     }
 
     private void Awake()

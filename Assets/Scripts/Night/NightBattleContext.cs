@@ -16,6 +16,7 @@ namespace Night
 		public readonly List<Unit> AllUnits = new List<Unit>();
 		public readonly HashSet<SpellBattleInstance> AllSpells = new HashSet<SpellBattleInstance>();
 		public readonly MobSpawner MobSpawner;
+		public float GameTime { get; private set; }
 
 		private readonly Dictionary<string, UserEquippedSpell> spellMap = new Dictionary<string, UserEquippedSpell>();
 		
@@ -62,6 +63,8 @@ namespace Night
 			}
 
 			CleanUpDeadObjects();
+
+			GameTime += Time.deltaTime;
 		}
 
 		private void CleanUpDeadObjects()
@@ -79,7 +82,7 @@ namespace Night
 			newSpell.Setup(this, castTargetPos, equippedSpell.Level);
 			AllSpells.Add(newSpell);
 			
-			Debug.Log($"Cast spell '{spellId}' level {equippedSpell.Level}, startPos {newSpell.transform.position}, castTarget {castTargetPos}");
+			// Debug.Log($"Cast spell '{spellId}' level {equippedSpell.Level}, startPos {newSpell.transform.position}, castTarget {castTargetPos}");
 		}
 	}
 }

@@ -10,7 +10,6 @@ namespace DefaultNamespace
             Plane groundPlane = new Plane(Vector3.up, 0);
             if (groundPlane.Raycast(ray, out float enter) && enter < GameSettings.MaxInputRaycastDepth)
             {
-                Debug.Log($"Enter {enter:F3}");
                 worldPos = ray.GetPoint(enter);
                 return true;
             }

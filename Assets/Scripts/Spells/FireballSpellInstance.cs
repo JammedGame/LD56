@@ -34,8 +34,6 @@ namespace DefaultNamespace.Spells
 
         private void DealDamage()
         {
-            Debug.Log($"Deal damage {damage}");
-
             foreach (Unit unit in Context.AllUnits)
             {
                 if (Vector3.Distance(unit.transform.position, transform.position) < radius)

@@ -3,10 +3,14 @@
 	public class Wall : Unit
 	{
 		public override Team MyTeam => Team.Good;
-		
-		public override UnitCommandDecision Think()
+
+		protected override void OnSpawn()
 		{
-			return UnitCommandDecision.Idle();
+		}
+
+		public override UnitCommand Think()
+		{
+			return UnitCommand.Idle();
 		}
 	}
 }

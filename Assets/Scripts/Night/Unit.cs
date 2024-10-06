@@ -7,6 +7,7 @@ namespace Night
     public abstract class Unit : MonoBehaviour
     {
         public float DeathAnimationDuration = 2f;
+        public float SpawnAnimationDuration = 1f;
         
         // Stats
         public float Health;
@@ -19,7 +20,8 @@ namespace Night
         public UnitTypeSettings BaselineSettings;
         public NightBattleContext BattleContext;
 
-        public UnitCommandDecision CurrentAction { get; private set; }
+        public float MySpawnTime { get; private set; }
+        public UnitCommand CurrentAction { get; private set; }
 
         public Vector3 Position
         {
@@ -33,12 +35,22 @@ namespace Night
             BattleContext = battleContext;
             Health = BaselineSettings.Health; // apply levels?
             Speed = BaselineSettings.MoveSpeed; // apply levels?
+            MySpawnTime = BattleContext.GameTime;
             IsActive = true;
+            OnSpawn();
         }
+
+        protected abstract void OnSpawn();
 
         public void Tick()
         {
             if (!IsActive)
+            {
+                return;
+            }
+
+            // spawn animation delay.
+            if (BattleContext.GameTime < MySpawnTime + SpawnAnimationDuration)
             {
                 return;
             }
@@ -53,7 +65,7 @@ namespace Night
             }
         }
 
-        private void DoMove(UnitCommandDecision currentAction)
+        private void DoMove(UnitCommand currentAction)
         {
             Animator.SetTrigger("Move");
 
@@ -67,11 +79,11 @@ namespace Night
             }
         }
 
-        private void DoNothing(UnitCommandDecision currentAction)
+        private void DoNothing(UnitCommand currentAction)
         {
         }
 
-        private void DoAttack(UnitCommandDecision currentAction)
+        private void DoAttack(UnitCommand currentAction)
         {
             if (IsInAttackRange(currentAction.TargetUnit))
             {
@@ -84,19 +96,24 @@ namespace Night
             }
         }
 
-        public bool IsInAttackRange(Unit targetUnit)
+        public bool IsInAttackRange(Unit targetUnit, float padding = 0f)
         {
+            if (targetUnit is null or { IsActive: false })
+            {
+                return false;
+            }
+            
             if (targetUnit is Wall wall)
             {
-                return Mathf.Abs(Position.x - targetUnit.Position.x) < AttackRange;
+                return Mathf.Abs(Position.x - targetUnit.Position.x) < AttackRange + padding;
             }
             else
             {
-                return Vector3.Distance(Position, targetUnit.Position) < AttackRange;
+                return Vector3.Distance(Position, targetUnit.Position) < AttackRange + padding;
             }
         }
         
-        public abstract UnitCommandDecision Think();
+        public abstract UnitCommand Think();
 
         public void Deactivate()
         {
@@ -123,25 +140,25 @@ public enum Team
     Bad
 }
 
-public struct UnitCommandDecision
+public struct UnitCommand
 {
     public UnitAnimationId AnimationId;
     public Unit TargetUnit;
     public Vector3 TargetPosition;
     
-    public static UnitCommandDecision Idle()
+    public static UnitCommand Idle()
     {
-        return new UnitCommandDecision() { AnimationId = UnitAnimationId.DoNothing };
+        return new UnitCommand() { AnimationId = UnitAnimationId.DoNothing };
     }
 
-    public static UnitCommandDecision Attack(Unit target)
+    public static UnitCommand Attack(Unit target)
     {
-        return new UnitCommandDecision { AnimationId = UnitAnimationId.Attack, TargetUnit = target };
+        return new UnitCommand { AnimationId = UnitAnimationId.Attack, TargetUnit = target };
     }
 
-    public static UnitCommandDecision MoveToPoint(Vector3 targetPosition)
+    public static UnitCommand MoveToPoint(Vector3 targetPosition)
     {
-        return new UnitCommandDecision { AnimationId = UnitAnimationId.Move, TargetPosition = targetPosition };
+        return new UnitCommand { AnimationId = UnitAnimationId.Move, TargetPosition = targetPosition };
     }    
 }
 
