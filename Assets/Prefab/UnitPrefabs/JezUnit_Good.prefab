@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 854400207166296427}
   - component: {fileID: 7469264191805940980}
   m_Layer: 0
-  m_Name: PuzUnit
+  m_Name: JezUnit_Good
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,11 +43,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8691775874111326227}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bba397d7f2c04a70ad6bb53b58082b7c, type: 3}
+  m_Script: {fileID: 11500000, guid: b8e8281da4274dee836a3038cb1d83bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DeathAnimationDuration: 2
-  SpawnAnimationDuration: 0.33
+  SpawnAnimationDuration: 0.25
   Health: 0
   Speed: 0
   Animator: {fileID: 5262059687535828884}

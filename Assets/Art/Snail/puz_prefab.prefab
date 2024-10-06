@@ -476,6 +476,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3734727966864950707}
   - component: {fileID: 393444804498062482}
+  - component: {fileID: 3917070301740496911}
   m_Layer: 0
   m_Name: puz_prefab
   m_TagString: Untagged
@@ -527,6 +528,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3917070301740496911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4612834281511211466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dc4fff610b45744585b339a175e9a2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4862480503606439037
 GameObject:
   m_ObjectHideFlags: 0

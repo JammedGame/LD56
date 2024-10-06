@@ -2,7 +2,7 @@
 
 namespace Night
 {
-	public class UserHero : Unit
+	public class GoodUnit : Unit
 	{
 		public override Team MyTeam => Team.Good;
 
@@ -12,6 +12,12 @@ namespace Night
 
 		public override UnitCommand Think()
 		{
+			// continue attacking
+			if (CurrentAction.AnimationId is UnitAnimationId.Attack && IsInAttackRange(CurrentAction.TargetUnit, 0.25f))
+			{
+				return UnitCommand.Attack(CurrentAction.TargetUnit); 
+			}
+			
 			// aggro units if possible.
 			Unit aggroUnit = null;
 			float aggroRange = AgroRange;
@@ -29,7 +35,7 @@ namespace Night
 				return UnitCommand.Attack(aggroUnit);
 			}
 			
-			return UnitCommand.Attack(BattleContext.Wall);
+			return UnitCommand.MoveToPoint(MySpawnLocation);
 		}
 	}
 }

@@ -7,11 +7,12 @@ namespace Night
     public abstract class Unit : MonoBehaviour
     {
         public float DeathAnimationDuration = 2f;
-        public float SpawnAnimationDuration = 1f;
+        public float SpawnAnimationDuration = 0f;
         
         // Stats
         public float Health;
         public float Speed;
+        public float AttackDamage;
         public float AttackRange => BaselineSettings.AttackRange;
         public float AgroRange => BaselineSettings.AgroRange;
 
@@ -21,6 +22,7 @@ namespace Night
         public NightBattleContext BattleContext;
 
         public float MySpawnTime { get; private set; }
+        public Vector3 MySpawnLocation { get; private set; }
         public UnitCommand CurrentAction { get; private set; }
 
         public Vector3 Position
@@ -35,7 +37,9 @@ namespace Night
             BattleContext = battleContext;
             Health = BaselineSettings.Health; // apply levels?
             Speed = BaselineSettings.MoveSpeed; // apply levels?
+            AttackDamage = BaselineSettings.AttackDamage; // apply levels?
             MySpawnTime = BattleContext.GameTime;
+            MySpawnLocation = Position;
             IsActive = true;
             OnSpawn();
         }
@@ -88,7 +92,6 @@ namespace Night
             if (IsInAttackRange(currentAction.TargetUnit))
             {
                 Animator.SetTrigger("Attack");
-                // todo: damage
             }
             else
             {
@@ -130,6 +133,25 @@ namespace Night
         {
             Animator.SetBool("Death", true);
             Destroy(gameObject, DeathAnimationDuration);
+        }
+
+        public void ZAttack()
+        {
+            Unit currentTarget = CurrentAction.TargetUnit;
+            if (currentTarget.IsAlive())
+            {
+                currentTarget.DealDamage(AttackDamage, this);
+            }
+        }
+
+        public void DealDamage(float attackDamage, Unit unit)
+        {
+            Health -= attackDamage;
+            
+            if (Health <= 0)
+            {
+                Deactivate();
+            }
         }
     }
 }
