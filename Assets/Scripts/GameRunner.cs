@@ -35,6 +35,8 @@ public class GameRunner : MonoBehaviour
 
 	IEnumerator BattleFlow(NightBattleContext battleContext)
 	{
+		yield return BattleIntro();
+		
 		while (battleContext.Winner == null)
 		{
 			try
@@ -57,6 +59,12 @@ public class GameRunner : MonoBehaviour
 		{
 			yield return YouLose();
 		}
+	}
+
+	private IEnumerator BattleIntro()
+	{
+		// todo: UI intro
+		yield break;
 	}
 
 	private IEnumerator YouWin()
