@@ -152,6 +152,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameSettings: {fileID: 11400000, guid: e4404a40020791844a5322a28461cd86, type: 2}
+  UserBattleData:
+    WallLevel: 0
   Wall: {fileID: 880187958}
 --- !u!4 &89367484
 Transform:
@@ -446,6 +448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeathAnimationDuration: 2
+  SpawnAnimationDuration: 1
   Health: 100
   Speed: 0
   Animator: {fileID: 0}

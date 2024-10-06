@@ -9,11 +9,20 @@ using UnityEngine.Serialization;
 public class PlayerBattleInputManager : MonoBehaviour
 {
     [SerializeField] private BattleSpellsUIManager battleSpellsUIManagerPrefab;
+    [SerializeField] private SpellCastTargetIndicator castTargetIndicatorPrefab;
+    
     private BattleSpellsUIManager battleSpellsUIManager;
 
     private NightBattleContext battleContext;
     private string selectedSpellId;
-    
+    private SpellCastTargetIndicator castTargetIndicator;
+
+    private void Awake()
+    {
+        castTargetIndicator = Instantiate(castTargetIndicatorPrefab, transform);
+        castTargetIndicator.IsActive = false;
+    }
+
     public void Setup(NightBattleContext ctx, UserBattleData userBattleData)
     {
         battleContext = ctx;
@@ -32,6 +41,7 @@ public class PlayerBattleInputManager : MonoBehaviour
     private void OnSelectSpell(string spellId)
     {
         selectedSpellId = spellId;
+        castTargetIndicator.IsActive = true;
     }
 
     private void Update()
@@ -40,10 +50,16 @@ public class PlayerBattleInputManager : MonoBehaviour
         {
             return;
         }
+
+        bool raycastValid = InputUtils.ScreenToWorld(Input.mousePosition, out Vector3 castTargetPos);
+        if (raycastValid)
+        {
+            castTargetIndicator.Position = castTargetPos;
+        }
         
         if (Input.GetMouseButtonDown(0))
         {
-            if (InputUtils.ScreenToWorld(Input.mousePosition, out Vector3 castTargetPos))
+            if (raycastValid)
             {
                 battleContext.CastSpell(selectedSpellId, castTargetPos);
             }
@@ -53,6 +69,7 @@ public class PlayerBattleInputManager : MonoBehaviour
         {
             selectedSpellId = null;
             battleSpellsUIManager.ResetButtonsInteractable();
+            castTargetIndicator.IsActive = false;
         }
     }
 

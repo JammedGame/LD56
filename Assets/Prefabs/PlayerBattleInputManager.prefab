@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battleSpellsUIManagerPrefab: {fileID: 4079653939846371318, guid: ee8193a65ab5de6408d5f8c621b8db41, type: 3}
+  castTargetIndicatorPrefab: {fileID: 4157029958416911238, guid: 77d5f8ad735514f4cb95f86f91c25dd0, type: 3}
