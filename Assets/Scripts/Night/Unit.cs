@@ -175,7 +175,7 @@ public struct UnitCommand
 
     public static UnitCommand Attack(Unit target)
     {
-        return new UnitCommand { AnimationId = UnitAnimationId.Attack, TargetUnit = target };
+        return new UnitCommand { AnimationId = UnitAnimationId.Attack, TargetUnit = target, TargetPosition = target.Position };
     }
 
     public static UnitCommand MoveToPoint(Vector3 targetPosition)
