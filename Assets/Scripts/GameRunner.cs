@@ -9,6 +9,7 @@ public class GameRunner : MonoBehaviour
 {
 	public GameSettings GameSettings;
 	public UserBattleData UserBattleData;
+	public Wall Wall;
 
 	private NightBattleContext currentBattle;
 	private PlayerBattleInputManager currentBattleInputManager;
@@ -21,7 +22,7 @@ public class GameRunner : MonoBehaviour
 		UserBattleData.EquippedSpells.Add(new UserEquippedSpell(GameSettings.Spells[0], 3));
 		UserBattleData.EquippedSpells.Add(new UserEquippedSpell(GameSettings.Spells[0], 4));
 		
-		currentBattle = new NightBattleContext(GameSettings.Levels[0], UserBattleData);
+		currentBattle = new NightBattleContext(GameSettings.Levels[0], UserBattleData, Wall);
 		
 		currentBattleInputManager = Instantiate(GameSettings.BattleInputManagerPrefab);
 		currentBattleInputManager.Setup(currentBattle, UserBattleData);
