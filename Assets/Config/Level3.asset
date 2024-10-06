@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c29eaa060cf4467a282ed9e96292aba, type: 3}
-  m_Name: NightLevelDataBasic
+  m_Name: Level3
   m_EditorClassIdentifier: 
   SurviveTimerSeconds: 60
   Spawns:

@@ -10,54 +10,87 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c29eaa060cf4467a282ed9e96292aba, type: 3}
-  m_Name: NightLevelDataBasic Test 1
+  m_Name: Level1
   m_EditorClassIdentifier: 
+  SurviveTimerSeconds: 60
   Spawns:
   - Time: 0
-    UnitPrefab: {fileID: 854400207166296427, guid: 77eb0d704c962ac4b876bbaab456d292, type: 3}
-    SpawnPosition: {x: 10, y: 0, z: 0}
+    UnitPrefab: {fileID: 854400207166296427, guid: d7df9b41e803cab42beea53250cade7e, type: 3}
+    X: 15
+    Y: 0
     UnitLevel: 0
-  - Time: 0.5
-    UnitPrefab: {fileID: 854400207166296427, guid: 77eb0d704c962ac4b876bbaab456d292, type: 3}
-    SpawnPosition: {x: 10, y: 0, z: 4}
-    UnitLevel: 0
-  - Time: 0.5
-    UnitPrefab: {fileID: 854400207166296427, guid: 77eb0d704c962ac4b876bbaab456d292, type: 3}
-    SpawnPosition: {x: 10, y: 0, z: -4}
-    UnitLevel: 0
-  - Time: 2.393321
+  - Time: 1
     UnitPrefab: {fileID: 854400207166296427, guid: 099d11bdcdb8b574fa12ce8bf93b462f, type: 3}
-    SpawnPosition: {x: 8.637613, y: 0, z: -4.561533}
+    X: 15
+    Y: 2
     UnitLevel: 0
-  - Time: 2.4578125
+  - Time: 1
     UnitPrefab: {fileID: 854400207166296427, guid: 099d11bdcdb8b574fa12ce8bf93b462f, type: 3}
-    SpawnPosition: {x: 10.3500185, y: 0, z: 2.4994369}
+    X: 15
+    Y: -2
     UnitLevel: 0
-  - Time: 2.8857346
+  - Time: 2
     UnitPrefab: {fileID: 854400207166296427, guid: 099d11bdcdb8b574fa12ce8bf93b462f, type: 3}
-    SpawnPosition: {x: 9.1535225, y: 0, z: 2.943775}
+    X: 15
+    Y: 4
     UnitLevel: 0
-  - Time: 0.48740458
+  - Time: 2
     UnitPrefab: {fileID: 854400207166296427, guid: 099d11bdcdb8b574fa12ce8bf93b462f, type: 3}
-    SpawnPosition: {x: 9.969872, y: 0, z: -5.911374}
+    X: 15
+    Y: -4
     UnitLevel: 0
-  - Time: 2.5970926
+  - Time: 3
     UnitPrefab: {fileID: 854400207166296427, guid: 099d11bdcdb8b574fa12ce8bf93b462f, type: 3}
-    SpawnPosition: {x: 8.826355, y: 0, z: 1.5426676}
+    X: 15
+    Y: 6
     UnitLevel: 0
-  - Time: 2.8829956
+  - Time: 3
     UnitPrefab: {fileID: 854400207166296427, guid: 099d11bdcdb8b574fa12ce8bf93b462f, type: 3}
-    SpawnPosition: {x: 8.85927, y: 0, z: -1.9551296}
+    X: 15
+    Y: -6
     UnitLevel: 0
-  - Time: 0.75368696
+  - Time: 4
     UnitPrefab: {fileID: 854400207166296427, guid: 099d11bdcdb8b574fa12ce8bf93b462f, type: 3}
-    SpawnPosition: {x: 9.762865, y: 0, z: -5.124157}
+    X: 15
+    Y: 8
     UnitLevel: 0
-  - Time: 2.964567
+  - Time: 4
     UnitPrefab: {fileID: 854400207166296427, guid: 099d11bdcdb8b574fa12ce8bf93b462f, type: 3}
-    SpawnPosition: {x: 9.841745, y: 0, z: -2.1264305}
+    X: 15
+    Y: -8
     UnitLevel: 0
-  - Time: 1.1652901
+  - Time: 6
     UnitPrefab: {fileID: 854400207166296427, guid: 099d11bdcdb8b574fa12ce8bf93b462f, type: 3}
-    SpawnPosition: {x: 9.689177, y: 0, z: -4.005934}
+    X: 15.5
+    Y: -2
+    UnitLevel: 0
+  - Time: 6
+    UnitPrefab: {fileID: 854400207166296427, guid: 099d11bdcdb8b574fa12ce8bf93b462f, type: 3}
+    X: 15
+    Y: 0
+    UnitLevel: 0
+  - Time: 6
+    UnitPrefab: {fileID: 854400207166296427, guid: 099d11bdcdb8b574fa12ce8bf93b462f, type: 3}
+    X: 15.5
+    Y: 2
+    UnitLevel: 0
+  - Time: 9
+    UnitPrefab: {fileID: 854400207166296427, guid: d7df9b41e803cab42beea53250cade7e, type: 3}
+    X: 15
+    Y: -10
+    UnitLevel: 0
+  - Time: 9
+    UnitPrefab: {fileID: 854400207166296427, guid: d7df9b41e803cab42beea53250cade7e, type: 3}
+    X: 15
+    Y: -3
+    UnitLevel: 0
+  - Time: 9
+    UnitPrefab: {fileID: 854400207166296427, guid: d7df9b41e803cab42beea53250cade7e, type: 3}
+    X: 15
+    Y: 3
+    UnitLevel: 0
+  - Time: 9
+    UnitPrefab: {fileID: 854400207166296427, guid: d7df9b41e803cab42beea53250cade7e, type: 3}
+    X: 15
+    Y: 10
     UnitLevel: 0
