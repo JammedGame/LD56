@@ -20,15 +20,7 @@ namespace Night
 
 		public bool AllMobsDead()
 		{
-			if (waves.Count > 0)
-				return false;
-
-			if (BattleContext.AllUnits.Exists(x => x.MyTeam == Team.Bad))
-			{
-				return false;
-			}
-
-			return true;
+			return waves.Count == 0 && GetEnemiesRemainingCount() == 0; 
 		}
 
 		public void Tick()
@@ -44,6 +36,21 @@ namespace Night
 					waves.RemoveAt(index--);
 				}
 			}
+		}
+
+		public int GetEnemiesRemainingCount()
+		{
+			int count = waves.Count;
+
+			foreach(var unit in BattleContext.AllUnits)
+			{
+				if (unit.MyTeam == Team.Bad)
+				{
+					count++;
+				}
+			}
+
+			return count;
 		}
 	}
 }
