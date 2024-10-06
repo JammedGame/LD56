@@ -10,6 +10,7 @@ namespace Night
 	{
 		public readonly NightLevelData NightLevelData;
 		public readonly UserBattleData UserBattleData;
+		public readonly Wall Wall;
 		
 		// battle objects
 		public readonly List<Unit> AllUnits = new List<Unit>();
@@ -18,11 +19,13 @@ namespace Night
 
 		private readonly Dictionary<string, UserEquippedSpell> spellMap = new Dictionary<string, UserEquippedSpell>();
 		
-		public NightBattleContext(NightLevelData nightLevelData, UserBattleData userBattleData)
+		public NightBattleContext(NightLevelData nightLevelData, UserBattleData userBattleData, Wall wall)
 		{
 			NightLevelData = nightLevelData;
 			UserBattleData = userBattleData;
 			MobSpawner = new MobSpawner(this, nightLevelData);
+			Wall = wall;
+			Wall.Setup(this, userBattleData.WallLevel);
 
 			foreach (UserEquippedSpell spell in UserBattleData.EquippedSpells)
 			{
@@ -38,9 +41,10 @@ namespace Night
 
 		public Unit Spawn(Unit unitPrefab, Vector3 position, int level)
 		{
-			Unit instance = Unit.Spawn(this, unitPrefab, position, level);
-			AllUnits.Add(instance);
-			return instance;
+			Unit newInstance = Unit.Instantiate(unitPrefab, position, Quaternion.identity);
+			newInstance.Setup(this, level);
+			AllUnits.Add(newInstance);
+			return newInstance;
 		}
 		
 		public void TickBattle()

@@ -10,6 +10,7 @@ namespace Night
 	{
 		public List<UserUnitInfo> UserUnits = new();
 		public List<UserEquippedSpell> EquippedSpells = new();
+		public int WallLevel;
 	}
 
 	public class UserUnitInfo

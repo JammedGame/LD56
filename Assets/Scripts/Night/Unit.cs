@@ -1,58 +1,103 @@
-﻿using UnityEngine;
+﻿using Night;
+using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
 namespace Night
 {
-    public class Unit : MonoBehaviour
+    public abstract class Unit : MonoBehaviour
     {
         public float DeathAnimationDuration = 2f;
+        
+        // Stats
         public float Health;
         public float Speed;
+        public float AttackRange => BaselineSettings.AttackRange;
+        public float AgroRange => BaselineSettings.AgroRange;
 
+        public abstract Team MyTeam { get; }
         public Animator Animator;
         public UnitTypeSettings BaselineSettings;
         public NightBattleContext BattleContext;
-        [Space(10)]
-        private Transform _target;
-        [SerializeField] private LayerMask _targetLayers;
 
+        public UnitCommandDecision CurrentAction { get; private set; }
+
+        public Vector3 Position
+        {
+            get => transform.position;
+            set => transform.position = value;
+        }
         public bool IsActive { get; private set; }
 
-        public static Unit Spawn(NightBattleContext battleContext,
-                                 Unit unitPrefab,
-                                 Vector3 position,
-                                 int level)
+        public void Setup(NightBattleContext battleContext, int level)
         {
-            Unit newInstance = Instantiate(unitPrefab, position, Quaternion.identity);
-            newInstance.BattleContext = battleContext;
-            newInstance.Health = unitPrefab.BaselineSettings.Health; // apply levels?
-            newInstance.Speed = unitPrefab.BaselineSettings.MoveSpeed; // apply levels?
-            newInstance.IsActive = true;
-            return newInstance;
+            BattleContext = battleContext;
+            Health = BaselineSettings.Health; // apply levels?
+            Speed = BaselineSettings.MoveSpeed; // apply levels?
+            IsActive = true;
         }
 
-        public virtual void Tick()
+        public void Tick()
         {
-            _target = SearchForTarget();
-
-            if (_target == null) return;
-
-            if (Vector3.Distance(transform.position, _target.position) > BaselineSettings.AttackRange)
+            if (!IsActive)
             {
-                transform.position = Vector3.MoveTowards(transform.position, _target.position, Time.deltaTime * BaselineSettings.MoveSpeed);
+                return;
+            }
+            
+            CurrentAction = Think();
+
+            switch (CurrentAction.AnimationId)
+            {
+                case UnitAnimationId.Attack:    DoAttack(CurrentAction); break;
+                case UnitAnimationId.DoNothing: DoNothing(CurrentAction); break;
+                case UnitAnimationId.Move:      DoMove(CurrentAction); break;
+            }
+        }
+
+        private void DoMove(UnitCommandDecision currentAction)
+        {
+            Animator.SetTrigger("Move");
+
+            if (currentAction.TargetUnit is Wall)
+            {
+                Position += Vector3.left * Speed * Time.deltaTime;
             }
             else
             {
-                Animator.SetTrigger("Attack");
+                Position = Vector3.MoveTowards(Position, currentAction.TargetPosition, Speed * Time.deltaTime);
             }
         }
 
-        private Transform SearchForTarget()
+        private void DoNothing(UnitCommandDecision currentAction)
         {
-            Collider[] targets = Physics.OverlapSphere(transform.position, BaselineSettings.AgroRange, _targetLayers);
-            if (targets.Length == 0) return null;
-            return targets[0].transform;
         }
+
+        private void DoAttack(UnitCommandDecision currentAction)
+        {
+            if (IsInAttackRange(currentAction.TargetUnit))
+            {
+                Animator.SetTrigger("Attack");
+                // todo: damage
+            }
+            else
+            {
+                DoMove(currentAction);
+            }
+        }
+
+        public bool IsInAttackRange(Unit targetUnit)
+        {
+            if (targetUnit is Wall wall)
+            {
+                return Mathf.Abs(Position.x - targetUnit.Position.x) < AttackRange;
+            }
+            else
+            {
+                return Vector3.Distance(Position, targetUnit.Position) < AttackRange;
+            }
+        }
+        
+        public abstract UnitCommandDecision Think();
+
         public void Deactivate()
         {
             if (!IsActive)
@@ -66,7 +111,7 @@ namespace Night
 
         public virtual void OnDeactivate()
         {
-            Animator.SetTrigger("Death");
+            Animator.SetBool("Death", true);
             Destroy(gameObject, DeathAnimationDuration);
         }
     }
@@ -76,5 +121,33 @@ public enum Team
 {
     Good,
     Bad
+}
 
+public struct UnitCommandDecision
+{
+    public UnitAnimationId AnimationId;
+    public Unit TargetUnit;
+    public Vector3 TargetPosition;
+    
+    public static UnitCommandDecision Idle()
+    {
+        return new UnitCommandDecision() { AnimationId = UnitAnimationId.DoNothing };
+    }
+
+    public static UnitCommandDecision Attack(Unit target)
+    {
+        return new UnitCommandDecision { AnimationId = UnitAnimationId.Attack, TargetUnit = target };
+    }
+
+    public static UnitCommandDecision MoveToPoint(Vector3 targetPosition)
+    {
+        return new UnitCommandDecision { AnimationId = UnitAnimationId.Move, TargetPosition = targetPosition };
+    }    
+}
+
+public enum UnitAnimationId
+{
+    DoNothing,
+    Attack,
+    Move
 }
