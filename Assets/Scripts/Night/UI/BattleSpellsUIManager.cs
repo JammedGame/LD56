@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace.Spells;
+using Night;
 using UnityEngine;
 
 public class BattleSpellsUIManager : MonoBehaviour
@@ -10,13 +11,13 @@ public class BattleSpellsUIManager : MonoBehaviour
     [SerializeField] private Transform spellButtonsParent;
 
     private readonly List<SpellButton> spellButtons = new List<SpellButton>();
-    public Action<string> OnSelectSpell;
+    public Action<UserEquippedSpell> OnSelectSpell;
 
-    public void AddSpellButton(SpellBookItem spellBookItem, KeyCode keyboardShortcut)
+    public void AddSpellButton(UserEquippedSpell equippedSpell, KeyCode keyboardShortcut)
     {
         SpellButton newSpellButton = Instantiate(spellButtonPrefab, spellButtonsParent);
         newSpellButton.OnClick = SelectSpell;
-        newSpellButton.Spell = spellBookItem;
+        newSpellButton.Spell = equippedSpell;
         newSpellButton.KeyboardShortcut = keyboardShortcut;
         spellButtons.Add(newSpellButton);
     }
@@ -28,7 +29,7 @@ public class BattleSpellsUIManager : MonoBehaviour
             button.Interactable = button != selectedButton;
         }
         
-        OnSelectSpell?.Invoke(selectedButton.Spell.Id);
+        OnSelectSpell?.Invoke(selectedButton.Spell);
     }
 
     public void ClearSpellButtons()

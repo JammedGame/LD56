@@ -15,4 +15,6 @@ MonoBehaviour:
   id: spell_fireball
   displayName: Fireball
   icon: {fileID: 21300000, guid: 41ff389dd8ab9a349b6d75a62667f811, type: 3}
+  isRapidFire: 1
+  rapidFireCooldown: 0.1
   spellRuntimePrefab: {fileID: 7161572875367469763, guid: 596b8e47af18e784f8786cdb4d6a096e, type: 3}

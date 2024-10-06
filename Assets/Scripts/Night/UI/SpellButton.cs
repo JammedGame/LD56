@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace.Spells;
+using Night;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -10,20 +11,23 @@ public class SpellButton : MonoBehaviour
 {
     private Button button;
     private KeyCode keyboardShortcut;
-    private SpellBookItem spell;
+    private UserEquippedSpell spell;
 
     [SerializeField] private TMPro.TextMeshProUGUI keyboardShortcutText;
     [SerializeField] private TMPro.TextMeshProUGUI spellNameText;
+    [SerializeField] private TMPro.TextMeshProUGUI levelText;
     [SerializeField] private Image spellIconImage;
+    
 
-    public SpellBookItem Spell
+    public UserEquippedSpell Spell
     {
         get => spell;
         set
         {
             spell = value;
-            spellNameText.text = value.DisplayName;
-            spellIconImage.sprite = value.Icon;
+            spellNameText.text = value.Blueprint.DisplayName;
+            spellIconImage.sprite = value.Blueprint.Icon;
+            levelText.text = $"lvl {value.Level}";
         }
     }
     

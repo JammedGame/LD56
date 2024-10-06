@@ -25,14 +25,14 @@ public class SpellCastTargetIndicator : MonoBehaviour
     {
         transform.forward = Vector3.up;
     }
-
-    public void SetSize(float xy)
-    {
-        SetSize(xy, xy);
-    }
     
-    public void SetSize(float x, float y)
+    public void SetSize(Vector2 size)
     {
-        area.localScale = new Vector3(baseSize.x * x, baseSize.y * y, baseSize.z);
+        if (size == Vector2.zero)
+        {
+            size = Vector2.one;
+        }
+        
+        area.localScale = new Vector3(baseSize.x * size.x, baseSize.y * size.y, baseSize.z);
     }
 }

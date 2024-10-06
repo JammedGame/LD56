@@ -13,7 +13,9 @@ namespace DefaultNamespace.Spells
         
         private float damage;
         private float moveSpeed;
-        
+
+        public override Vector2 BaseCastArea => new Vector2(2, 2);
+
         protected override void Init()
         {
             damage = DamagePerLevel * SpellLevel;

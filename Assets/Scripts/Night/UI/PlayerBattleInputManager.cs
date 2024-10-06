@@ -14,8 +14,23 @@ public class PlayerBattleInputManager : MonoBehaviour
     private BattleSpellsUIManager battleSpellsUIManager;
 
     private NightBattleContext battleContext;
-    private string selectedSpellId;
+    private UserEquippedSpell _selectedSpell;
     private SpellCastTargetIndicator castTargetIndicator;
+    private float lastCastTime;
+
+    private UserEquippedSpell SelectedSpell
+    {
+        get => _selectedSpell;
+        set
+        {
+            _selectedSpell = value;
+            castTargetIndicator.IsActive = _selectedSpell != null;
+            if (_selectedSpell != null)
+            {
+                castTargetIndicator.SetSize(_selectedSpell.CastArea);
+            }
+        }
+    }
 
     private void Awake()
     {
@@ -34,19 +49,19 @@ public class PlayerBattleInputManager : MonoBehaviour
         for (var i = 0; i < userBattleData.EquippedSpells.Count; i++)
         {
             UserEquippedSpell spell = userBattleData.EquippedSpells[i];
-            battleSpellsUIManager.AddSpellButton(spell.Blueprint, keyCodes[i]);
+            battleSpellsUIManager.AddSpellButton(spell, keyCodes[i]);
         }
     }
 
-    private void OnSelectSpell(string spellId)
+    private void OnSelectSpell(UserEquippedSpell userEquippedSpell)
     {
-        selectedSpellId = spellId;
+        SelectedSpell = userEquippedSpell;
         castTargetIndicator.IsActive = true;
     }
 
     private void Update()
     {
-        if (selectedSpellId == null)
+        if (SelectedSpell == null)
         {
             return;
         }
@@ -55,21 +70,27 @@ public class PlayerBattleInputManager : MonoBehaviour
         if (raycastValid)
         {
             castTargetIndicator.Position = castTargetPos;
-        }
-        
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (raycastValid)
+            bool shouldCast;
+            if (SelectedSpell.Blueprint.IsRapidFire)
             {
-                battleContext.CastSpell(selectedSpellId, castTargetPos);
+                shouldCast = Input.GetMouseButton(0) && Time.time - lastCastTime > SelectedSpell.Blueprint.RapidFireCooldown;
+            }
+            else
+            {
+                shouldCast = Input.GetMouseButtonDown(0);
+            }
+            
+            if (shouldCast)
+            {
+                battleContext.CastSpell(SelectedSpell, castTargetPos);
+                lastCastTime = Time.time;
             }
         }
-
+        
         if (Input.GetMouseButtonDown(1))
         {
-            selectedSpellId = null;
+            SelectedSpell = null;
             battleSpellsUIManager.ResetButtonsInteractable();
-            castTargetIndicator.IsActive = false;
         }
     }
 

@@ -74,13 +74,12 @@ namespace Night
 			AllUnits.RemoveAll(x => !x.IsActive);
 		}
 
-		public void CastSpell(string spellId, Vector3 castTargetPos)
+		public void CastSpell(UserEquippedSpell spell, Vector3 castTargetPos)
 		{
-			UserEquippedSpell equippedSpell = spellMap[spellId];
-			SpellBattleInstance newSpell = Object.Instantiate(equippedSpell.Blueprint.SpellBattlePrefab);
+			SpellBattleInstance newSpell = Object.Instantiate(spell.Blueprint.SpellBattlePrefab);
 			InputUtils.ScreenToWorld(new Vector2(0, Screen.height / 4f), out Vector3 spellStartPos);
 			newSpell.transform.position = spellStartPos + Vector3.up * 5f;
-			newSpell.Setup(this, castTargetPos, equippedSpell.Level);
+			newSpell.Setup(this, castTargetPos, spell.Level);
 			AllSpells.Add(newSpell);
 			
 			// Debug.Log($"Cast spell '{spellId}' level {equippedSpell.Level}, startPos {newSpell.transform.position}, castTarget {castTargetPos}");

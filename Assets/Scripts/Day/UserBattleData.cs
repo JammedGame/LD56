@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using DefaultNamespace.Spells;
 using UnityEngine;
 
 namespace Night
@@ -17,17 +16,5 @@ namespace Night
 	{
 		public GoodUnit MyUnit;
 		public int level;
-	}
-
-	public class UserEquippedSpell
-	{
-		public readonly SpellBookItem Blueprint;
-		public readonly int Level;
-
-		public UserEquippedSpell(SpellBookItem blueprint, int level)
-		{
-			Level = level;
-			Blueprint = blueprint;
-		}
 	}
 }
