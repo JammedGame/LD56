@@ -20,7 +20,6 @@ namespace DefaultNamespace.Spells
         [SerializeField] private float moveSpeed;
         [SerializeField] private float effectDuration;
         
-        
         /// <summary>
         /// The prefab that is instantiated when the spell is cast in-game
         /// </summary>
