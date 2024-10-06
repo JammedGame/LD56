@@ -10,8 +10,12 @@ public class CurrencyManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+        if (Instance != null && Instance != this)
+        {
+            Destroy(Instance.gameObject);
+        }
+
+        Instance = this;
     }
 
     public void UpdateCurrencyUI(int currentGold)
