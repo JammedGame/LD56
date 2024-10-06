@@ -58,6 +58,7 @@ MonoBehaviour:
     AgroRange: 10
     AttackRange: 5
     AttackDamage: 10
+  LootAmount: 2
 --- !u!210 &7469264191805940980
 SortingGroup:
   m_ObjectHideFlags: 0

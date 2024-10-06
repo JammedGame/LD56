@@ -4,6 +4,8 @@ namespace Night
 {
 	public class EnemyMob : Unit
 	{
+		public int LootAmount;
+		
 		public override Team MyTeam => Team.Bad;
 
 		protected override void OnSpawn()
@@ -41,6 +43,12 @@ namespace Night
 			}
 			
 			return UnitCommand.Idle();
+		}
+
+		public override void OnDeactivate()
+		{
+			base.OnDeactivate();
+			UserState.Instance.Gold.Add(LootAmount);
 		}
 	}
 

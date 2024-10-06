@@ -2,7 +2,7 @@
 {
 	public class Wallet
 	{
-		public int Currency;
+		public int Currency { get; private set; }
 
 		public Wallet(int startAmount)
 		{
@@ -23,6 +23,11 @@
 			}
 
 			return false;
+		}
+
+		public void Add(int lootAmount)
+		{
+			Currency += lootAmount;
 		}
 	}
 }

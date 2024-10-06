@@ -43,7 +43,6 @@ namespace Night.Town
             }
 
             Upgrade();
-            CurrencyManager.Instance.UpdateCurrencyUI(UserState.Instance.Gold.Currency);
         }
 
         private void Upgrade()
