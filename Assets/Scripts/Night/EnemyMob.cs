@@ -48,7 +48,7 @@ namespace Night
 		public override void OnDeactivate()
 		{
 			base.OnDeactivate();
-			UserState.Instance.Gold.Add(LootAmount);
+			BattleContext.LootGold(LootAmount);
 		}
 	}
 

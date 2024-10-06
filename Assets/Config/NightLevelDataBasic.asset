@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c29eaa060cf4467a282ed9e96292aba, type: 3}
   m_Name: NightLevelDataBasic
   m_EditorClassIdentifier: 
+  SurviveTimerSeconds: 60
   Spawns:
   - Time: 0
     UnitPrefab: {fileID: 854400207166296427, guid: 099d11bdcdb8b574fa12ce8bf93b462f, type: 3}

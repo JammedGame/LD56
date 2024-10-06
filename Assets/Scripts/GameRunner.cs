@@ -22,6 +22,7 @@ public class GameRunner : MonoBehaviour
 	public YouWinUI YouWinUI;
 	public YouLoseUI YouLoseUI;
 	public HealthBarUI HealthBarUI;
+	public TimerUI TimerUI;
 	
 	void Start()
 	{
@@ -50,6 +51,7 @@ public class GameRunner : MonoBehaviour
 		currentBattleInputManager = Instantiate(GameSettings.BattleInputManagerPrefab);
 		currentBattleInputManager.Setup(currentBattle, UserBattleData);
 		HealthBarUI.Setup(currentBattle);
+		TimerUI.Setup(currentBattle);
 
 		StartCoroutine(BattleFlow(currentBattle));
 	}

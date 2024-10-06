@@ -16,7 +16,9 @@ namespace Night
 		public readonly HashSet<SpellBattleInstance> AllSpells = new HashSet<SpellBattleInstance>();
 		public readonly MobSpawner MobSpawner;
 		
+		public int TotalLootedGold { get; private set; }
 		public float GameTime { get; private set; }
+		public float LevelDuration => NightLevelData.SurviveTimerSeconds;
 		public Team? Winner { get; private set; }
 		
 		public NightBattleContext(NightLevelData nightLevelData, UserBattleData userBattleData, Wall wall)
@@ -102,7 +104,7 @@ namespace Night
 			{
 				Winner = Team.Bad;
 			}
-			else if (MobSpawner.AllMobsDead())
+			else if (MobSpawner.AllMobsDead() || GameTime >= NightLevelData.SurviveTimerSeconds)
 			{
 				Winner = Team.Good;
 			}
@@ -155,6 +157,12 @@ namespace Night
 					left.Position = leftPos;
 				}
 			}
+		}
+
+		public void LootGold(int amount)
+		{
+			TotalLootedGold += amount;
+			UserState.Instance.Gold.Add(amount);
 		}
 	}
 }
