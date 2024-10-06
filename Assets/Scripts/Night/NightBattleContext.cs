@@ -16,6 +16,7 @@ namespace Night
 		public readonly List<Unit> AllUnits = new List<Unit>();
 		public readonly HashSet<SpellBattleInstance> AllSpells = new HashSet<SpellBattleInstance>();
 		public readonly MobSpawner MobSpawner;
+		public float GameTime { get; private set; }
 
 		private readonly Dictionary<string, UserEquippedSpell> spellMap = new Dictionary<string, UserEquippedSpell>();
 		
@@ -62,6 +63,8 @@ namespace Night
 			}
 
 			CleanUpDeadObjects();
+
+			GameTime += Time.deltaTime;
 		}
 
 		private void CleanUpDeadObjects()
