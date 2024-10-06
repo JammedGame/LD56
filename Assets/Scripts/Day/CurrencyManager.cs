@@ -1,15 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using Night;
 using TMPro;
 
 public class CurrencyManager : MonoBehaviour
 {
+    public static CurrencyManager Instance { get; private set; }
 
-    public TMP_Text amountText;
-    public GameObject currencyIcon;
+    [SerializeField] private TMP_Text amountText;
+    [SerializeField] private GameObject currencyIcon;
+
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+    }
 
     public void UpdateCurrencyUI(int currentGold)
     {

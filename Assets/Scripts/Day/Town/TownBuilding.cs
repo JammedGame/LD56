@@ -2,37 +2,41 @@
 
 namespace Night.Town
 {
-	public class TownBuilding : MonoBehaviour
-	{
-		public int Level;
-		protected int[] costs;
-		public CurrencyManager currencyManager;
+    public abstract class TownBuilding : MonoBehaviour
+    {
+        private int level;
+        protected abstract int[] Costs { get; }
 
-		public void Upgrade()
-		{
-			Level++;
-			Debug.Log($"{gameObject.name} upgraded to level="+Level+"!");
-		}
-
-		private void OnMouseDown()
+        private void Upgrade()
         {
-			if (Level < costs.Length) {
-				int cost = GetCurrentCost();
-            	if(UserState.Gold.TrySpend(cost)) {
-                	Upgrade();
-					currencyManager.UpdateCurrencyUI(UserState.Gold.Currency);
-            	} else{
-                	Debug.Log("No money");
-            	}
-			} else {
-				Debug.Log("Building is already at max level.");
-			}
-			
+            level++;
+            Debug.Log($"{gameObject.name} upgraded to level=" + level + "!");
         }
 
-		private int GetCurrentCost()
-		{
-			return costs[Level];
-		}
-	}
+        private void OnMouseDown()
+        {
+            if (level < Costs.Length)
+            {
+                int cost = GetCurrentCost();
+                if (UserState.Gold.TrySpend(cost))
+                {
+                    Upgrade();
+                    CurrencyManager.Instance.UpdateCurrencyUI(UserState.Gold.Currency);
+                }
+                else
+                {
+                    Debug.Log("No money");
+                }
+            }
+            else
+            {
+                Debug.Log("Building is already at max level.");
+            }
+        }
+
+        private int GetCurrentCost()
+        {
+            return Costs[level];
+        }
+    }
 }

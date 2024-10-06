@@ -2,9 +2,6 @@ namespace Night.Town
 {
     public class EarthSchool : TownBuilding
     {
-        private void Awake()
-        {
-            costs = new int[] { 1, 4, 8 };
-        }
+        protected override int[] Costs => new[] { 1, 4, 8 };
     }
 }
