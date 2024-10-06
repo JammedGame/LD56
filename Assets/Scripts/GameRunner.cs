@@ -78,8 +78,17 @@ public class GameRunner : MonoBehaviour
 		if (battleContext.Winner == Team.Good)
 		{
 			yield return YouWinUI.Animate(battleContext);
-			
-			SceneManager.LoadScene("DayScene");
+
+			UserState.Instance.DayCount++;
+
+			if (UserState.Instance.DayCount < GameSettings.Levels.Count)
+			{
+				SceneManager.LoadScene("DayScene");
+			}
+			else
+			{
+				SceneManager.LoadScene("YouWinGameScene");
+			}
 		}
 		else
 		{
