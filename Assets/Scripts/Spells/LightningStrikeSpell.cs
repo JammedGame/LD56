@@ -19,9 +19,9 @@ namespace DefaultNamespace.Spells
             if (closestUnit != null)
             {
                 closestUnit.DealDamage(Damage, null);
-                CameraShakerHandler.Shake(shakeData);
             }
             
+            CameraShakerHandler.Shake(shakeData);
             Deactivate();
         }
     }
