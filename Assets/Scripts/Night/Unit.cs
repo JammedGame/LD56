@@ -89,14 +89,7 @@ namespace Night
 
         private void DoAttack(UnitCommand currentAction)
         {
-            if (IsInAttackRange(currentAction.TargetUnit))
-            {
-                Animator.SetTrigger("Attack");
-            }
-            else
-            {
-                DoMove(currentAction);
-            }
+            Animator.SetTrigger("Attack");
         }
 
         public bool IsInAttackRange(Unit targetUnit, float padding = 0f)
@@ -178,6 +171,18 @@ public struct UnitCommand
         return new UnitCommand { AnimationId = UnitAnimationId.Attack, TargetUnit = target, TargetPosition = target.Position };
     }
 
+    public static UnitCommand MoveAttack(Unit unit, Unit target)
+    {
+        if (unit.IsInAttackRange(target))
+        {
+            return Attack(target);
+        }
+        else
+        {
+            return MoveToPoint(target.Position);
+        }
+    }
+    
     public static UnitCommand MoveToPoint(Vector3 targetPosition)
     {
         return new UnitCommand { AnimationId = UnitAnimationId.Move, TargetPosition = targetPosition };

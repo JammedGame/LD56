@@ -13,7 +13,7 @@ namespace Night
 		public override UnitCommand Think()
 		{
 			// continue attacking
-			if (CurrentAction.AnimationId is UnitAnimationId.Attack && IsInAttackRange(CurrentAction.TargetUnit, 1f))
+			if (CurrentAction.AnimationId is UnitAnimationId.Attack && IsInAttackRange(CurrentAction.TargetUnit, 2f))
 			{
 				return UnitCommand.Attack(CurrentAction.TargetUnit); 
 			}
@@ -32,12 +32,12 @@ namespace Night
 
 			if (aggroUnit != null)
 			{
-				return UnitCommand.Attack(aggroUnit);
+				return UnitCommand.MoveAttack(this, aggroUnit);
 			}
 
 			if (BattleContext.Wall.IsAlive())
 			{
-				return UnitCommand.Attack(BattleContext.Wall);
+				return UnitCommand.MoveAttack(this, BattleContext.Wall);
 			}
 			
 			return UnitCommand.Idle();

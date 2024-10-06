@@ -112,8 +112,7 @@ namespace Night
 		{
 			float declumpSpeed = Time.deltaTime * 3f;
 			int unitsCount = AllUnits.Count;
-			float declumpRadiusX = 2.5f;
-			float declumpRadiusZ = 2.5f;
+			float declumpRadius = 2.5f;
 			
 			for (int i = 0; i < unitsCount; i++)
 			{
@@ -125,8 +124,9 @@ namespace Night
 					Unit right = AllUnits[j];
 					Vector3 rightPos = right.Position;
 
-					if (Mathf.Abs(leftPos.x - rightPos.x) >= declumpRadiusX
-					    || Mathf.Abs(leftPos.z - rightPos.z) >= declumpRadiusZ)
+					if (Mathf.Abs(leftPos.x - rightPos.x) >= declumpRadius
+					    || Mathf.Abs(leftPos.z - rightPos.z) >= declumpRadius
+					    || Vector3.Distance(leftPos, rightPos) > declumpRadius)
 					{
 						continue;
 					}
