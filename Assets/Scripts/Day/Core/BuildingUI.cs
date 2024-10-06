@@ -9,8 +9,6 @@ public class BuildingUI : MonoBehaviour
     [SerializeField] private TMP_Text buildingLevel;
     [SerializeField] private TMP_Text buildingCost;
     [SerializeField] private Button upgradeButton;
-    [SerializeField] private Sprite buildingSprite;
-    [SerializeField] private Sprite buildingSelectedSprite;
 
 
     public event Action UpgradeClick;
