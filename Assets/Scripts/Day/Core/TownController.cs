@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TownController : MonoBehaviour
 {
+    [SerializeField] private BuildingUI buildingUI;
+
     private IEnumerable<TownBuilding> buildings;
 
     public TownBuilding SelectedTownBuilding { get; private set; }
@@ -11,10 +13,12 @@ public class TownController : MonoBehaviour
     private void Awake()
     {
         buildings = GetComponentsInChildren<TownBuilding>();
+        buildingUI.Clear();
     }
 
     private void OnEnable()
     {
+        buildingUI.UpgradeClick += OnBuildingUpgradeClick;
         foreach (var building in buildings)
         {
             building.SelectBuilding += OnSelectBuilding;
@@ -23,19 +27,39 @@ public class TownController : MonoBehaviour
 
     private void OnDisable()
     {
+        buildingUI.UpgradeClick -= OnBuildingUpgradeClick;
         foreach (var building in buildings)
         {
             building.SelectBuilding -= OnSelectBuilding;
         }
     }
 
+    private void OnBuildingUpgradeClick()
+    {
+        if (SelectedTownBuilding == null) return;
+
+        SelectedTownBuilding.TryUpgrade();
+    }
+
     private void OnSelectBuilding(TownBuilding buildingToSelect)
     {
-        Debug.Log($"{buildingToSelect.name} has been selected");
         SelectedTownBuilding = buildingToSelect;
         foreach (var building in buildings)
         {
             buildingToSelect.ToggleSelected(building == buildingToSelect);
         }
+
+        RefreshBuildingUI();
+    }
+
+    private void RefreshBuildingUI()
+    {
+        if (SelectedTownBuilding == null)
+        {
+            buildingUI.Clear();
+            return;
+        }
+
+        buildingUI.SetData(SelectedTownBuilding.name, SelectedTownBuilding.Level, SelectedTownBuilding.CurrentCost);
     }
 }

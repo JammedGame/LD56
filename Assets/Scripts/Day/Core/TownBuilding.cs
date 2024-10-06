@@ -7,18 +7,19 @@ namespace Night.Town
     {
         public event Action<TownBuilding> SelectBuilding;
 
-        private int level;
         private bool isSelected;
+
+        public int Level { get; private set; }
 
         protected abstract int[] Costs { get; }
 
         private int MaxLevel => Costs.Length;
 
-        private int CurrentCost => Costs[level];
+        public int CurrentCost => Level < Costs.Length ? Costs[Level] : int.MaxValue;
 
         private void OnMouseDown()
         {
-            SelectBuilding?.Invoke(this);
+            SelectThisBuilding();
         }
 
         public void ToggleSelected(bool selected)
@@ -28,7 +29,7 @@ namespace Night.Town
 
         public void TryUpgrade()
         {
-            if (level >= MaxLevel)
+            if (Level >= MaxLevel)
             {
                 Debug.Log("Building is already at max level.");
                 return;
@@ -47,8 +48,14 @@ namespace Night.Town
 
         private void Upgrade()
         {
-            level++;
-            Debug.Log($"{gameObject.name} upgraded to level=" + level + "!");
+            Level++;
+            Debug.Log($"{gameObject.name} upgraded to level=" + Level + "!");
+            SelectThisBuilding();
+        }
+
+        private void SelectThisBuilding()
+        {
+            SelectBuilding?.Invoke(this);
         }
     }
 }
