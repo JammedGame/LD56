@@ -1,7 +1,11 @@
-﻿namespace Night
+﻿using UnityEngine;
+
+namespace Night
 {
 	public class Wall : Unit
 	{
+		public Transform SquizzardPosition;
+		
 		public override Team MyTeam => Team.Good;
 
 		protected override void OnSpawn()
