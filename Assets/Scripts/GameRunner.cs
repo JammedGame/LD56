@@ -12,9 +12,13 @@ public class GameRunner : MonoBehaviour
 	public GameSettings GameSettings;
 	public UserBattleData UserBattleData;
 	public Wall Wall;
+	public GoodUnit TestGoodUnit;
 
 	private NightBattleContext currentBattle;
 	private PlayerBattleInputManager currentBattleInputManager;
+
+	public YouWinUI YouWinUI;
+	public YouLoseUI YouLoseUI;
 	
 	void Start()
 	{
@@ -24,6 +28,8 @@ public class GameRunner : MonoBehaviour
 		UserBattleData.EquippedSpells.Add(new UserEquippedSpell(GameSettings.Spells[0], 2));
 		UserBattleData.EquippedSpells.Add(new UserEquippedSpell(GameSettings.Spells[0], 3));
 		UserBattleData.EquippedSpells.Add(new UserEquippedSpell(GameSettings.Spells[0], 4));
+		
+		UserBattleData.UserUnits.Add(new UserUnitInfo(TestGoodUnit, 0));
 		
 		currentBattle = new NightBattleContext(GameSettings.Levels[0], UserBattleData, Wall);
 		
@@ -35,6 +41,8 @@ public class GameRunner : MonoBehaviour
 
 	IEnumerator BattleFlow(NightBattleContext battleContext)
 	{
+		yield return BattleIntro();
+		
 		while (battleContext.Winner == null)
 		{
 			try
@@ -51,24 +59,19 @@ public class GameRunner : MonoBehaviour
 
 		if (battleContext.Winner == Team.Good)
 		{
-			yield return YouWin();
+			yield return YouWinUI.Animate(battleContext);
+			
+			SceneManager.LoadScene("DayScene");
 		}
 		else
 		{
-			yield return YouLose();
+			yield return YouLoseUI.Animate(battleContext);
 		}
 	}
 
-	private IEnumerator YouWin()
+	private IEnumerator BattleIntro()
 	{
-		Debug.Log("YOU WIN!!!!");
-		yield return new WaitForSeconds(1f);
-		SceneManager.LoadScene("DayScene");
-	}
-
-	private IEnumerator YouLose()
-	{
-		Debug.Log("YOU LOSE!!!!");
-		yield return new WaitForSeconds(1f);
+		// todo: UI intro
+		yield break;
 	}
 }
