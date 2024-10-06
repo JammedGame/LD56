@@ -74,3 +74,23 @@ MonoBehaviour:
     X: 15.5
     Y: 2
     UnitLevel: 0
+  - Time: 9
+    UnitPrefab: {fileID: 854400207166296427, guid: d7df9b41e803cab42beea53250cade7e, type: 3}
+    X: 15
+    Y: -10
+    UnitLevel: 0
+  - Time: 9
+    UnitPrefab: {fileID: 854400207166296427, guid: d7df9b41e803cab42beea53250cade7e, type: 3}
+    X: 15
+    Y: -3
+    UnitLevel: 0
+  - Time: 9
+    UnitPrefab: {fileID: 854400207166296427, guid: d7df9b41e803cab42beea53250cade7e, type: 3}
+    X: 15
+    Y: 3
+    UnitLevel: 0
+  - Time: 9
+    UnitPrefab: {fileID: 854400207166296427, guid: d7df9b41e803cab42beea53250cade7e, type: 3}
+    X: 15
+    Y: 10
+    UnitLevel: 0

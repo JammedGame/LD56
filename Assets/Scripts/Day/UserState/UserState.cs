@@ -8,6 +8,7 @@
         public readonly WallState WallState = new(1f);
         public readonly SpellBookState SpellBookState = new();
         public readonly ArmyState ArmyState = new(5);
+        public int DayCount { get; private set; }
 
         // singleton shit
         private static UserState instance;

@@ -46,7 +46,8 @@ public class GameRunner : MonoBehaviour
 
 		UserBattleData.WallState = UserState.Instance.WallState;
 
-		currentBattle = new NightBattleContext(GameSettings.Levels[0], UserBattleData, Wall);
+		int currentLevel = UserState.Instance.DayCount;
+		currentBattle = new NightBattleContext(GameSettings.Levels[currentLevel], UserBattleData, Wall);
 		
 		currentBattleInputManager = Instantiate(GameSettings.BattleInputManagerPrefab);
 		currentBattleInputManager.Setup(currentBattle, UserBattleData);
