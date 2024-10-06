@@ -33,10 +33,11 @@ namespace Night
 				spellMap[spell.Blueprint.Id] = spell;
 			}
 			
-			// spawn user's shit
-			foreach (UserUnitInfo unitInfo in UserBattleData.UserUnits)
+			// spawn user's units
+			for (int i = 0; i < UserBattleData.UserUnits.Count; i++)
 			{
-				Spawn(unitInfo.UnitType, unitInfo.PositionSpawn, unitInfo.level);
+				UserUnitInfo unitInfo = UserBattleData.UserUnits[i];
+				Spawn(unitInfo.MyUnit, GameSettings.Instance.GoodUnitSpawnLocations[i], unitInfo.level);
 			}
 		}
 

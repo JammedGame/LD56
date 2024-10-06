@@ -15,8 +15,7 @@ namespace Night
 
 	public class UserUnitInfo
 	{
-		public Vector3 PositionSpawn;
-		public Unit UnitType;
+		public GoodUnit MyUnit;
 		public int level;
 	}
 
