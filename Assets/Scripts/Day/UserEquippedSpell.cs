@@ -12,6 +12,8 @@ namespace Night
 
         public Vector2 CastArea => Blueprint.SpellBattlePrefab.CalculateCastArea(Level, Blueprint.AreaOfEffect);
         public float Damage => Blueprint.SpellBattlePrefab.CalculateDamage(Level, Blueprint.Damage);
+        public float MoveSpeed => Blueprint.SpellBattlePrefab.CalculateMoveSpeed(Level, Blueprint.MoveSpeed);
+        public float EffectDuration => Blueprint.SpellBattlePrefab.CalculateEffectDuration(Level, Blueprint.EffectDuration);
 
         public float CooldownLeft
         {

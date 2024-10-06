@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Night;
 using UnityEngine;
@@ -13,10 +14,13 @@ namespace DefaultNamespace.Spells
         private UserEquippedSpell spellInfo;
         
         protected int SpellLevel => spellInfo.Level;
+        protected float Damage => spellInfo.Damage;
+        protected float MoveSpeed => spellInfo.MoveSpeed;
+        protected Vector2 AreaOfEffect => spellInfo.CastArea;
+        protected UserEquippedSpell SpellInfo => spellInfo;
+        
         protected NightBattleContext Context;
         protected Vector3 CastTarget { get; private set; }
-        protected Vector2 AreaOfEffect { get; private set; }
-        protected float Damage { get; private set; }
         public bool IsActive { get; private set; }
 
         public virtual Vector2 CalculateCastArea(int level, Vector2 baseCastArea)
@@ -29,6 +33,16 @@ namespace DefaultNamespace.Spells
         {
             return baseDamage * (1 + (level - 1));
         }
+
+        public virtual float CalculateMoveSpeed(int level, float baseMoveSpeed)
+        {
+            return baseMoveSpeed * (1 + (level - 1));
+        }
+        
+        public float CalculateEffectDuration(int level, float baseEffectDuration)
+        {
+            return baseEffectDuration * (1 + (level - 1));
+        }
         
         public void Setup(NightBattleContext ctx, Vector3 target, UserEquippedSpell spell)
         {
@@ -37,8 +51,6 @@ namespace DefaultNamespace.Spells
             IsActive = true;
             Context = ctx;
             CastTarget = target;
-            AreaOfEffect = CalculateCastArea(spell.Level, spell.CastArea);
-            Damage = CalculateDamage(spell.Level, spell.Damage);
             Init();
         }
 
@@ -58,7 +70,9 @@ namespace DefaultNamespace.Spells
             Destroy(gameObject);
         }
 
-        protected abstract void Init();
+        protected virtual void Init()
+        {
+        }
 
         public virtual void Tick()
         {
@@ -71,6 +85,12 @@ namespace DefaultNamespace.Spells
                     MathUtils.IsPointInsideEllipse(areaCenter, AreaOfEffect, unit.transform.position.ToVector2XZ()))
                 .OrderBy(unit => Vector3.Distance(unit.transform.position.ToVector2XZ(), areaCenter))
                 .ToList();
+        }
+        
+        protected IEnumerator DestroyAfterSeconds(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            Destroy(gameObject);
         }
     }
 }

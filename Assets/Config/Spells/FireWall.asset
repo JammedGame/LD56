@@ -17,5 +17,9 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 41ff389dd8ab9a349b6d75a62667f811, type: 3}
   isRapidFire: 0
   rapidFireCooldown: 1
-  castCooldown: 10
-  spellRuntimePrefab: {fileID: 7161572875367469763, guid: 596b8e47af18e784f8786cdb4d6a096e, type: 3}
+  castCooldown: 1
+  areaOfEffect: {x: 2, y: 8}
+  damage: 5
+  moveSpeed: 20
+  effectDuration: 5
+  spellRuntimePrefab: {fileID: 2374906942737239632, guid: acd4b035d56d3244aaf0d5c4c37dfc07, type: 3}

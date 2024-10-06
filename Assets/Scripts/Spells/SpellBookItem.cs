@@ -17,6 +17,9 @@ namespace DefaultNamespace.Spells
         [SerializeField] private float castCooldown;
         [SerializeField] private Vector2 areaOfEffect;
         [SerializeField] private float damage;
+        [SerializeField] private float moveSpeed;
+        [SerializeField] private float effectDuration;
+        
         
         /// <summary>
         /// The prefab that is instantiated when the spell is cast in-game
@@ -32,5 +35,7 @@ namespace DefaultNamespace.Spells
         public float CastCooldown => castCooldown;
         public Vector2 AreaOfEffect => areaOfEffect;
         public float Damage => damage;
+        public float MoveSpeed => moveSpeed;
+        public float EffectDuration => effectDuration;
     }
 }
