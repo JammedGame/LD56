@@ -67,12 +67,12 @@ public class PlayerBattleInputManager : MonoBehaviour
             return;
         }
 
-        if (!SelectedSpell.IsOnCooldown)
+        bool raycastValid = InputUtils.ScreenToWorld(Input.mousePosition, out Vector3 castTargetPos);
+        if (raycastValid)
         {
-            bool raycastValid = InputUtils.ScreenToWorld(Input.mousePosition, out Vector3 castTargetPos);
-            if (raycastValid)
+            castTargetIndicator.Position = castTargetPos;
+            if (!SelectedSpell.IsOnCooldown)
             {
-                castTargetIndicator.Position = castTargetPos;
                 bool shouldCast = SelectedSpell.Blueprint.IsRapidFire ? Input.GetMouseButton(0) : Input.GetMouseButtonDown(0);
                 if (shouldCast)
                 {

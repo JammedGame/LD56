@@ -18,7 +18,6 @@ namespace Night
 		public float GameTime { get; private set; }
 		public Team? Winner { get; private set; }
 		
-
 		public NightBattleContext(NightLevelData nightLevelData, UserBattleData userBattleData, Wall wall)
 		{
 			NightLevelData = nightLevelData;
@@ -27,7 +26,6 @@ namespace Night
 			Wall = wall;
 			Wall.Setup(this, userBattleData.WallState.level, userBattleData.WallState.currentHealthNormalized);
 			
-
 			// spawn user's units
 			for (int i = 0; i < UserBattleData.UserUnits.Count; i++)
 			{

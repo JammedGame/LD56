@@ -28,12 +28,17 @@ public class GameRunner : MonoBehaviour
 		UserBattleData = new();
 
 		// TEMP DATA START (delete this)
+		foreach (SpellBookItem spell in GameSettings.Spells)
+		{
+			UserEquippedSpell userEquippedSpell = new UserEquippedSpell(spell, 1);
+			UserState.Instance.SpellBookState.AddSpell(userEquippedSpell);
+			UserBattleData.EquippedSpells.Add(userEquippedSpell);
+		}
+		
 		UserState.Instance.ArmyState.AddUnit(new UnitState(0, new UserUnitInfo(TestGoodUnit, 0)));
 		UserState.Instance.WallState.level = 0;
 		UserState.Instance.WallState.currentHealthNormalized = 1f;
 		// TEMP DATA END
-
-		UserBattleData.EquippedSpells.AddRange(UserState.Instance.SpellBookState.Spells);
 
 		UserBattleData.UserUnits.AddRange(UserState.Instance.ArmyState.GetLivingUnits().Select(x => x.info));
 
