@@ -7,6 +7,8 @@ namespace Night
 	[CreateAssetMenu]
 	public class NightLevelData : ScriptableObject
 	{
+		[Table]
+		[NonReorderable]
 		public List<WaveSpawn> Spawns;
 	}
 
@@ -15,7 +17,9 @@ namespace Night
 	{
 		public float Time;
 		public Unit UnitPrefab;
-		public Vector3 SpawnPosition;
+		public float X;
+		public float Y;
 		public int UnitLevel;
+		public Vector3 SpawnPosition => new(X, 0, Y);
 	}
 }

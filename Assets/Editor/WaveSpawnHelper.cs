@@ -27,7 +27,8 @@ namespace Editor
 						Time = Random.Range(0, 3f),
 						UnitLevel = 0,
 						UnitPrefab = script.Spawns[0].UnitPrefab,
-						SpawnPosition = new Vector3(Random.Range(8f, 11f), Random.Range(0, 0), Random.Range(-6f, 6f))
+						X = Random.Range(8f, 11f),
+						Y = Random.Range(-6f, 6f)
 					}
 				);
 			}
