@@ -20,9 +20,7 @@ namespace DefaultNamespace.Spells
                 foreach (Unit unit in units)
                 {
                     unit.DealDamage(Damage, null);
-                    
-                    unit.SetColorTint(new Color(0.5f, 0.5f, 1f, 1));
-                    unit.ActiveModifiers.Add(new UnitModifier(3, 0.3f, unit.RemoveColorTint));
+                    unit.AddModifier(new UnitModifier(3, 0.3f, colorTint: new Color(0.5f, 0.5f, 1f, 1)));
                 }
                 
                 Deactivate();

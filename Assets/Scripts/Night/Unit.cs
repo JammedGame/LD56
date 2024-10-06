@@ -45,14 +45,16 @@ namespace Night
 
         public float HealthPercent => Mathf.Clamp01(Health / StartHealth);
 
-        public readonly List<UnitModifier> ActiveModifiers = new List<UnitModifier>();
+        private readonly List<UnitModifier> ActiveModifiers = new List<UnitModifier>();
         private readonly Dictionary<SpriteRenderer, Color> originalColors = new Dictionary<SpriteRenderer, Color>();
+        private readonly List<UnitModifier> ActiveColorModifiers = new List<UnitModifier>();
 
         public Vector3 Position
         {
             get => transform.position;
             set => transform.position = value;
         }
+        
         public bool IsActive { get; private set; }
 
         public void Setup(NightBattleContext battleContext, int level, float currentHealthNormalized = 1f)
@@ -92,17 +94,40 @@ namespace Night
                 return;
             }
 
+            // Remove expired non-color modifiers
             int i = 0;
             while (i < ActiveModifiers.Count)
             {
                 if (ActiveModifiers[i].ShouldRemove())
                 {
-                    Debug.Log("Remove stats mod");
                     ActiveModifiers.RemoveAt(i);
                     continue;
                 }
-
+                
                 i++;
+            }
+            
+            // Remove expired color modifiers
+            i = 0;
+            int countBefore = ActiveColorModifiers.Count;
+            while (i < ActiveColorModifiers.Count)
+            {
+                if (ActiveColorModifiers[i].ShouldRemove())
+                {
+                    ActiveColorModifiers.RemoveAt(i);
+                    continue;
+                }
+                
+                i++;
+            }
+
+            if (ActiveColorModifiers.Count < countBefore)
+            {
+                RemoveColorTint();
+                if (ActiveColorModifiers.Count > 0)
+                {
+                    SetColorTint(ActiveColorModifiers[^1].ColorTint.Value);
+                }
             }
             
             CurrentAction = Think();
@@ -221,6 +246,16 @@ namespace Night
                 {
                     spriteRenderer.color = originalColor;
                 }
+            }
+        }
+
+        public void AddModifier(UnitModifier modifier)
+        {
+            ActiveModifiers.Add(modifier);
+            if (modifier.ColorTint.HasValue)
+            {
+                SetColorTint(modifier.ColorTint.Value);
+                ActiveColorModifiers.Add(modifier);
             }
         }
     }

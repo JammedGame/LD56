@@ -10,24 +10,19 @@ namespace Night
         private readonly Action onEnd;
         
         public float MoveSpeedMod { get; private set; }
+        public Color? ColorTint { get; private set; }
         
-        public UnitModifier(float duration, float moveSpeedMod = 1f, Action onEnd = null)
+        public UnitModifier(float duration, float moveSpeedMod = 1f, Color? colorTint = null)
         {
             startTime = Time.time;
             this.duration = duration;
             MoveSpeedMod = moveSpeedMod;
-            this.onEnd = onEnd;
+            ColorTint = colorTint;
         }
 
         public bool ShouldRemove()
         {
-            bool shouldRemove = Time.time - startTime > duration;
-            if (shouldRemove)
-            {
-                onEnd?.Invoke();    
-            }
-            
-            return shouldRemove;
+            return Time.time - startTime > duration;
         }
     }
 }
