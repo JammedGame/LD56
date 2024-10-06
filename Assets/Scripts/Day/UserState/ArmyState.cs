@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Night
 {
@@ -44,6 +45,11 @@ namespace Night
         public UnitState GetUnit(int slot)
         {
             return units.Find(x => x.slot == slot);
+        }
+
+        public IEnumerable<UnitState> GetLivingUnits()
+        {
+            return units.Where(x => !x.isDead);
         }
     }
 

@@ -27,7 +27,7 @@ namespace Night
 			UserBattleData = userBattleData;
 			MobSpawner = new MobSpawner(this, nightLevelData);
 			Wall = wall;
-			Wall.Setup(this, userBattleData.WallLevel);
+			Wall.Setup(this, userBattleData.WallState.level, userBattleData.WallState.currentHealthNormalized);
 
 			foreach (UserEquippedSpell spell in UserBattleData.EquippedSpells)
 			{

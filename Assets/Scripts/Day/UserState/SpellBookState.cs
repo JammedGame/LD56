@@ -11,10 +11,11 @@ namespace Night
 
         public void AddSpell(UserEquippedSpell newSpell)
         {
-            if (spells.Exists(x => x.Blueprint.Id == newSpell.Blueprint.Id))
-            {
-                throw new InvalidOperationException($"Spell already exists for ID {newSpell.Blueprint.Id}");
-            }
+            // TODO CVILE UNCOMMENT
+            // if (spells.Exists(x => x.Blueprint.Id == newSpell.Blueprint.Id))
+            // {
+            //     throw new InvalidOperationException($"Spell already exists for ID {newSpell.Blueprint.Id}");
+            // }
 
             spells.Add(newSpell);
         }

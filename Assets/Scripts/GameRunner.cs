@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DefaultNamespace;
 using Night;
 using Unity.VisualScripting;
@@ -24,13 +25,23 @@ public class GameRunner : MonoBehaviour
 	{
 		// read from user state.
 		UserBattleData = new();
-		UserBattleData.EquippedSpells.Add(new UserEquippedSpell(GameSettings.Spells[0], 1));
-		UserBattleData.EquippedSpells.Add(new UserEquippedSpell(GameSettings.Spells[0], 2));
-		UserBattleData.EquippedSpells.Add(new UserEquippedSpell(GameSettings.Spells[0], 3));
-		UserBattleData.EquippedSpells.Add(new UserEquippedSpell(GameSettings.Spells[0], 4));
-		
-		UserBattleData.UserUnits.Add(new UserUnitInfo(TestGoodUnit, 0));
-		
+
+		// TEMP DATA START (delete this)
+		UserState.Instance.SpellBookState.AddSpell(new UserEquippedSpell(GameSettings.Spells[0], 1));
+		UserState.Instance.SpellBookState.AddSpell(new UserEquippedSpell(GameSettings.Spells[0], 2));
+		UserState.Instance.SpellBookState.AddSpell(new UserEquippedSpell(GameSettings.Spells[0], 3));
+		UserState.Instance.SpellBookState.AddSpell(new UserEquippedSpell(GameSettings.Spells[0], 4));
+		UserState.Instance.ArmyState.AddUnit(new UnitState(0, new UserUnitInfo(TestGoodUnit, 0)));
+		UserState.Instance.WallState.level = 0;
+		UserState.Instance.WallState.currentHealthNormalized = 1f;
+		// TEMP DATA END
+
+		UserBattleData.EquippedSpells.AddRange(UserState.Instance.SpellBookState.Spells);
+
+		UserBattleData.UserUnits.AddRange(UserState.Instance.ArmyState.GetLivingUnits().Select(x => x.info));
+
+		UserBattleData.WallState = UserState.Instance.WallState;
+
 		currentBattle = new NightBattleContext(GameSettings.Levels[0], UserBattleData, Wall);
 		
 		currentBattleInputManager = Instantiate(GameSettings.BattleInputManagerPrefab);

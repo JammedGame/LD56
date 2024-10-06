@@ -32,10 +32,10 @@ namespace Night
         }
         public bool IsActive { get; private set; }
 
-        public void Setup(NightBattleContext battleContext, int level)
+        public void Setup(NightBattleContext battleContext, int level, float currentHealthNormalized = 1f)
         {
             BattleContext = battleContext;
-            Health = BaselineSettings.Health; // apply levels?
+            Health = BaselineSettings.Health * currentHealthNormalized; // apply levels?
             Speed = BaselineSettings.MoveSpeed; // apply levels?
             AttackDamage = BaselineSettings.AttackDamage; // apply levels?
             MySpawnTime = BattleContext.GameTime;
