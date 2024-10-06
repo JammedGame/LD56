@@ -1,23 +1,34 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Night.Town
 {
     public abstract class TownBuilding : MonoBehaviour
     {
+        public event Action<TownBuilding> SelectBuilding;
+
         private int level;
+        private bool isSelected;
+
         protected abstract int[] Costs { get; }
 
-        private void Upgrade()
-        {
-            level++;
-            Debug.Log($"{gameObject.name} upgraded to level=" + level + "!");
-        }
+        private int CurrentCost => Costs[level];
 
         private void OnMouseDown()
         {
+            SelectBuilding?.Invoke(this);
+        }
+
+        public void ToggleSelected(bool selected)
+        {
+            isSelected = selected;
+        }
+
+        public void TryUpgrade()
+        {
             if (level < Costs.Length)
             {
-                int cost = GetCurrentCost();
+                int cost = CurrentCost;
                 if (UserState.Gold.TrySpend(cost))
                 {
                     Upgrade();
@@ -34,9 +45,10 @@ namespace Night.Town
             }
         }
 
-        private int GetCurrentCost()
+        private void Upgrade()
         {
-            return Costs[level];
+            level++;
+            Debug.Log($"{gameObject.name} upgraded to level=" + level + "!");
         }
     }
 }
