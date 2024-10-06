@@ -12,7 +12,7 @@ namespace DefaultNamespace.Spells
         
         protected override void Init()
         {
-            Instantiate(visualEffectPrefab, CastTarget, Quaternion.identity);
+            Instantiate(visualEffectPrefab, CastTarget, visualEffectPrefab.transform.rotation);
             Unit closestUnit = GetClosestUnitsInCastArea(CastTarget.ToVector2XZ()).FirstOrDefault();
             if (closestUnit != null)
             {
