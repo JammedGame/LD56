@@ -17,7 +17,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 11848dcbb852c8f428be0fb83cc8bf54, type: 3}
   isRapidFire: 0
   rapidFireCooldown: 1
-  castCooldown: 1
+  castCooldown: 2
   areaOfEffect: {x: 2, y: 8}
   damage: 5
   moveSpeed: 35

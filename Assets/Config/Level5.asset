@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c29eaa060cf4467a282ed9e96292aba, type: 3}
+  m_Name: Level5
+  m_EditorClassIdentifier: 
+  SurviveTimerSeconds: 60
+  Spawns:
+  - Time: 0
+    UnitPrefab: {fileID: 854400207166296427, guid: 099d11bdcdb8b574fa12ce8bf93b462f, type: 3}
+    X: 15
+    Y: 0
+    UnitLevel: 0
+  - Time: 1
+    UnitPrefab: {fileID: 854400207166296427, guid: b2cf6205cbd68dc47a45a5c236c3b68c, type: 3}
+    X: 15
+    Y: 2
+    UnitLevel: 0
+  - Time: 1
+    UnitPrefab: {fileID: 854400207166296427, guid: 0e21ad995af525f49bac4ea01c08ee97, type: 3}
+    X: 15
+    Y: -2
+    UnitLevel: 0
+  - Time: 2
+    UnitPrefab: {fileID: 854400207166296427, guid: 3a4e1df82a2f0174aa23e5c3580aa11b, type: 3}
+    X: 15
+    Y: 4
+    UnitLevel: 0
+  - Time: 2
+    UnitPrefab: {fileID: 854400207166296427, guid: 0f4b403a4fca119458add50e51cba4fe, type: 3}
+    X: 15
+    Y: -4
+    UnitLevel: 0
+  - Time: 3
+    UnitPrefab: {fileID: 854400207166296427, guid: 3a4e1df82a2f0174aa23e5c3580aa11b, type: 3}
+    X: 15
+    Y: 6
+    UnitLevel: 0
+  - Time: 3
+    UnitPrefab: {fileID: 854400207166296427, guid: b2cf6205cbd68dc47a45a5c236c3b68c, type: 3}
+    X: 15
+    Y: -6
+    UnitLevel: 0
+  - Time: 4
+    UnitPrefab: {fileID: 854400207166296427, guid: 0f4b403a4fca119458add50e51cba4fe, type: 3}
+    X: 15
+    Y: 8
+    UnitLevel: 0
+  - Time: 4
+    UnitPrefab: {fileID: 854400207166296427, guid: b2cf6205cbd68dc47a45a5c236c3b68c, type: 3}
+    X: 15
+    Y: -8
+    UnitLevel: 0
+  - Time: 6
+    UnitPrefab: {fileID: 854400207166296427, guid: 0f4b403a4fca119458add50e51cba4fe, type: 3}
+    X: 15.5
+    Y: -2
+    UnitLevel: 0
+  - Time: 6
+    UnitPrefab: {fileID: 854400207166296427, guid: 099d11bdcdb8b574fa12ce8bf93b462f, type: 3}
+    X: 15
+    Y: 0
+    UnitLevel: 0
+  - Time: 6
+    UnitPrefab: {fileID: 854400207166296427, guid: b2cf6205cbd68dc47a45a5c236c3b68c, type: 3}
+    X: 15.5
+    Y: 2
+    UnitLevel: 0
+  - Time: 9
+    UnitPrefab: {fileID: 854400207166296427, guid: 725363116ff186f4cb69c4ee0120fcee, type: 3}
+    X: 15
+    Y: -10
+    UnitLevel: 0
+  - Time: 9
+    UnitPrefab: {fileID: 854400207166296427, guid: d7df9b41e803cab42beea53250cade7e, type: 3}
+    X: 15
+    Y: -3
+    UnitLevel: 0
+  - Time: 9
+    UnitPrefab: {fileID: 854400207166296427, guid: b2cf6205cbd68dc47a45a5c236c3b68c, type: 3}
+    X: 15
+    Y: 3
+    UnitLevel: 0
+  - Time: 9
+    UnitPrefab: {fileID: 854400207166296427, guid: 0e21ad995af525f49bac4ea01c08ee97, type: 3}
+    X: 15
+    Y: 10
+    UnitLevel: 0

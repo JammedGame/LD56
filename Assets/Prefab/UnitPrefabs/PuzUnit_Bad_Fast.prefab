@@ -1,0 +1,142 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8691775874111326227
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4573566965872469899}
+  - component: {fileID: 854400207166296427}
+  - component: {fileID: 7469264191805940980}
+  m_Layer: 0
+  m_Name: PuzUnit_Bad_Fast
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4573566965872469899
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8691775874111326227}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 9198382184260331189}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &854400207166296427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8691775874111326227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bba397d7f2c04a70ad6bb53b58082b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeathAnimationDuration: 2
+  SpawnAnimationDuration: 0.25
+  Health: 0
+  isRanged: 0
+  projectilePrefab: {fileID: 0}
+  projectileSource: {fileID: 0}
+  AttackDamage: 0
+  Animator: {fileID: 5262059687535828884}
+  BaselineSettings:
+    MoveSpeed: 12
+    Health: 5
+    AgroRange: 10
+    AttackRange: 2.5
+    AttackDamage: 50
+  LootAmount: 15
+--- !u!210 &7469264191805940980
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8691775874111326227}
+  m_Enabled: 1
+  m_SortingLayerID: -363324419
+  m_SortingLayer: -1
+  m_SortingOrder: 1
+  m_SortAtRoot: 0
+--- !u!1001 &5508848546720097030
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4573566965872469899}
+    m_Modifications:
+    - target: {fileID: 3734727966864950707, guid: 229b300fd7f30c84cb88826af8b19a03, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3734727966864950707, guid: 229b300fd7f30c84cb88826af8b19a03, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3734727966864950707, guid: 229b300fd7f30c84cb88826af8b19a03, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3734727966864950707, guid: 229b300fd7f30c84cb88826af8b19a03, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3734727966864950707, guid: 229b300fd7f30c84cb88826af8b19a03, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3734727966864950707, guid: 229b300fd7f30c84cb88826af8b19a03, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3734727966864950707, guid: 229b300fd7f30c84cb88826af8b19a03, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3734727966864950707, guid: 229b300fd7f30c84cb88826af8b19a03, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3734727966864950707, guid: 229b300fd7f30c84cb88826af8b19a03, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3734727966864950707, guid: 229b300fd7f30c84cb88826af8b19a03, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4612834281511211466, guid: 229b300fd7f30c84cb88826af8b19a03, type: 3}
+      propertyPath: m_Name
+      value: puz_prefab
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 229b300fd7f30c84cb88826af8b19a03, type: 3}
+--- !u!95 &5262059687535828884 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 393444804498062482, guid: 229b300fd7f30c84cb88826af8b19a03, type: 3}
+  m_PrefabInstance: {fileID: 5508848546720097030}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &9198382184260331189 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3734727966864950707, guid: 229b300fd7f30c84cb88826af8b19a03, type: 3}
+  m_PrefabInstance: {fileID: 5508848546720097030}
+  m_PrefabAsset: {fileID: 0}
