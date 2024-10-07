@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using Night;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
+using Unit = Night.Unit;
 
 namespace Night
 {
@@ -14,6 +13,10 @@ namespace Night
         
         // Stats
         public float Health;
+
+        [SerializeField] private bool isRanged;
+        [SerializeField] private Projectile projectilePrefab;
+        [SerializeField] private Transform projectileSource;
 
         public float Speed
         {
@@ -202,11 +205,30 @@ namespace Night
 
         public void ZAttack()
         {
-            Unit currentTarget = CurrentAction.TargetUnit;
-            if (currentTarget.IsAlive())
+            if (!CurrentAction.TargetUnit.IsAlive()) return;
+
+            if (isRanged)
             {
-                currentTarget.DealDamage(AttackDamage, this);
+                RangedAttack();
             }
+            else
+            {
+                DealDamageToTarget();
+            }
+        }
+
+        private void RangedAttack()
+        {
+            var unitTransform = transform;
+            Instantiate(projectilePrefab, unitTransform.position, unitTransform.rotation)
+                .Initialize(projectileSource.position, CurrentAction.TargetUnit.transform.position, DealDamageToTarget);
+        }
+
+        private void DealDamageToTarget()
+        {
+            if (CurrentAction.TargetUnit == null) return;
+
+            CurrentAction.TargetUnit.DealDamage(AttackDamage, this);
         }
 
         public void DealDamage(float attackDamage, Unit unit)
