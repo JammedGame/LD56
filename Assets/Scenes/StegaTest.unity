@@ -290,6 +290,7 @@ MonoBehaviour:
   YouLoseUI: {fileID: 1188975873}
   HealthBarUI: {fileID: 208812301}
   TimerUI: {fileID: 8767083171410870617}
+  SquizzardAnimator: {fileID: 299287486}
 --- !u!4 &89367484
 Transform:
   m_ObjectHideFlags: 0
@@ -488,6 +489,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &299287486 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3605499627771283073, guid: af69ec988b7cb794cb97f60442984d33, type: 3}
+  m_PrefabInstance: {fileID: 1267882641}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &560287950
 GameObject:
   m_ObjectHideFlags: 0
