@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/StegaTest.unity
     guid: 791f92257111a3640a200c2e5d62c459
   - enabled: 1
-    path: Assets/Scenes/DayScene.unity
+    path: Assets/Scenes/DayScene_Town.unity
     guid: 365ea9ef1a0c84b4ab607cf44af3a038
   - enabled: 1
     path: Assets/Scenes/YouWinGameScene.unity

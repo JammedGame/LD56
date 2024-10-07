@@ -6,7 +6,7 @@ namespace Night
     public class UserEquippedSpell
     {
         public readonly SpellBookItem Blueprint;
-        public readonly int Level;
+        public int Level;
 
         private float cooldownLeft;
 

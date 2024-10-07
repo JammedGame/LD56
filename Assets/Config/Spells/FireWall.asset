@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: spell_fire_wall
   displayName: Fire Wall
-  icon: {fileID: 21300000, guid: 41ff389dd8ab9a349b6d75a62667f811, type: 3}
+  icon: {fileID: 21300000, guid: 11848dcbb852c8f428be0fb83cc8bf54, type: 3}
   isRapidFire: 0
   rapidFireCooldown: 1
   castCooldown: 1
@@ -22,4 +22,5 @@ MonoBehaviour:
   damage: 5
   moveSpeed: 20
   effectDuration: 5
+  UpgradeGoldCostPerLevel: 640000003200000064000000c8000000
   spellRuntimePrefab: {fileID: 2374906942737239632, guid: acd4b035d56d3244aaf0d5c4c37dfc07, type: 3}
