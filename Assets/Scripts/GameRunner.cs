@@ -23,6 +23,7 @@ public class GameRunner : MonoBehaviour
 	public YouLoseUI YouLoseUI;
 	public HealthBarUI HealthBarUI;
 	public TimerUI TimerUI;
+	public Animator SquizzardAnimator;
 	
 	void Start()
 	{
@@ -36,7 +37,7 @@ public class GameRunner : MonoBehaviour
 		currentBattleInputManager.Setup(currentBattle, UserBattleData);
 		HealthBarUI.Setup(currentBattle);
 		TimerUI.Setup(currentBattle);
-
+		currentBattle.OnSpellCast += () => SquizzardAnimator?.SetTrigger("Cast");
 		StartCoroutine(BattleFlow(currentBattle));
 	}
 

@@ -19,7 +19,7 @@ namespace DefaultNamespace.Spells
             hitTime = Time.time;
             transform.position = CastTarget;
 
-            Instantiate(quakeVisualEffectPrefab, CastTarget, quakeVisualEffectPrefab.transform.rotation, transform);
+            Instantiate(quakeVisualEffectPrefab, CastTarget + Vector3.up * 0.5f, quakeVisualEffectPrefab.transform.rotation, transform);
             StartCoroutine(DoEffectOverTime());
         }
 

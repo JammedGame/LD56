@@ -20,7 +20,7 @@ MonoBehaviour:
   castCooldown: 1
   areaOfEffect: {x: 2, y: 8}
   damage: 5
-  moveSpeed: 20
+  moveSpeed: 35
   effectDuration: 5
   UpgradeGoldCostPerLevel: 640000003200000064000000c8000000
   spellRuntimePrefab: {fileID: 2374906942737239632, guid: acd4b035d56d3244aaf0d5c4c37dfc07, type: 3}

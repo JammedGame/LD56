@@ -49,13 +49,16 @@ MonoBehaviour:
   DeathAnimationDuration: 2
   SpawnAnimationDuration: 0.25
   Health: 0
+  isRanged: 1
+  projectilePrefab: {fileID: 3144786620408338395, guid: 877f4b2e690684fce865479e8be7c9a6, type: 3}
+  projectileSource: {fileID: 7626521208872449577}
   AttackDamage: 0
   Animator: {fileID: 4050989754428737462}
   BaselineSettings:
     MoveSpeed: 5
     Health: 20
-    AgroRange: 10
-    AttackRange: 5
+    AgroRange: 16
+    AttackRange: 15
     AttackDamage: 10
   LootAmount: 10
 --- !u!210 &7469264191805940980
@@ -135,5 +138,10 @@ Animator:
 --- !u!4 &6853016568993917812 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6804387755014537551, guid: e32a03369c3e13244b2b5430bea792ab, type: 3}
+  m_PrefabInstance: {fileID: 104925149384895035}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7626521208872449577 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7539620062114896914, guid: e32a03369c3e13244b2b5430bea792ab, type: 3}
   m_PrefabInstance: {fileID: 104925149384895035}
   m_PrefabAsset: {fileID: 0}
