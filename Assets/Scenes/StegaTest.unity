@@ -486,7 +486,8 @@ Transform:
   m_LocalPosition: {x: 0, y: -0.04, z: 0}
   m_LocalScale: {x: 43, y: 0.1, z: 27}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1674541973}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &299287486 stripped
@@ -523,7 +524,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bcb54d293d2d3a646bd4fbbbfb286c84, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -986,6 +987,9 @@ MonoBehaviour:
   DeathAnimationDuration: 2
   SpawnAnimationDuration: 1
   Health: 100
+  isRanged: 0
+  projectilePrefab: {fileID: 0}
+  projectileSource: {fileID: 0}
   AttackDamage: 0
   Animator: {fileID: 0}
   BaselineSettings:
@@ -1857,12 +1861,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1674541969}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1000, y: 1000, z: 1000}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.39999998, z: 0}
+  m_LocalScale: {x: 23.255814, y: 10000, z: 37.037037}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 250911688}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1704751640
 GameObject:
@@ -2172,7 +2176,6 @@ SceneRoots:
   - {fileID: 746640004}
   - {fileID: 819746174}
   - {fileID: 89367484}
-  - {fileID: 1674541973}
   - {fileID: 250911688}
   - {fileID: 1704751641}
   - {fileID: 2091065531}

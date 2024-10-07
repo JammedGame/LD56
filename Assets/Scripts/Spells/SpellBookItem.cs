@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace DefaultNamespace.Spells
@@ -19,6 +20,8 @@ namespace DefaultNamespace.Spells
         [SerializeField] private float damage;
         [SerializeField] private float moveSpeed;
         [SerializeField] private float effectDuration;
+
+        public List<int> UpgradeGoldCostPerLevel; // 0 is for buy
         
         /// <summary>
         /// The prefab that is instantiated when the spell is cast in-game

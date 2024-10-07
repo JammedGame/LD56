@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: spell_shockwave
   displayName: Shockwave
-  icon: {fileID: 21300000, guid: 41ff389dd8ab9a349b6d75a62667f811, type: 3}
+  icon: {fileID: 21300000, guid: f65a479aa3d26614cbda627cb547277d, type: 3}
   isRapidFire: 0
   rapidFireCooldown: 0.1
   castCooldown: 5
@@ -22,4 +22,5 @@ MonoBehaviour:
   damage: 1
   moveSpeed: 0
   effectDuration: 10
+  UpgradeGoldCostPerLevel: c80000003200000064000000c80000002c010000
   spellRuntimePrefab: {fileID: 5446434321615522936, guid: baf84ec4a0bf8cd4e98da52f7b8f230e, type: 3}

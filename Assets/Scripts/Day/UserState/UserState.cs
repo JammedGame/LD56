@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using DefaultNamespace;
+using DefaultNamespace.Spells;
 using Night.Town;
 
 namespace Night
@@ -20,6 +21,8 @@ namespace Night
             new(5, typeof(StormSchool), 1)
         });
 
+        public readonly SpellBookState SpellBookState = new();
+
         public readonly ArmyState ArmyState = new(5);
 
         public int DayCount { get; private set; }
@@ -28,11 +31,8 @@ namespace Night
         {
             UserBattleData battleData = new();
 
-            // TODO: read army state from town
-            ArmyState.AddUnit(new UnitState(ArmyState.GetLivingUnits().Any() ? ArmyState.GetLivingUnits().Last().slot + 1 : 0, new UserUnitInfo(GameSettings.Instance.Hedgehog, 0)));
-
             // SPELLS
-            battleData.EquippedSpells.AddRange(BuildingsState.GetSpells());
+            battleData.EquippedSpells.AddRange(SpellBookState.EquippedSpells);
 
             // ARMY
             battleData.UserUnits.AddRange(ArmyState.GetLivingUnits().Select(x => x.info));
@@ -58,6 +58,38 @@ namespace Night
         public static void Reset()
         {
             instance = new UserState();
+        }
+    }
+
+    public class SpellBookState
+    {
+        public readonly List<UserEquippedSpell> EquippedSpells = new();
+
+        public int GetSpellLevel(SpellBookItem itemV)
+        {
+            foreach (UserEquippedSpell item in EquippedSpells)
+            {
+                if (item.Blueprint == itemV)
+                {
+                    return item.Level;
+                }
+            }
+
+            return 0;
+        }
+
+        public void UpgradeSpell(SpellBookItem mySpell)
+        {
+            foreach (UserEquippedSpell item in EquippedSpells)
+            {
+                if (item.Blueprint == mySpell)
+                {
+                    item.Level++;
+                    return;
+                }
+            }
+
+            EquippedSpells.Add(new UserEquippedSpell(mySpell, 1));
         }
     }
 }
