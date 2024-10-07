@@ -87,6 +87,7 @@ public class TownController : MonoBehaviour
         upgradedBuilding.name = chosenUpgrade.name;
         upgradedBuilding.transform.localPosition = position;
         upgradedBuilding.Slot = slot;
+        upgradedBuilding.Level++;
         upgradedBuilding.UpdateState();
         SelectBuilding(upgradedBuilding);
         upgradedBuilding.SelectBuilding += SelectBuilding;

@@ -17,7 +17,7 @@ namespace Night.Town
         public event Action<TownBuilding> SelectBuilding;
         public event Action<TownBuilding> OfferUpgradeChoices;
 
-        public int Level { get; private set; }
+        public int Level { get; set; }
 
         protected abstract int[] Costs { get; }
 

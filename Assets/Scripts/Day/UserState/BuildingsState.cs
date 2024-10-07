@@ -21,7 +21,7 @@ namespace Night
             var building = GetBuilding(slot);
             if (building == null)
             {
-                building = new BuildingState(slot, null, 0);
+                building = new BuildingState(slot, null, 1);
                 buildings.Add(building);
             }
 

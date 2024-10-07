@@ -26,7 +26,7 @@ public class BuildingUI : MonoBehaviour
     {
         gameObject.SetActive(true);
         buildingTitle.text = title;
-        buildingLevel.text = $"Level {level + 1}";
+        buildingLevel.text = $"Level {level}";
 
         if (cost is >= 0 and < int.MaxValue)
         {
