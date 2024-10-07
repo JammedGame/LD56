@@ -15,7 +15,7 @@ MonoBehaviour:
   SurviveTimerSeconds: 60
   Spawns:
   - Time: 0
-    UnitPrefab: {fileID: 854400207166296427, guid: d7df9b41e803cab42beea53250cade7e, type: 3}
+    UnitPrefab: {fileID: 854400207166296427, guid: 099d11bdcdb8b574fa12ce8bf93b462f, type: 3}
     X: 15
     Y: 0
     UnitLevel: 0
