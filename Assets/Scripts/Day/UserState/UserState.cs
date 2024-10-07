@@ -13,7 +13,6 @@ namespace Night
 
         public readonly BuildingsState BuildingsState = new(new List<BuildingState>
         {
-            new(0, typeof(CityHall), 0),
             new(1, typeof(Castle), 0),
             new(2, typeof(EarthSchool), 0),
             new(3, typeof(FireSchool), 0),

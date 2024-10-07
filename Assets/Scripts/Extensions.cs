@@ -8,7 +8,7 @@ public static class Extensions
     {
         foreach (Transform child in transform)
         {
-            Object.Destroy(child);
+            Object.Destroy(child.gameObject);
         }
     }
 

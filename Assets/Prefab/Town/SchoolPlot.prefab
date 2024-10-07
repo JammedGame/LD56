@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2000107529112097827}
   - component: {fileID: 435663306366125242}
   m_Layer: 0
-  m_Name: CityHall
+  m_Name: SchoolPlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

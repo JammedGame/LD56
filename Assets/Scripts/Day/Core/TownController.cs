@@ -10,13 +10,12 @@ public class TownController : MonoBehaviour
     [SerializeField] private UpgradeChoicesOverlay upgradeChoicesOverlay;
     [SerializeField] private Button nextWaveButton;
 
-    private IEnumerable<TownBuilding> buildings;
+    private IEnumerable<TownBuilding> Buildings => GetComponentsInChildren<TownBuilding>();
 
     private TownBuilding selectedTownBuilding;
 
     private void Awake()
     {
-        buildings = GetComponentsInChildren<TownBuilding>();
         buildingUI.Clear();
         nextWaveButton.SetListener(OnNextWaveClick);
     }
@@ -24,8 +23,9 @@ public class TownController : MonoBehaviour
     private void OnEnable()
     {
         buildingUI.UpgradeClick += OnBuildingUpgradeClick;
-        foreach (var building in buildings)
+        foreach (var building in Buildings)
         {
+            building.UpdateState();
             building.SelectBuilding += SelectBuilding;
             building.OfferUpgradeChoices += OfferUpgradeChoices;
         }
@@ -34,7 +34,7 @@ public class TownController : MonoBehaviour
     private void OnDisable()
     {
         buildingUI.UpgradeClick -= OnBuildingUpgradeClick;
-        foreach (var building in buildings)
+        foreach (var building in Buildings)
         {
             building.SelectBuilding -= SelectBuilding;
             building.OfferUpgradeChoices -= OfferUpgradeChoices;
@@ -51,7 +51,7 @@ public class TownController : MonoBehaviour
     private void SelectBuilding(TownBuilding buildingToSelect)
     {
         selectedTownBuilding = buildingToSelect;
-        foreach (var building in buildings)
+        foreach (var building in Buildings)
         {
             building.ToggleSelected(building == buildingToSelect);
         }
@@ -82,11 +82,15 @@ public class TownController : MonoBehaviour
         var parent = originalBuildingTransform.parent;
         var position = originalBuildingTransform.localPosition;
         var slot = originalBuilding.Slot;
-        Destroy(originalBuilding);
+        Destroy(originalBuilding.gameObject);
         var upgradedBuilding = Instantiate(chosenUpgrade, parent);
+        upgradedBuilding.name = chosenUpgrade.name;
         upgradedBuilding.transform.localPosition = position;
         upgradedBuilding.Slot = slot;
+        upgradedBuilding.UpdateState();
         SelectBuilding(upgradedBuilding);
+        upgradedBuilding.SelectBuilding += SelectBuilding;
+        upgradedBuilding.OfferUpgradeChoices += OfferUpgradeChoices;
     }
 
     private static void OnNextWaveClick()

@@ -4,7 +4,7 @@ namespace Night.Town
     {
         protected override int[] Costs => new[] { 1, 2, 3 };
 
-        protected override void UpdateState()
+        public override void UpdateState()
         {
             UserState.Instance.WallState.level = Level;
             UserState.Instance.WallState.currentHealthNormalized = 1f;

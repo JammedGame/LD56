@@ -30,7 +30,6 @@ namespace Night.Town
         private void Awake()
         {
             image = GetComponent<Image>();
-            UpdateState();
         }
 
         public void ToggleSelected(bool selected)
@@ -70,7 +69,7 @@ namespace Night.Town
             SelectThisBuilding();
         }
 
-        protected virtual void UpdateState()
+        public virtual void UpdateState()
         {
             var type = GetType();
             UserState.Instance.BuildingsState.AddOrUpdateBuilding(Slot, state =>
