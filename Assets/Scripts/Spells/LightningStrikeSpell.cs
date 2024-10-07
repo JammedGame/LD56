@@ -20,6 +20,8 @@ namespace DefaultNamespace.Spells
             if (closestUnit != null)
             {
                 closestUnit.DealDamage(Damage, null);
+                Color color = new Color(0.3f, 0.3f, 0.3f, 1);
+                closestUnit.AddModifier(new UnitModifier(0.15f, colorTint: color));
             }
             
             CameraShakerHandler.Shake(shakeData);

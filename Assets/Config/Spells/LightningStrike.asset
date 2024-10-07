@@ -18,7 +18,7 @@ MonoBehaviour:
   isRapidFire: 0
   rapidFireCooldown: 0.1
   castCooldown: 0.5
-  areaOfEffect: {x: 3, y: 3}
+  areaOfEffect: {x: 2, y: 2}
   damage: 20
   moveSpeed: 0
   effectDuration: 0
