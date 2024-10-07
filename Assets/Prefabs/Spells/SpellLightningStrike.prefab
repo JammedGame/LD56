@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visualEffectPrefab: {fileID: 167788, guid: 76d4aad90bac27a4588a3efc2f93d6f2, type: 3}
   shakeData: {fileID: 11400000, guid: fd1250282c8f2e841ac602704e5efc0c, type: 2}
+  onCastAudio: {fileID: 8300000, guid: 878c131f6399a98439843d4efc0d8ef2, type: 3}

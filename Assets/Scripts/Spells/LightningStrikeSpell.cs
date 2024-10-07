@@ -11,7 +11,8 @@ namespace DefaultNamespace.Spells
     {
         [SerializeField] private GameObject visualEffectPrefab;
         [SerializeField] private ShakeData shakeData;
-        
+        [SerializeField] private AudioClip onCastAudio;
+
         protected override void Init()
         {
             Instantiate(visualEffectPrefab, CastTarget, visualEffectPrefab.transform.rotation);
@@ -22,6 +23,7 @@ namespace DefaultNamespace.Spells
             }
             
             CameraShakerHandler.Shake(shakeData);
+            GlobalAudioSource.PlayOneShot(onCastAudio);
             Deactivate();
         }
     }
