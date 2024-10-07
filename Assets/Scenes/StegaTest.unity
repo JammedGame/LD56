@@ -696,7 +696,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 352df949b81f5444788691aae98d48c3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9284736808909dc43a71a0d038b8481f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_FlipX: 0
   m_FlipY: 0
@@ -780,7 +780,7 @@ SpriteRenderer:
   m_SortingLayerID: -1157299559
   m_SortingLayer: -2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 71a162fe03ce50c45b21f04663bb0d90, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d536efbff6372ce42b9b0a4b795cfbc2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2041,10 +2041,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1051668698}
     m_Modifications:
-    - target: {fileID: -1591318114328583802, guid: 24d46d9d665397e459cb7fd818a4a39e, type: 3}
-      propertyPath: enemiesRemainingText
-      value: 
-      objectReference: {fileID: 8298919359069897889}
     - target: {fileID: 2194696397845852405, guid: 24d46d9d665397e459cb7fd818a4a39e, type: 3}
       propertyPath: m_Name
       value: Timer
@@ -2129,30 +2125,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5924910729842491240, guid: 24d46d9d665397e459cb7fd818a4a39e, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8036136045803649174, guid: 24d46d9d665397e459cb7fd818a4a39e, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24d46d9d665397e459cb7fd818a4a39e, type: 3}
---- !u!114 &8298919359069897889 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3724755598942658963, guid: 24d46d9d665397e459cb7fd818a4a39e, type: 3}
-  m_PrefabInstance: {fileID: 8298919359069897888}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &8767083171410870616 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4724856583656603857, guid: 24d46d9d665397e459cb7fd818a4a39e, type: 3}
