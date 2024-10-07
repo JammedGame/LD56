@@ -16,10 +16,10 @@ MonoBehaviour:
   displayName: Ice Blast
   icon: {fileID: 21300000, guid: 41ff389dd8ab9a349b6d75a62667f811, type: 3}
   isRapidFire: 1
-  rapidFireCooldown: 1
+  rapidFireCooldown: 0.6
   castCooldown: 0
   areaOfEffect: {x: 4, y: 4}
-  damage: 5
+  damage: 7
   moveSpeed: 40
   effectDuration: 3
   spellRuntimePrefab: {fileID: 6428974598782718843, guid: ce97d44cb61e6c84eb6e165ab90cb092, type: 3}
