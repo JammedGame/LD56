@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame() 
     {
-        SceneManager.LoadScene("StegaTest");
+        SceneManager.LoadScene("DayScene");
     }
     public void QuitGame()
     {
