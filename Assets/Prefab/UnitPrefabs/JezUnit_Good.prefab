@@ -49,13 +49,15 @@ MonoBehaviour:
   DeathAnimationDuration: 2
   SpawnAnimationDuration: 0.25
   Health: 0
-  Speed: 0
+  isRanged: 0
+  projectilePrefab: {fileID: 0}
+  projectileSource: {fileID: 0}
   AttackDamage: 0
   Animator: {fileID: 5262059687535828884}
   BaselineSettings:
     MoveSpeed: 5
     Health: 100
-    AgroRange: 7.5
+    AgroRange: 16
     AttackRange: 5
     AttackDamage: 10
 --- !u!210 &7469264191805940980
