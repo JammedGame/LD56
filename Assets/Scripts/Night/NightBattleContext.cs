@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using DefaultNamespace;
 using DefaultNamespace.Spells;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Night
 {
@@ -20,6 +22,8 @@ namespace Night
 		public float GameTime { get; private set; }
 		public float LevelDuration => NightLevelData.SurviveTimerSeconds;
 		public Team? Winner { get; private set; }
+
+		public Action OnSpellCast;
 		
 		public NightBattleContext(NightLevelData nightLevelData, UserBattleData userBattleData, Wall wall)
 		{
@@ -89,6 +93,8 @@ namespace Night
 			SpellBattleInstance newSpell = Object.Instantiate(spell.Blueprint.SpellBattlePrefab, Wall.SquizzardPosition.position, Quaternion.identity);
 			AllSpells.Add(newSpell);
 			newSpell.Setup(this, castTargetPos, spell);
+			
+			OnSpellCast?.Invoke();
 
 			// Debug.Log($"Cast spell '{spellId}' level {equippedSpell.Level}, startPos {newSpell.transform.position}, castTarget {castTargetPos}");
 		}

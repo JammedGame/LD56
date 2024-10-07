@@ -8,8 +8,8 @@ namespace DefaultNamespace.Spells
     public class IceBlastSpell : SpellBattleInstance
     {
         [SerializeField] private GameObject explosionVisualEffectPrefab;
-        
-        private void Update()
+
+        public override void Tick()
         {
             if (Vector3.Distance(CastTarget, transform.position) < 0.1f)
             {
