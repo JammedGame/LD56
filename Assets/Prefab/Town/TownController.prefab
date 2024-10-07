@@ -56,6 +56,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingUI: {fileID: 0}
+  upgradeChoicesOverlay: {fileID: 0}
   nextWaveButton: {fileID: 0}
 --- !u!1001 &139714756460121546
 PrefabInstance:
@@ -148,6 +149,10 @@ PrefabInstance:
     - target: {fileID: 7479110109778581509, guid: 3b01c3b2776b349a18cbc4a1820abc1a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940086595614871585, guid: 3b01c3b2776b349a18cbc4a1820abc1a, type: 3}
+      propertyPath: Slot
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -251,6 +256,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Castle
       objectReference: {fileID: 0}
+    - target: {fileID: 7254076071566574012, guid: 880b86820c71c4437a4c09c2ae2c7af7, type: 3}
+      propertyPath: Slot
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -269,6 +278,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9054234542102960882}
     m_Modifications:
+    - target: {fileID: 1009927070881491931, guid: d9d25f2c6d6c248d29b99d837eb5e50e, type: 3}
+      propertyPath: Slot
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5417244442265325141, guid: d9d25f2c6d6c248d29b99d837eb5e50e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -374,6 +387,10 @@ PrefabInstance:
     - target: {fileID: 4043035109964453596, guid: d193ac021435b4eb681381b5fc139fe3, type: 3}
       propertyPath: m_Name
       value: School of Storms
+      objectReference: {fileID: 0}
+    - target: {fileID: 7100828902132372487, guid: d193ac021435b4eb681381b5fc139fe3, type: 3}
+      propertyPath: Slot
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7138165640931994121, guid: d193ac021435b4eb681381b5fc139fe3, type: 3}
       propertyPath: m_Pivot.x
@@ -655,6 +672,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3108446091635350989, guid: a112fe73f17994424b695f58e51b0dda, type: 3}
+      propertyPath: Slot
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3896826585331801026, guid: a112fe73f17994424b695f58e51b0dda, type: 3}
       propertyPath: m_Name
       value: School of Frost
@@ -756,6 +777,10 @@ PrefabInstance:
     - target: {fileID: 5607573232815467437, guid: dac162988dfb34166b907ec442ca35b1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170053821243800767, guid: dac162988dfb34166b907ec442ca35b1, type: 3}
+      propertyPath: Slot
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7387273962103253543, guid: dac162988dfb34166b907ec442ca35b1, type: 3}
       propertyPath: m_Name

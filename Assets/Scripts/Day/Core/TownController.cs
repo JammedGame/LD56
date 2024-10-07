@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class TownController : MonoBehaviour
 {
     [SerializeField] private BuildingUI buildingUI;
+    [SerializeField] private UpgradeChoicesOverlay upgradeChoicesOverlay;
     [SerializeField] private Button nextWaveButton;
 
     private IEnumerable<TownBuilding> buildings;
@@ -25,7 +26,8 @@ public class TownController : MonoBehaviour
         buildingUI.UpgradeClick += OnBuildingUpgradeClick;
         foreach (var building in buildings)
         {
-            building.SelectBuilding += OnSelectBuilding;
+            building.SelectBuilding += SelectBuilding;
+            building.OfferUpgradeChoices += OfferUpgradeChoices;
         }
     }
 
@@ -34,7 +36,8 @@ public class TownController : MonoBehaviour
         buildingUI.UpgradeClick -= OnBuildingUpgradeClick;
         foreach (var building in buildings)
         {
-            building.SelectBuilding -= OnSelectBuilding;
+            building.SelectBuilding -= SelectBuilding;
+            building.OfferUpgradeChoices -= OfferUpgradeChoices;
         }
     }
 
@@ -45,7 +48,7 @@ public class TownController : MonoBehaviour
         selectedTownBuilding.TryUpgrade();
     }
 
-    private void OnSelectBuilding(TownBuilding buildingToSelect)
+    private void SelectBuilding(TownBuilding buildingToSelect)
     {
         selectedTownBuilding = buildingToSelect;
         foreach (var building in buildings)
@@ -65,6 +68,25 @@ public class TownController : MonoBehaviour
         }
 
         buildingUI.SetData(selectedTownBuilding.name, selectedTownBuilding.Level, selectedTownBuilding.CurrentCost);
+    }
+
+    private void OfferUpgradeChoices(TownBuilding buildingToUpgrade)
+    {
+        upgradeChoicesOverlay.Initialize(buildingToUpgrade,
+            chosenUpgrade => { OnChosenUpgrade(buildingToUpgrade, chosenUpgrade); });
+    }
+
+    private void OnChosenUpgrade(TownBuilding originalBuilding, TownBuilding chosenUpgrade)
+    {
+        var originalBuildingTransform = originalBuilding.transform;
+        var parent = originalBuildingTransform.parent;
+        var position = originalBuildingTransform.localPosition;
+        var slot = originalBuilding.Slot;
+        Destroy(originalBuilding);
+        var upgradedBuilding = Instantiate(chosenUpgrade, parent);
+        upgradedBuilding.transform.localPosition = position;
+        upgradedBuilding.Slot = slot;
+        SelectBuilding(upgradedBuilding);
     }
 
     private static void OnNextWaveClick()

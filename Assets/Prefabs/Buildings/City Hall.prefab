@@ -90,3 +90,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BuildingSprite: {fileID: 21300000, guid: 5906b59697f454e00a0744abdcd6c40e, type: 3}
   BuildingSelectedSprite: {fileID: 21300000, guid: baa845091d54d4dc5938e9b32c0782b8, type: 3}
+  <Slot>k__BackingField: 2

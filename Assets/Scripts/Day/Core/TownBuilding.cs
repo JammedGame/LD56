@@ -5,12 +5,17 @@ using UnityEngine.UI;
 
 namespace Night.Town
 {
+    [RequireComponent(typeof(Image))]
     public abstract class TownBuilding : MonoBehaviour, IPointerDownHandler
     {
+        [SerializeField] public int Slot;
         [SerializeField] private Sprite BuildingSprite;
         [SerializeField] private Sprite BuildingSelectedSprite;
 
+        [field: SerializeField] public TownBuilding[] UpgradeChoices { get; private set; }
+
         public event Action<TownBuilding> SelectBuilding;
+        public event Action<TownBuilding> OfferUpgradeChoices;
 
         public int Level { get; private set; }
 
@@ -25,11 +30,7 @@ namespace Night.Town
         private void Awake()
         {
             image = GetComponent<Image>();
-
-            if (image == null)
-            {
-                Debug.LogError("No Image component found on this GameObject. Please add one.");
-            }
+            UpdateState();
         }
 
         public void ToggleSelected(bool selected)
@@ -39,7 +40,7 @@ namespace Night.Town
 
         public void TryUpgrade()
         {
-            if (Level >= MaxLevel)
+            if (Level >= MaxLevel && UpgradeChoices.Length == 0)
             {
                 Debug.Log("Building is already at max level.");
                 return;
@@ -57,9 +58,26 @@ namespace Night.Town
 
         private void Upgrade()
         {
+            if (UpgradeChoices.Length > 0)
+            {
+                OfferUpgradeChoices?.Invoke(this);
+                return;
+            }
+
             Level++;
             Debug.Log($"{gameObject.name} upgraded to level=" + Level + "!");
+            UpdateState();
             SelectThisBuilding();
+        }
+
+        protected virtual void UpdateState()
+        {
+            var type = GetType();
+            UserState.Instance.BuildingsState.AddOrUpdateBuilding(Slot, state =>
+            {
+                state.type = type;
+                state.level = Level;
+            });
         }
 
         private void SelectThisBuilding()

@@ -5,8 +5,9 @@ namespace Night
         public int level;
         public float currentHealthNormalized;
 
-        public WallState(float startingHealthNormalized)
+        public WallState(int startingLevel, float startingHealthNormalized)
         {
+            level = startingLevel;
             currentHealthNormalized = startingHealthNormalized;
         }
     }

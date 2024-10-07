@@ -7,23 +7,24 @@ namespace Night
 {
     public class BuildingsState
     {
-        private List<BuildingState> buildings;
+        private readonly List<BuildingState> buildings;
 
         public IEnumerable<BuildingState> Buildings => buildings;
 
-        public void Initialize(List<BuildingState> buildings)
+        public BuildingsState(List<BuildingState> buildings)
         {
             this.buildings = buildings;
         }
 
-        public void ModifyBuilding(int slot, Action<BuildingState> modification)
+        public void AddOrUpdateBuilding(int slot, Action<BuildingState> modification)
         {
-            if (!buildings.Exists(x => x.slot == slot))
+            var building = GetBuilding(slot);
+            if (building == null)
             {
-                throw new InvalidOperationException($"Building not found int slot {slot}");
+                building = new BuildingState(slot, null, 0);
+                buildings.Add(building);
             }
 
-            var building = GetBuilding(slot);
             modification(building);
         }
 

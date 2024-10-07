@@ -9,8 +9,18 @@ namespace Night
     {
         public readonly Wallet Gold = new(100);
 
-        public readonly WallState WallState = new(1f);
-        public readonly BuildingsState BuildingsState = new();
+        public readonly WallState WallState = new(0, 1f);
+
+        public readonly BuildingsState BuildingsState = new(new List<BuildingState>
+        {
+            new(0, typeof(CityHall), 0),
+            new(1, typeof(Castle), 0),
+            new(2, typeof(EarthSchool), 0),
+            new(3, typeof(FireSchool), 0),
+            new(4, typeof(FrostSchool), 0),
+            new(5, typeof(StormSchool), 0)
+        });
+
         public readonly ArmyState ArmyState = new(5);
 
         public int DayCount { get; private set; }
@@ -19,23 +29,8 @@ namespace Night
         {
             UserBattleData battleData = new();
 
-            // TODO: read state from town
-            BuildingsState.Initialize(new List<BuildingState>
-            {
-                new(0, typeof(CityHall), 0),
-                new(1, typeof(Castle), 0),
-                new(2, typeof(EarthSchool), 0),
-                new(3, typeof(FireSchool), 0),
-                new(4, typeof(FrostSchool), 0),
-                new(5, typeof(StormSchool), 0)
-            });
-
-            // TODO: read state from town
+            // TODO: read army state from town
             ArmyState.AddUnit(new UnitState(0, new UserUnitInfo(GameSettings.Instance.Hedgehog, 0)));
-
-            // TODO: read state from town
-            WallState.level = 0;
-            WallState.currentHealthNormalized = 1f;
 
             // SPELLS
             battleData.EquippedSpells.AddRange(BuildingsState.GetSpells());
