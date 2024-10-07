@@ -1446,6 +1446,30 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5597651143384789754, guid: af69ec988b7cb794cb97f60442984d33, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597651143384789754, guid: af69ec988b7cb794cb97f60442984d33, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597651143384789754, guid: af69ec988b7cb794cb97f60442984d33, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597651143384789754, guid: af69ec988b7cb794cb97f60442984d33, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -19.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597651143384789754, guid: af69ec988b7cb794cb97f60442984d33, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597651143384789754, guid: af69ec988b7cb794cb97f60442984d33, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -12
+      objectReference: {fileID: 0}
     - target: {fileID: 8334228659464264682, guid: af69ec988b7cb794cb97f60442984d33, type: 3}
       propertyPath: m_Name
       value: Squizard

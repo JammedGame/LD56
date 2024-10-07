@@ -29,7 +29,7 @@ namespace Night
             UserBattleData battleData = new();
 
             // TODO: read army state from town
-            ArmyState.AddUnit(new UnitState(ArmyState.Units.Count(), new UserUnitInfo(GameSettings.Instance.Hedgehog, 0)));
+            ArmyState.AddUnit(new UnitState(ArmyState.GetLivingUnits().Any() ? ArmyState.GetLivingUnits().Last().slot + 1 : 0, new UserUnitInfo(GameSettings.Instance.Hedgehog, 0)));
 
             // SPELLS
             battleData.EquippedSpells.AddRange(BuildingsState.GetSpells());
