@@ -37,6 +37,7 @@ namespace Night
         {
             var buildingSpells = GameSettings.Instance.BuildingSpells
                 .Where(x => buildings.Exists(y => y.type == x.building.GetType() && y.level >= x.minLevel));
+            
             return buildingSpells.Select(x => new UserEquippedSpell(
                 x.spell,
                 buildings.Find(y => y.type == x.building.GetType()).level));

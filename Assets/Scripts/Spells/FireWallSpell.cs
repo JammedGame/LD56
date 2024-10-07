@@ -14,7 +14,7 @@ namespace DefaultNamespace.Spells
 
         private float hitTime;
         
-        private void Update()
+        public override void Tick()
         {
             if (hitTime > 0f)
             {

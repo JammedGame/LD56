@@ -13,11 +13,11 @@ namespace Night
 
         public readonly BuildingsState BuildingsState = new(new List<BuildingState>
         {
-            new(1, typeof(Castle), 0),
-            new(2, typeof(EarthSchool), 0),
-            new(3, typeof(FireSchool), 0),
-            new(4, typeof(FrostSchool), 0),
-            new(5, typeof(StormSchool), 0)
+            new(1, typeof(Castle), 1),
+            new(2, typeof(EarthSchool), 1),
+            new(3, typeof(FireSchool), 1),
+            new(4, typeof(FrostSchool), 1),
+            new(5, typeof(StormSchool), 1)
         });
 
         public readonly ArmyState ArmyState = new(5);
