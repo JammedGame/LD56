@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DefaultNamespace;
 using Night;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 
 public class PlayerBattleInputManager : MonoBehaviour
@@ -68,7 +69,7 @@ public class PlayerBattleInputManager : MonoBehaviour
         }
 
         bool raycastValid = InputUtils.ScreenToWorld(Input.mousePosition, out Vector3 castTargetPos);
-        if (raycastValid)
+        if (raycastValid && !EventSystem.current.IsPointerOverGameObject())
         {
             castTargetIndicator.Position = castTargetPos;
             if (!SelectedSpell.IsOnCooldown)

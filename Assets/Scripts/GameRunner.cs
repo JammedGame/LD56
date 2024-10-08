@@ -76,6 +76,8 @@ public class GameRunner : MonoBehaviour
 		else
 		{
 			yield return YouLoseUI.Animate(battleContext);
+
+			SceneManager.LoadScene("Menu");
 		}
 	}
 
